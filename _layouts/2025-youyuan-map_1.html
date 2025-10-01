@@ -4,136 +4,12 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <title>2025 金谷拾月游园会电子地图</title>
-    <!-- <canvas id="myCanvas"></canvas> -->
+    <title>2024 金谷拾月游园会电子地图</title>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <!-- 全局状态 通用函数 -->
     <script>
-      class Booth {
-        constructor(config) {
-          this.id = config.id;
-          this.name = config.name;
-          this.color = config.color || "#90EE90"; // Light green default
-          this.position = {
-            x: config.x,
-            y: config.y,
-            width: config.width || 50,
-            height: config.height || 50
-          };
-          this.onClick = config.onClick || (() => {});
-          this.isHighlighted = false;
-          this.animationFrame = 0;
-        }
-
-        draw(ctx, mapScale = 1, mapTransform = { x: 0, y: 0 }) {
-          ctx.fillStyle = this.isHighlighted ? "#006400" : this.color; // Dark green when highlighted
-          
-          // Apply animation if booth was clicked
-          let animScale = 1;
-          if (this.animationFrame > 0) {
-            animScale = 1 + (0.2 * Math.sin(this.animationFrame * 0.2));
-            this.animationFrame--;
-            requestAnimationFrame(() => this.draw(ctx, mapScale, mapTransform));
-          }
-
-          // Calculate scaled and transformed position
-          const scaledWidth = this.position.width * mapScale * animScale;
-          const scaledHeight = this.position.height * mapScale * animScale;
-          const scaledX = (this.position.x * mapScale + mapTransform.x) - (scaledWidth - this.position.width * mapScale) / 2;
-          const scaledY = (this.position.y * mapScale + mapTransform.y) - (scaledHeight - this.position.height * mapScale) / 2;
-          
-          ctx.fillRect(scaledX, scaledY, scaledWidth, scaledHeight);
-        }
-
-        containsPoint(x, y, mapScale = 1, mapTransform = { x: 0, y: 0 }) {
-          // Adjust click coordinates based on map transform
-          const adjustedX = (x - mapTransform.x) / mapScale;
-          const adjustedY = (y - mapTransform.y) / mapScale;
-          
-          return adjustedX >= this.position.x && 
-                 adjustedX <= this.position.x + this.position.width &&
-                 adjustedY >= this.position.y && 
-                 adjustedY <= this.position.y + this.position.height;
-        }
-
-        animate() {
-          this.animationFrame = 30; // Will animate for 30 frames
-        }
-      }
-
-      class Story {
-        constructor(name, booths) {
-          this.name = name;
-          this.booths = booths;
-        }
-
-        highlight() {
-          this.booths.forEach(booth => {
-            booth.isHighlighted = true;
-          });
-        }
-
-        unhighlight() {
-          this.booths.forEach(booth => {
-            booth.isHighlighted = false;
-          });
-        }
-      }
-
-      // Create booth instances
-      const boothA = new Booth({
-        id: "A",
-        name: "Booth A",
-        x: 100,
-        y: 400,
-        onClick: function() {
-          showBoothInfo("Booth A Information");
-        }
-      });
-
-      const boothB = new Booth({
-        id: "B", 
-        name: "Booth B",
-        x: 200,
-        y: 100,
-        onClick: function() {
-          showBoothInfo("Booth B Information");
-        }
-      });
-
-      const boothC = new Booth({
-        id: "C",
-        name: "Booth C", 
-        x: 300,
-        y: 100,
-        onClick: function() {
-          showBoothInfo("Booth C Information");
-        }
-      });
-
-      const boothD = new Booth({
-        id: "D",
-        name: "Booth D",
-        x: 400,
-        y: 100,
-        onClick: function() {
-          showBoothInfo("Booth D Information");
-        }
-      });
-
-      // Create stories
-      const story1 = new Story("Story 1", [boothA, boothB]);
-      const story2 = new Story("Story 2", [boothB, boothC, boothD]);
-
-      // Create booth display list that combines custom booths and existing ones
-      const boothsList = [boothA, boothB, boothC, boothD];
-
-      function showBoothInfo(info) {
-        document.querySelector('#drawer').innerHTML = info;
-      }
-
       // const mapURL = `/images/2024-map/map.png`;
       const mapURL = `/images/2025-map/Gemini_map.png`;
       const siteStates = {
@@ -1663,56 +1539,17 @@ Since its establishment in 2020, AAYA was officially registered as a legal 501(c
 
     <!-- Map Styles -->
     <style>
-       #map-outer-container {
-        position: relative;
-        width: 100vw;
-        height: calc(100vh - 60px); /* Leave room for drawer */
-        overflow: hidden;
-        /* touch-action: pinch-zoom; */
-       }
-
       #map-container {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        touch-action: pinch-zoom;
+        max-width: 100vw;
+        /* max-height: calc(100vh - env(safe-area-inset-bottom)); */
+        width: 100vw;
+        /* height: calc(100vh - env(safe-area-inset-bottom)); */
+        overflow: hidden;
       }
-
-      #myCanvas {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-        pointer-events: none; /* Allow touches to pass through to map */
-        touch-action: none;
-      }
-
       #map {
         width: 100%;
-        height: 100%;
         object-fit: contain;
-        touch-action: pinch-zoom;
-      }
-
-      /* Story control buttons */
-      .story-button {
-        background: #90EE90;
-        border: none;
-        padding: 8px 16px;
-        margin: 0 4px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.2s;
-      }
-
-      .story-button:hover {
-        background: #006400;
-        color: white;
+        /* height: 100%; */
       }
     </style>
 
@@ -2585,15 +2422,9 @@ Since its establishment in 2020, AAYA was officially registered as a legal 501(c
           <span data-i18n-label="langSwitch"> </span>
         </div>
       </div> -->
-      
-      
-      <div id="map-outer-container">
-        <canvas id="myCanvas"></canvas>
-        <div id="map-container">
-          <img id="map" alt="" />
-        </div>
+      <div id="map-container">
+        <img id="map" alt="" />
       </div>
-
 
       <div id="registerPopup" class="display-none">
         <div id="registerPopupCloseBtn" class="btn-close">×</div>
@@ -2875,28 +2706,11 @@ Since its establishment in 2020, AAYA was officially registered as a legal 501(c
               bottom: 420 / this.naturalHeight,
             },
           };
-
-          const canvas = document.getElementById("myCanvas");
-          canvas.width = 800; // Set width to 800 pixels
-          canvas.height = 1000; // Set height to 600 pixels
-          const ctx = canvas.getContext("2d");
-          ctx.strokeStyle = "red"; // Set the stroke color
-          ctx.lineWidth = 2; // Set the line width
-          ctx.strokeRect(this.area.cuisine.left * this.naturalWidth, this.area.cuisine.top * this.naturalHeight, 
-          (this.area.cuisine.right - this.area.cuisine.left) * this.naturalWidth, 
-            (this.area.cuisine.bottom - this.area.cuisine.top) * this.naturalHeight); // x, y, width, height
-
-          console.log('Orca: Map image loaded debugging start');
-          console.log('this.area', JSON.stringify(this.area));
-          console.log('initialWidth', this.initialWidth);
-          console.log('initialHeight', this.initialHeight);
-          console.log('naturalWidth', this.naturalWidth);
-          console.log('naturalHeight', this.naturalHeight);
-          console.log('canvas cuisine left', this.area.cuisine.left * this.naturalWidth);
-          console.log('canvas cuisine top', this.area.cuisine.top * this.naturalHeight);
-          console.log('canvas cuisine width', this.area.cuisine.right  * this.naturalWidth);
-          console.log('canvas cuisine height', this.area.cuisine.bottom  * this.naturalHeight);
-          console.log('Orca: Map image loaded debugging end');
+          // console.log('this.area', JSON.stringify(this.area));
+          // console.log('initialWidth', this.initialWidth);
+          // console.log('initialHeight', this.initialHeight);
+          // console.log('naturalWidth', this.naturalWidth);
+          // console.log('naturalHeight', this.naturalHeight);
         };
 
         img.ontouchstart = this.onTouchstart.bind(this);
@@ -2964,22 +2778,6 @@ Since its establishment in 2020, AAYA was officially registered as a legal 501(c
           return;
         }
 
-        // Calculate click position relative to canvas/map
-        const rect = this.img.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const clickY = e.clientY - rect.top;
-
-        // Check for booth clicks first
-        for (const booth of boothsList) {
-          if (booth.containsPoint(clickX, clickY)) {
-            booth.animate();
-            booth.onClick();
-            drawAllBooths(); // Redraw all booths to show animation
-            return;
-          }
-        }
-
-        // If no booth was clicked, check for area clicks
         // 如果有打开的弹窗（不是顶层抽屉），不响应地图点击
         if (siteStates.hasPopupOpen) {
           closePopup(boothListPopupEle);
@@ -3007,16 +2805,14 @@ Since its establishment in 2020, AAYA was officially registered as a legal 501(c
         const xPercent = x / this.img.clientWidth;
         const yPercent = y / this.img.clientHeight;
 
-        console.log('Orca: Click position on map start');
-        console.log('offsetX', e.offsetX);
-        console.log('offsetY', e.offsetY);
-        console.log('xPercent', xPercent);
-        console.log('yPercent', yPercent);
-        console.log('initialWidth', this.initialWidth);
-        console.log('initialHeight', this.initialHeight);
-        console.log('this.img.clientWidth', this.img.clientWidth);
-        console.log('this.img.clientHeight', this.img.clientHeight);
-        console.log('Orca: Click position on map end');
+        // console.log('offsetX', e.offsetX);
+        // console.log('offsetY', e.offsetY);
+        // console.log('xPercent', xPercent);
+        // console.log('yPercent', yPercent);
+        // console.log('initialWidth', this.initialWidth);
+        // console.log('initialHeight', this.initialHeight);
+        // console.log('this.img.clientHeight', this.img.clientHeight);
+        // console.log('this.img.clientWidth', this.img.clientWidth);
 
         if (
           xPercent >= this.area.cuisine.left &&
@@ -3060,45 +2856,12 @@ Since its establishment in 2020, AAYA was officially registered as a legal 501(c
       // @HostListener('touchstart', ['$event'])
       onTouchstart(e) {
         let touches = e.touches;
-        
-        // Single touch - check for booth interaction
-        if (touches.length === 1) {
-          const rect = this.img.getBoundingClientRect();
-          const x = touches[0].clientX - rect.left;
-          const y = touches[0].clientY - rect.top;
-          
-          // Get current transform
-          const transform = getComputedStyle(this.img).transform;
-          let scale = 1;
-          let translateX = 0;
-          let translateY = 0;
-          
-          if (transform && transform !== 'none') {
-            const matrix = transform.match(/matrix\(([^)]+)\)/)[1].split(',');
-            scale = parseFloat(matrix[0]);
-            translateX = parseFloat(matrix[4]);
-            translateY = parseFloat(matrix[5]);
-          }
-          
-          for (const booth of boothsList) {
-            if (booth.containsPoint(x, y, scale, { x: translateX, y: translateY })) {
-              booth.animate();
-              booth.onClick();
-              drawAllBooths();
-              return;
-            }
-          }
-        }
-        
-        // Multi-touch - handle zoom
         if (touches.length > 1) {
           let one = touches['0'];
           let two = touches['1'];
           this.preTouchesClientx1y1x2y2 = [one.clientX, one.clientY, two.clientX, two.clientY];
           this.originHaveSet = false;
-          // e.preventDefault(); // Prevent default zoom only on multi-touch
         }
-        
         this.recordPreTouchPosition(touches['0']);
       }
 
@@ -3121,17 +2884,12 @@ Since its establishment in 2020, AAYA was officially registered as a legal 501(c
 
           this.recordPreTouchPosition(oneTouch);
         } else {
-          // e.preventDefault(); // Prevent default zoom behavior on multi-touch
-          
           let one = touches['0'];
           let two = touches['1'];
-          
-          // Calculate custom zoom
           this.scaleRatio =
             (this.distance(one.clientX, one.clientY, two.clientX, two.clientY) /
               this.distance(...this.preTouchesClientx1y1x2y2)) *
               this.scaleRatio || 1;
-              
           if (this.scaleRatio > this.maxScale) {
             this.scaleRatio = this.maxScale;
           }
@@ -3252,90 +3010,6 @@ Since its establishment in 2020, AAYA was officially registered as a legal 501(c
         return Math.sqrt(a * a + b * b);
       }
     }
-
-    // Initialize canvas and rendering
-    const canvas = document.getElementById('myCanvas');
-    const ctx = canvas.getContext('2d');
-
-    function resizeCanvas() {
-      const container = document.getElementById('map-outer-container');
-      canvas.width = container.clientWidth;
-      canvas.height = container.clientHeight;
-    }
-    
-    // Handle window resizing
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-      drawAllBooths();
-    });
-    resizeCanvas(); // Initial size
-
-    // Watch for map transform changes
-    const map = document.querySelector('#map');
-    new MutationObserver(() => drawAllBooths()).observe(map, {
-      attributes: true,
-      attributeFilter: ['style']
-    });
-    
-    function drawAllBooths() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      // Get current map transform
-      const map = document.querySelector('#map');
-      const transform = getComputedStyle(map).transform;
-      let scale = 1;
-      let translateX = 0;
-      let translateY = 0;
-      
-      if (transform && transform !== 'none') {
-        // Parse matrix values
-        const matrix = transform.match(/matrix\(([^)]+)\)/)[1].split(',');
-        scale = parseFloat(matrix[0]);
-        translateX = parseFloat(matrix[4]);
-        translateY = parseFloat(matrix[5]);
-      }
-      
-      // Draw booths with current map transform
-      boothsList.forEach(booth => 
-        booth.draw(ctx, scale, { x: translateX, y: translateY })
-      );
-    }
-
-    // Add story control buttons
-    const controlsDiv = document.createElement('div');
-    controlsDiv.style.position = 'absolute';
-    controlsDiv.style.top = '10px';
-    controlsDiv.style.left = '10px';
-    controlsDiv.style.zIndex = '1000';
-
-    const story1Button = document.createElement('button');
-    story1Button.innerText = 'Story 1';
-    story1Button.className = 'story-button';
-    story1Button.onclick = () => {
-      story2.unhighlight();
-      story1.highlight();
-      drawAllBooths();
-    };
-
-    const story2Button = document.createElement('button');
-    story2Button.innerText = 'Story 2';
-    story2Button.className = 'story-button';
-    story2Button.onclick = () => {
-      story1.unhighlight();
-      story2.highlight();
-      drawAllBooths();
-    };
-
-    controlsDiv.appendChild(story1Button);
-    controlsDiv.appendChild(story2Button);
-    document.body.appendChild(controlsDiv);
-
-    // Start render loop
-    function render() {
-      drawAllBooths();
-      requestAnimationFrame(render);
-    }
-    render();
 
     // 使用方法
     let imgElement = document.querySelector('#map'); // 选择需要绑定事件的图片元素

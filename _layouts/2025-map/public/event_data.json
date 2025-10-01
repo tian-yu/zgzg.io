@@ -1,0 +1,47 @@
+{
+  "items": [
+    {
+      "id": "booth1",
+      "type": "booth",
+      "name": "Kylie's Kookies",
+      "description": "Delicious cookies and pastries. Freshly baked on site!",
+      "lat": 37.266185,
+      "lng": -122.012824,
+      "storyIds": ["story_sweets"]
+    },
+    {
+      "id": "booth2",
+      "type": "booth",
+      "name": "Saratoga Farms",
+      "description": "Organic vegetables and fruits, locally grown.",
+      "lat": 37.266226,
+      "lng": -122.012491,
+      "storyIds": ["story_produce"]
+    },
+    {
+      "id": "restroom1",
+      "type": "restroom",
+      "name": "Main Restrooms",
+      "lat": 37.2630,
+      "lng": -122.0225
+    },
+    {
+      "id": "parking1",
+      "type": "parking",
+      "name": "North Parking Lot",
+      "lat": 37.2635,
+      "lng": -122.0228
+    },
+    {
+      "id": "checkin1",
+      "type": "checkin",
+      "name": "Event Check-in",
+      "lat": 37.2629,
+      "lng": -122.0220
+    }
+  ],
+  "stories": [
+    { "id": "story_sweets", "name": "Sweet Trail" },
+    { "id": "story_produce", "name": "Fresh Finds" }
+  ]
+}
