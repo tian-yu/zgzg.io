@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-import { fetchEventData, MapItem, Story } from './data';
+import { fetchEventData, MapItem, Story, Row } from './data';
 import { BottomSheet } from './BottomSheet';
 
 import InputLabel from '@mui/material/InputLabel';
@@ -48,13 +48,34 @@ const itemIcons = {
   parkingSelected: createIcon('yellow', 48),
   checkin: createIcon('violet'),
   checkinSelected: createIcon('violet', 48),
+  row: L.divIcon({
+    className: 'custom-row-marker',
+    html: `<div style="width: 32px; height: 32px; background: #ff4444; border: 2px solid white; border-radius: 4px;"></div>`,
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+  }),
+  rowSelected: L.divIcon({
+    className: 'custom-row-marker-selected',
+    html: `<div style="width: 40px; height: 40px; background: #ff4444; border: 2px solid white; border-radius: 4px;"></div>`,
+    iconSize: [40, 40],
+    iconAnchor: [20, 20],
+  })
 };
 
 const getIcon = (type: MapItem['type'], selected: boolean = false) => {
   if (type === 'booth' && selected) {
     return itemIcons['boothSelected'];
   }
-  return itemIcons[type] || itemIcons['booth'];
+  if (type === 'restroom' && selected) {
+    return itemIcons['restroomSelected'];
+  }
+  if (type === 'parking' && selected) {
+    return itemIcons['parkingSelected'];
+  }
+  if (type === 'checkin' && selected) {
+    return itemIcons['checkinSelected'];
+  }
+  return itemIcons[type];
 };
 
 const MapController: React.FC = () => {
@@ -70,10 +91,13 @@ const MapController: React.FC = () => {
 
 export const MarketMap: React.FC = () => {
   const [items, setItems] = useState<MapItem[]>([]);
+  const [rows, setRows] = useState<Row[]>([]);
   const [stories, setStories] = useState<Story[]>([]);
   const [selectedItem, setSelectedItem] = useState<MapItem | null>(null);
+  const [selectedRow, setSelectedRow] = useState<Row | null>(null);
   const [selectedStoryId, setSelectedStoryId] = useState<string>('');
   const [storyItems, setStoryItems] = useState<MapItem[]>([]);
+  const [rowItems, setRowItems] = useState<MapItem[]>([]);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
 
   const markerDataRefs = useRef<MarkerData[]>([]);
@@ -81,12 +105,28 @@ export const MarketMap: React.FC = () => {
   useEffect(() => {
     fetchEventData().then(data => {
       setItems(data.items);
+      setRows(data.rows);
       setStories(data.stories);
       markerDataRefs.current = data.items.map(item => ({
         item,
         markerRef: React.createRef<L.Marker | null>()
       }));
     });
+
+    // Handle row item selection
+    const handleRowItemSelection = (event: Event) => {
+      const customEvent = event as CustomEvent<MapItem>;
+      const item = customEvent.detail;
+      if (item) {
+        setSelectedItem(item);
+        updateMarkerIcon(item.id, true);
+      }
+    };
+
+    window.addEventListener('selectMapItem', handleRowItemSelection);
+    return () => {
+      window.removeEventListener('selectMapItem', handleRowItemSelection);
+    };
   }, []);
 
   const updateMarkerIcon = (itemId: string, selected: boolean) => {
@@ -101,22 +141,42 @@ export const MarketMap: React.FC = () => {
       updateMarkerIcon(selectedItem.id, false);
     }
     storyItems.forEach(item => updateMarkerIcon(item.id, false));
+    rowItems.forEach(item => updateMarkerIcon(item.id, false));
 
     setSelectedItem(null);
+    setSelectedRow(null);
     setStoryItems([]);
+    setRowItems([]);
     setSelectedStoryId('');
     setDrawerOpen(false);
   };
 
   const handleMarkerClick = (item: MapItem) => {
     clearSelections();
-    if (item.type === 'booth') {
-      setSelectedItem(item);
-      updateMarkerIcon(item.id, true);
-      setDrawerOpen(true);
-    } else {
-       // Optional: Handle clicks on non-booths
-       alert(`${item.name} (${item.type})`);
+    setSelectedItem(item);
+    updateMarkerIcon(item.id, true);
+    setDrawerOpen(true);
+  };
+
+  const handleRowClick = (row: Row) => {
+    const rowId = row.rowId;
+    clearSelections();
+    setSelectedRow(row);
+    const currentRowItems = items.filter(item => 
+      row.itemIds.includes(item.id)
+    );
+    if (row) {
+      const selectedRow = rows.find(row => row.rowId === rowId);
+      if (selectedRow) {
+        const currentRowItems = items.filter(item => 
+          selectedRow.itemIds.includes(item.id)
+        );
+        setStoryItems(currentRowItems);
+        currentRowItems.forEach(item => updateMarkerIcon(item.id, true));
+        if (currentRowItems.length > 0) {
+          setDrawerOpen(true);
+        }
+      }
     }
   };
 
@@ -126,13 +186,16 @@ export const MarketMap: React.FC = () => {
     setSelectedStoryId(storyId);
 
     if (storyId) {
-      const currentStoryItems = items.filter(item =>
-        item.type === 'booth' && item.storyIds?.includes(storyId)
-      );
-      setStoryItems(currentStoryItems);
-      currentStoryItems.forEach(item => updateMarkerIcon(item.id, true));
-      if (currentStoryItems.length > 0) {
-        setDrawerOpen(true);
+      const selectedStory = stories.find(story => story.id === storyId);
+      if (selectedStory) {
+        const currentStoryItems = items.filter(item => 
+          selectedStory.itemIds.includes(item.id)
+        );
+        setStoryItems(currentStoryItems);
+        currentStoryItems.forEach(item => updateMarkerIcon(item.id, true));
+        if (currentStoryItems.length > 0) {
+          setDrawerOpen(true);
+        }
       }
     }
   };
@@ -185,12 +248,26 @@ export const MarketMap: React.FC = () => {
             {/* <Popup>{item.name}</Popup> */}
           </Marker>
         ))}
+        {rows.map((row) => (
+          <Marker
+            key={`row-${row.rowId}`}
+            position={[row.lat, row.lng]}
+            icon={selectedRow?.rowId === row.rowId ? itemIcons.rowSelected : itemIcons.row}
+            eventHandlers={{
+              click: () => handleRowClick(row),
+            }}
+          >
+            <Popup>{row.name}</Popup>
+          </Marker>
+        ))}
       </MapContainer>
       <BottomSheet
         isOpen={isDrawerOpen}
         onClose={clearSelections}
         selectedItem={selectedItem}
         storyItems={storyItems}
+        rowItems={rowItems}
+        selectedRow={selectedRow}
       />
     </Box>
   );

@@ -5,43 +5,75 @@
       "type": "booth",
       "name": "Kylie's Kookies",
       "description": "Delicious cookies and pastries. Freshly baked on site!",
-      "lat": 37.266185,
-      "lng": -122.012824,
-      "storyIds": ["story_sweets"]
+      "lat": 37.266857, 
+      "lng": -122.012303
     },
     {
       "id": "booth2",
       "type": "booth",
       "name": "Saratoga Farms",
       "description": "Organic vegetables and fruits, locally grown.",
-      "lat": 37.266226,
-      "lng": -122.012491,
-      "storyIds": ["story_produce"]
+      "lat": 37.266257, 
+      "lng": -122.012260
+    },
+    {
+      "id": "booth3",
+      "type": "booth",
+      "name": "XYZ Produce",
+      "description": "Good dairy.",
+      "lat": 37.266906,
+      "lng": -122.011987
     },
     {
       "id": "restroom1",
       "type": "restroom",
       "name": "Main Restrooms",
-      "lat": 37.2630,
-      "lng": -122.0225
+      "lat": 37.265460,
+      "lng": -122.012719
     },
     {
       "id": "parking1",
       "type": "parking",
       "name": "North Parking Lot",
-      "lat": 37.2635,
-      "lng": -122.0228
+      "lat": 37.265734,
+      "lng": -122.013419
     },
     {
       "id": "checkin1",
       "type": "checkin",
       "name": "Event Check-in",
-      "lat": 37.2629,
-      "lng": -122.0220
+      "lat": 37.266934,
+      "lng": -122.011751
+    }
+  ],
+  "rows": [
+    {
+      "rowId": 1,
+      "name": "North Row",
+      "description": "Northern section of booths and facilities",
+      "lat": 37.266129, 
+      "lng": -122.012282,
+      "itemIds": ["booth1", "booth2"]
+    },
+    {
+      "rowId": 2,
+      "name": "South Row",
+      "description": "Southern section of booths and facilities",
+      "lat": 37.266156, 
+      "lng": -122.011998,
+      "itemIds": ["booth3"]
     }
   ],
   "stories": [
-    { "id": "story_sweets", "name": "Sweet Trail" },
-    { "id": "story_produce", "name": "Fresh Finds" }
+    { 
+      "id": "story_sweets", 
+      "name": "Sweet Trail",
+      "itemIds": ["booth1", "checkin1"]
+    },
+    { 
+      "id": "story_produce", 
+      "name": "Fresh Finds",
+      "itemIds": ["booth2", "checkin1"]
+    }
   ]
 }

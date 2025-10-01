@@ -5,17 +5,27 @@ export interface MapItem {
   description?: string;
   lat: number;
   lng: number;
-  storyIds?: string[];
+}
+
+export interface Row {
+  rowId: number;
+  name: string;
+  description?: string;
+  lat: number;
+  lng: number;
+  itemIds: string[]; // List of MapItem IDs that belong to this row
 }
 
 export interface Story {
   id: string;
   name: string;
+  itemIds: string[]; // List of MapItem IDs that belong to this story
 }
 
 interface EventData {
   items: MapItem[];
   stories: Story[];
+  rows: Row[];
 }
 
 export const fetchEventData = async (): Promise<EventData> => {

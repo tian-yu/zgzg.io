@@ -7,13 +7,15 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 
-import { MapItem } from './data';
+import { MapItem, Row } from './data';
 
 interface BottomSheetProps {
   isOpen: boolean;
   onClose: () => void;
   selectedItem: MapItem | null;
   storyItems: MapItem[];
+  rowItems: MapItem[];
+  selectedRow: Row | null;
 }
 
 export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selectedItem, storyItems }) => {
