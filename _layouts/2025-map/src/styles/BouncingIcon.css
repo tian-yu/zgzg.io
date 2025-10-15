@@ -1,0 +1,30 @@
+/* Define the keyframe animation */
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+        /* Adjust bounce height here */
+    }
+}
+
+/* Style the icon wrapper and apply the animation */
+.bouncing-marker {
+    animation: bounce 1s infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    /* Set your icon size */
+    height: 40px;
+}
+
+/* Style the image inside the wrapper */
+.bouncing-marker img {
+    width: 100%;
+    height: 100%;
+}

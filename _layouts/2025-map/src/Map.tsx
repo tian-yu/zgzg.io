@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { fetchEventData, MapItem, Story, Row } from './data';
 import { BottomSheet } from './BottomSheet';
+import './styles/BouncingIcon.css'; // Import the CSS
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -31,6 +33,7 @@ interface MarkerData {
 const createIcon = (color: string, size: number = 32) => {
     return new L.Icon({
         iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`,
+        // iconUrl: markerIcon,
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
         iconSize: [size * 0.625, size], // Adjusted for color markers
         iconAnchor: [size * 0.3125, size],
@@ -39,15 +42,34 @@ const createIcon = (color: string, size: number = 32) => {
     });
 };
 
+const createSelectedIcon = (color: string, size: number = 48) => {
+    // Render the animated icon component to an HTML string
+    const customIconHtml = ReactDOMServer.renderToString(
+        <div className="bouncing-marker">
+            <img src={`https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`} alt="Marker Icon" />
+        </div>
+    );
+    return L.divIcon({
+        className: 'custom-div-icon', // Use a unique class for styling
+        html: customIconHtml,
+        iconSize: [size * 0.625, size], // Adjusted for color markers
+        iconAnchor: [size * 0.3125, size],
+    });
+}
+
 const itemIcons = {
     booth: createIcon('green'),
-    boothSelected: createIcon('green', 48),
+    boothSelected: createSelectedIcon('green', 48),
+    // boothSelected: createIcon('green', 48),
     restroom: createIcon('blue'),
-    restroomSelected: createIcon('blue', 48),
+    restroomSelected: createSelectedIcon('blue', 48),
+    // restroomSelected: createIcon('blue', 48),
     parking: createIcon('yellow'),
-    parkingSelected: createIcon('yellow', 48),
+    parkingSelected: createSelectedIcon('yellow', 48),
+    // parkingSelected: createIcon('yellow', 48),
     checkin: createIcon('violet'),
-    checkinSelected: createIcon('violet', 48),
+    checkinSelected: createSelectedIcon('violet', 48),
+    // checkinSelected: createIcon('violet', 48),
     row: L.divIcon({
         className: 'custom-row-marker',
         html: `<div style="width: 32px; height: 32px; background: #ff4444; border: 2px solid white; border-radius: 4px;"></div>`,
@@ -157,7 +179,7 @@ export const MarketMap: React.FC = () => {
         setSelectedRow(null);
         setStoryItems([]);
         setRowItems([]);
-        setSelectedStoryId('');
+        // setSelectedStoryId('');
         setDrawerOpen(false);
     };
 
@@ -218,7 +240,7 @@ export const MarketMap: React.FC = () => {
 
     return (
         <Box sx={{ width: '100%', height: '100vh', position: 'relative' }}>
-            <FormControl sx={{ m: 1, minWidth: 120, position: 'absolute', top: 10, left: 10, zIndex: 1000, backgroundColor: 'white' }}>
+            <FormControl sx={{ m: 1, minWidth: 120, position: 'absolute', top: 10, right: 10, zIndex: 1000, backgroundColor: 'white' }}>
                 <InputLabel id="story-select-label">Select Story</InputLabel>
                 <Select
                     labelId="story-select-label"
@@ -245,7 +267,7 @@ export const MarketMap: React.FC = () => {
                 <MapController />
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 />
                 {items.map((item, index) => (
                     <Marker
