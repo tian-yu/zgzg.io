@@ -28,6 +28,9 @@ L.Icon.Default.mergeOptions({
 interface MarkerData {
     item: MapItem;
     markerRef: React.MutableRefObject<L.Marker | null>;
+    icon: L.Icon | L.DivIcon;
+    itemSelected?: boolean;
+    itemInStory?: boolean;
 }
 
 const createIcon = (color: string, size: number = 32) => {
@@ -57,47 +60,31 @@ const createSelectedIcon = (color: string, size: number = 48) => {
     });
 }
 
-const itemIcons = {
-    booth: createIcon('green'),
-    boothSelected: createSelectedIcon('green', 48),
-    // boothSelected: createIcon('green', 48),
-    restroom: createIcon('blue'),
-    restroomSelected: createSelectedIcon('blue', 48),
-    // restroomSelected: createIcon('blue', 48),
-    parking: createIcon('yellow'),
-    parkingSelected: createSelectedIcon('yellow', 48),
-    // parkingSelected: createIcon('yellow', 48),
-    checkin: createIcon('violet'),
-    checkinSelected: createSelectedIcon('violet', 48),
-    // checkinSelected: createIcon('violet', 48),
-    row: L.divIcon({
-        className: 'custom-row-marker',
-        html: `<div style="width: 32px; height: 32px; background: #ff4444; border: 2px solid white; border-radius: 4px;"></div>`,
-        iconSize: [32, 32],
-        iconAnchor: [16, 16],
-    }),
-    rowSelected: L.divIcon({
-        className: 'custom-row-marker-selected',
-        html: `<div style="width: 40px; height: 40px; background: #ff4444; border: 2px solid white; border-radius: 4px;"></div>`,
-        iconSize: [40, 40],
-        iconAnchor: [20, 20],
-    })
+const typeToColor: Record<MapItem['type'], string> = {
+    booth: 'green',
+    restroom: 'blue',
+    parking: 'yellow',
+    checkin: 'violet'
 };
 
-const getIcon = (type: MapItem['type'], selected: boolean = false) => {
-    if (type === 'booth' && selected) {
-        return itemIcons['boothSelected'];
+const getIcon = (type: MapItem['type'], itemSelected: boolean = false, itemInStory: boolean = false) => {
+    var color = typeToColor[type];
+    var size = 32;
+    if (itemInStory) {
+        color = 'yellow';
+        size = 48;
     }
-    if (type === 'restroom' && selected) {
-        return itemIcons['restroomSelected'];
+    if (itemSelected) {
+        size = 48;
+        console.log("color=", color, ",size=", size);
+        return createSelectedIcon(color, size);
     }
-    if (type === 'parking' && selected) {
-        return itemIcons['parkingSelected'];
+    else {
+        console.log("color=", color, ",size=", size);
+        return createIcon(color, size);
     }
-    if (type === 'checkin' && selected) {
-        return itemIcons['checkinSelected'];
-    }
-    return itemIcons[type];
+
+    return createIcon(color, 32);
 };
 
 const MapController: React.FC = () => {
@@ -141,7 +128,8 @@ export const MarketMap: React.FC = () => {
             setStories(data.stories);
             markerDataRefs.current = data.items.map(item => ({
                 item,
-                markerRef: React.createRef<L.Marker | null>()
+                markerRef: React.createRef<L.Marker | null>(),
+                icon: getIcon(item.type),
             }));
         });
 
@@ -151,7 +139,7 @@ export const MarketMap: React.FC = () => {
             const item = customEvent.detail;
             if (item) {
                 setSelectedItem(item);
-                updateMarkerIcon(item.id, true);
+                updateMarkerIcon(item.id, true, false);
             }
         };
 
@@ -161,32 +149,59 @@ export const MarketMap: React.FC = () => {
         };
     }, []);
 
-    const updateMarkerIcon = (itemId: string, selected: boolean) => {
+    const updateMarkerIcon = (itemId: string, itemSelected?: boolean, itemInStory?: boolean) => {
         const markerData = markerDataRefs.current.find(m => m.item.id === itemId);
         if (markerData && markerData.markerRef.current) {
-            markerData.markerRef.current.setIcon(getIcon(markerData.item.type, selected));
+            markerData.itemSelected = itemSelected ?? markerData.itemSelected;
+            markerData.itemInStory = itemInStory ?? markerData.itemInStory;
+            markerData.markerRef.current.setIcon(getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory));
+            markerData.icon = getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory);
         }
     };
 
-    const clearSelections = () => {
-        if (selectedItem) {
-            updateMarkerIcon(selectedItem.id, false);
+    const updateSingleMarkerIcon = (markerData: MarkerData, itemSelected?: boolean, itemInStory?: boolean) => {
+        if (markerData.markerRef.current) {
+            markerData.itemSelected = itemSelected ?? markerData.itemSelected;
+            markerData.itemInStory = itemInStory ?? markerData.itemInStory;
+            markerData.markerRef.current.setIcon(getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory));
+            markerData.icon = getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory);
         }
-        storyItems.forEach(item => updateMarkerIcon(item.id, false));
-        rowItems.forEach(item => updateMarkerIcon(item.id, false));
+    };
+
+    const updateAllMarkers = () => {
+        markerDataRefs.current.forEach(markerData => {
+            if (markerData.markerRef.current) {
+                markerData.markerRef.current.setIcon(
+                    getIcon(
+                        markerData.item.type,
+                        markerData.itemSelected || false,
+                        markerData.itemInStory || false
+                    )
+                );
+            }
+        });
+    };
+
+    const clearSelections = () => {
+        // Reset all markers to their default state
+        markerDataRefs.current.forEach(markerData => {
+            if (markerData) {
+                markerData.itemSelected = false;
+            }
+        });
+        updateAllMarkers();
 
         setSelectedItem(null);
         setSelectedRow(null);
         setStoryItems([]);
         setRowItems([]);
-        // setSelectedStoryId('');
         setDrawerOpen(false);
     };
 
     const handleMarkerClick = (item: MapItem) => {
         clearSelections();
         setSelectedItem(item);
-        updateMarkerIcon(item.id, true);
+        updateMarkerIcon(item.id, true, undefined);
         setDrawerOpen(true);
     };
 
@@ -194,9 +209,6 @@ export const MarketMap: React.FC = () => {
         const rowId = row.rowId;
         clearSelections();
         setSelectedRow(row);
-        const currentRowItems = items.filter(item =>
-            row.itemIds.includes(item.id)
-        );
         if (row) {
             const selectedRow = rows.find(row => row.rowId === rowId);
             if (selectedRow) {
@@ -204,7 +216,7 @@ export const MarketMap: React.FC = () => {
                     selectedRow.itemIds.includes(item.id)
                 );
                 setStoryItems(currentRowItems);
-                currentRowItems.forEach(item => updateMarkerIcon(item.id, true));
+                currentRowItems.forEach(item => updateMarkerIcon(item.id, true, false));
                 if (currentRowItems.length > 0) {
                     setDrawerOpen(true);
                 }
@@ -213,6 +225,12 @@ export const MarketMap: React.FC = () => {
     };
 
     const handleStoryChange = (event: SelectChangeEvent) => {
+        markerDataRefs.current.forEach(markerData => {
+            if (markerData) {
+                markerData.itemInStory = false;
+                updateSingleMarkerIcon(markerData, undefined, false);
+            }
+        });
         const storyId = event.target.value as string;
         clearSelections();
         setSelectedStoryId(storyId);
@@ -224,7 +242,7 @@ export const MarketMap: React.FC = () => {
                     selectedStory.itemIds.includes(item.id)
                 );
                 setStoryItems(currentStoryItems);
-                currentStoryItems.forEach(item => updateMarkerIcon(item.id, true));
+                currentStoryItems.forEach(item => updateMarkerIcon(item.id, undefined, true));
                 if (currentStoryItems.length > 0) {
                     setDrawerOpen(true);
                 }
@@ -273,7 +291,7 @@ export const MarketMap: React.FC = () => {
                     <Marker
                         key={item.id}
                         position={[item.lat, item.lng]}
-                        icon={getIcon(item.type)}
+                        icon={markerDataRefs.current[index]?.icon}
                         ref={markerDataRefs.current[index]?.markerRef}
                         eventHandlers={{
                             click: () => handleMarkerClick(item),
@@ -282,7 +300,7 @@ export const MarketMap: React.FC = () => {
                         {/* <Popup>{item.name}</Popup> */}
                     </Marker>
                 ))}
-                {rows.map((row) => (
+                {/* {rows.map((row) => (
                     <Marker
                         key={`row-${row.rowId}`}
                         position={[row.lat, row.lng]}
@@ -293,7 +311,7 @@ export const MarketMap: React.FC = () => {
                     >
                         <Popup>{row.name}</Popup>
                     </Marker>
-                ))}
+                ))} */}
             </MapContainer>
             <BottomSheet
                 isOpen={isDrawerOpen}
