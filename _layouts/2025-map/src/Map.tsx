@@ -61,10 +61,11 @@ const createSelectedIcon = (color: string, size: number = 48) => {
 }
 
 const typeToColor: Record<MapItem['type'], string> = {
-    booth: 'green',
+    booth: 'violet',
     restroom: 'blue',
+    food: 'green',
     parking: 'yellow',
-    checkin: 'violet'
+    checkin: 'blue'
 };
 
 const getIcon = (type: MapItem['type'], itemSelected: boolean = false, itemInStory: boolean = false) => {
