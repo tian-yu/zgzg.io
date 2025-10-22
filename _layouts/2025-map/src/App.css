@@ -1,9 +1,13 @@
-body, html, #root, .App {
+body,
+html,
+#root,
+.App {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
-  overflow: hidden; /* Prevent body scroll */
+  overflow: hidden;
+  /* Prevent body scroll */
 }
 
 .leaflet-container {
@@ -45,6 +49,7 @@ body, html, #root, .App {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

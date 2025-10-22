@@ -72,37 +72,39 @@ const getIcon = (type: MapItem['type'], itemSelected: boolean = false, itemInSto
     var size = 32;
     if (itemInStory) {
         color = 'yellow';
-        size = 48;
     }
     if (itemSelected) {
         size = 48;
-        console.log("color=", color, ",size=", size);
         return createSelectedIcon(color, size);
     }
     else {
-        console.log("color=", color, ",size=", size);
         return createIcon(color, size);
     }
-
-    return createIcon(color, 32);
 };
 
-const MapController: React.FC = () => {
+interface MapControllerProps {
+    onMapClick: (e: L.LeafletMouseEvent) => void;
+}
+
+const MapController: React.FC<MapControllerProps> = ({ onMapClick }) => {
     const map = useMap();
     useEffect(() => {
         // Example: Add scale control
-        L.control.scale().addTo(map);
+        // L.control.scale().addTo(map);
         // Disable map double click zoom to allow for map click to deselect
         map.doubleClickZoom.disable();
-    }, [map]);
+
+        // Add click handler to the map
+        map.on('click', onMapClick);
+
+        return () => {
+            map.off('click', onMapClick);
+        };
+    }, [map, onMapClick]);
+
     const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        // The maximum zoom level supported by the tile provider (e.g., OpenStreetMap is 19)
         maxNativeZoom: 19,
-
-        // The maximum zoom level you want your map to display.
-        // Set this higher than 18 to allow overzooming.
         maxZoom: 22,
-
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
     return null;
@@ -250,8 +252,9 @@ export const MarketMap: React.FC = () => {
         }
     };
 
-    const handleMapClick = () => {
-        clearSelections();
+    const handleMapClick = (e: L.LeafletMouseEvent) => {
+        // Instead of clearing selections, just minimize the drawer
+        setDrawerOpen(false);
     };
 
     const mapRef = useRef(null);
@@ -282,7 +285,7 @@ export const MarketMap: React.FC = () => {
                 style={{ height: '100%', width: '100%' }}
                 ref={mapRef}
             >
-                <MapController />
+                <MapController onMapClick={handleMapClick} />
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
