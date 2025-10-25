@@ -62,12 +62,11 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
             return;
         }
 
+        // When closing, always set to minimized state if there's a selected item
         if (selectedItem) {
-            // If we have a selected item, minimize instead of closing
             setIsFullyOpen(false);
             setIsMinimized(true);
         } else {
-            // If no item is selected, close completely
             setIsFullyOpen(false);
             setIsMinimized(false);
             onClose();
@@ -75,8 +74,16 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
     };
 
     const handleOpen = () => {
+        // When opening, always set to fully open state
         setIsFullyOpen(true);
         setIsMinimized(false);
+    };
+
+    const handleTransitionEnd = () => {
+        // Ensure the drawer snaps to either fully open or minimized state
+        if (!isFullyOpen && !isMinimized) {
+            onClose();
+        }
     };
 
     const handleItemClick = (item: MapItem) => {
@@ -98,9 +105,17 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
             hideBackdrop={true}
             disableSwipeToOpen={!isMinimized}
             swipeAreaWidth={isFullyOpen ? 0 : 56}
+            onTransitionEnd={handleTransitionEnd}
+            hysteresis={0.3} // Increase resistance to unintended swipes
+            minFlingVelocity={450} // Increase minimum velocity needed for a swipe
+            SwipeAreaProps={{
+                sx: {
+                    height: '20%', // Make swipe area match minimized height
+                }
+            }}
             ModalProps={{
                 keepMounted: true,
-                disableScrollLock: true, // Allows map interaction when drawer is open
+                disableScrollLock: true,
                 disableEnforceFocus: true,
                 sx: {
                     pointerEvents: 'none',
@@ -115,10 +130,36 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
             PaperProps={{
                 sx: {
                     height: isFullyOpen ? '50%' : '20%',
+                    minHeight: '20%',
+                    maxHeight: '50%',
                     borderTopLeftRadius: 8,
                     borderTopRightRadius: 8,
                     transition: 'height 0.3s ease-out',
                     visibility: (isFullyOpen || isMinimized) ? 'visible' : 'hidden',
+                    transform: 'none !important', // Prevent intermediate heights
+                },
+                onTouchStart: (e: React.TouchEvent) => {
+                    const touch = e.touches[0];
+                    const startY = touch.clientY;
+                    const handleTouchMove = (e: TouchEvent) => {
+                        const currentY = e.touches[0].clientY;
+                        const deltaY = currentY - startY;
+
+                        if (Math.abs(deltaY) > 50) { // threshold for swipe
+                            if (deltaY < 0 && !isFullyOpen) {
+                                setIsFullyOpen(true);
+                                setIsMinimized(false);
+                            } else if (deltaY > 0 && isFullyOpen) {
+                                setIsFullyOpen(false);
+                                setIsMinimized(true);
+                            }
+                            document.removeEventListener('touchmove', handleTouchMove);
+                        }
+                    };
+                    document.addEventListener('touchmove', handleTouchMove);
+                    document.addEventListener('touchend', () => {
+                        document.removeEventListener('touchmove', handleTouchMove);
+                    }, { once: true });
                 },
             }}
         >
