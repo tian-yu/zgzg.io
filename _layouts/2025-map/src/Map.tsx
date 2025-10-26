@@ -138,11 +138,13 @@ export const MarketMap: React.FC = () => {
 
         // Handle row item selection
         const handleRowItemSelection = (event: Event) => {
+            clearSelections();
+            setDrawerOpen(true);
             const customEvent = event as CustomEvent<MapItem>;
             const item = customEvent.detail;
             if (item) {
                 setSelectedItem(item);
-                updateMarkerIcon(item.id, true, false);
+                updateMarkerIcon(item.id, true, undefined);
             }
         };
 
@@ -196,10 +198,26 @@ export const MarketMap: React.FC = () => {
 
         setSelectedItem(null);
         setSelectedRow(null);
-        setStoryItems([]);
         setRowItems([]);
         setDrawerOpen(false);
     };
+
+    const clearStorySelections = () => {
+        // Reset all markers to their default state
+        markerDataRefs.current.forEach(markerData => {
+            if (markerData) {
+                markerData.itemSelected = false;
+            }
+        });
+        updateAllMarkers();
+
+        setSelectedItem(null);
+        setSelectedRow(null);
+        setStoryItems([]);
+        setRowItems([]);
+        setDrawerOpen(false);
+    }
+
 
     const handleMarkerClick = (item: MapItem) => {
         clearSelections();

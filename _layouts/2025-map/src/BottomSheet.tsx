@@ -177,13 +177,16 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
 
                 {selectedItem && (
                     <Box sx={{ position: 'relative', mt: 2 }}>
-                        <IconButton
-                            onClick={handleBackClick}
-                            sx={{ position: 'absolute', left: -8, top: -8 }}
-                        >
-                            <ArrowBackIcon />
-                        </IconButton>
-                        <Box sx={{ pl: 4 }}>
+                        {storyItems.length > 0 && storyItems.some(item => item.id === selectedItem.id) && (
+                            <IconButton
+                                onClick={handleBackClick}
+                                sx={{ position: 'absolute', left: -8, top: -8 }}
+                                data-testid="back-button"
+                            >
+                                <ArrowBackIcon />
+                            </IconButton>
+                        )}
+                        <Box sx={{ pl: storyItems.some(item => item.id === selectedItem.id) ? 4 : 0 }}>
                             <Typography variant="h6">{selectedItem.name}</Typography>
                             <Typography variant="body1">{selectedItem.description}</Typography>
                         </Box>
