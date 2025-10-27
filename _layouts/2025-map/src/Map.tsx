@@ -49,26 +49,45 @@ const typeToImagePath: Partial<Record<MapItem['type'], string>> = {
     foodtruck: foodtruckImage,
 };
 
-const typeToSize: Partial<Record<MapItem['type'], number>> = {
-    stage: 64,
+// Base sizes for different types of icons at zoom level 18
+const typeToBaseSize: Partial<Record<MapItem['type'], number>> = {
+    stage: 52,
     restroom: 32,
     service: 32,
     checkin: 32,
     medical: 40,
-    foodtruck: 40
+    foodtruck: 40,
+    booth: 32,
+    food: 32
 };
 
-const createIcon = (type: MapItem['type'], color: string, size: number = 32) => {
+// Calculate size based on zoom level
+const calculateSize = (baseSize: number, type: MapItem['type'], zoomLevel: number) => {
+    // For booth and food types, keep the size constant
+    if (type === 'booth' || type === 'food') {
+        return baseSize;
+    }
+
+    // For other types, scale the size based on zoom level
+    // Base zoom level is 18
+    const zoomDiff = zoomLevel - 18;
+    return baseSize * Math.pow(1.2, zoomDiff); // Increase/decrease by 20% per zoom level
+};
+
+const createIcon = (type: MapItem['type'], color: string, size: number = 32, currentZoom: number = 18) => {
+    const baseSize = typeToBaseSize[type] || size;
+    const adjustedSize = calculateSize(baseSize, type, currentZoom);
+
     // For booth and food types, use marker icon
     if (type === 'booth' || type === 'food') {
         return new L.Icon({
             className: 'div-icon',
             iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`,
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-            iconSize: [size * 0.625, size],
-            iconAnchor: [size * 0.3125, size],
-            popupAnchor: [1, -size],
-            shadowSize: [size * 1.025, size],
+            iconSize: [adjustedSize * 0.625, adjustedSize],
+            iconAnchor: [adjustedSize * 0.3125, adjustedSize],
+            popupAnchor: [1, -adjustedSize],
+            shadowSize: [adjustedSize * 1.025, adjustedSize],
         });
     }
 
@@ -77,9 +96,9 @@ const createIcon = (type: MapItem['type'], color: string, size: number = 32) => 
     if (imagePath) {
         return new L.Icon({
             iconUrl: imagePath,
-            iconSize: [size, size],
-            iconAnchor: [size / 2, size / 2],
-            popupAnchor: [0, -size / 2],
+            iconSize: [adjustedSize, adjustedSize],
+            iconAnchor: [adjustedSize / 2, adjustedSize / 2],
+            popupAnchor: [0, -adjustedSize / 2],
         });
     }
 
@@ -87,14 +106,16 @@ const createIcon = (type: MapItem['type'], color: string, size: number = 32) => 
     return new L.Icon({
         iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`,
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-        iconSize: [size * 0.625, size],
-        iconAnchor: [size * 0.3125, size],
-        popupAnchor: [1, -size],
-        shadowSize: [size * 1.025, size],
+        iconSize: [adjustedSize * 0.625, adjustedSize],
+        iconAnchor: [adjustedSize * 0.3125, adjustedSize],
+        popupAnchor: [1, -adjustedSize],
+        shadowSize: [adjustedSize * 1.025, adjustedSize],
     });
 };
 
-const createSelectedIcon = (type: MapItem['type'], color: string, size: number = 48) => {
+const createSelectedIcon = (type: MapItem['type'], color: string, size: number = 48, currentZoom: number = 18) => {
+    const adjustedSize = calculateSize(size, type, currentZoom);
+
     // For booth and food types, use bouncing marker icon
     if (type === 'booth' || type === 'food') {
         const customIconHtml = ReactDOMServer.renderToString(
@@ -105,8 +126,8 @@ const createSelectedIcon = (type: MapItem['type'], color: string, size: number =
         return L.divIcon({
             className: 'custom-div-icon',
             html: customIconHtml,
-            iconSize: [size * 0.625, size],
-            iconAnchor: [size * 0.3125, size],
+            iconSize: [adjustedSize * 0.625, adjustedSize],
+            iconAnchor: [adjustedSize * 0.3125, adjustedSize],
         });
     }
 
@@ -115,14 +136,14 @@ const createSelectedIcon = (type: MapItem['type'], color: string, size: number =
     if (imagePath) {
         const customIconHtml = ReactDOMServer.renderToString(
             <div className="bouncing-marker">
-                <img src={imagePath} alt="Custom Icon" style={{ width: `${size}px`, height: `${size}px` }} />
+                <img src={imagePath} alt="Custom Icon" style={{ width: `${adjustedSize}px`, height: `${adjustedSize}px` }} />
             </div>
         );
         return L.divIcon({
             className: 'custom-div-icon',
             html: customIconHtml,
-            iconSize: [size, size],
-            iconAnchor: [size / 2, size / 2],
+            iconSize: [adjustedSize, adjustedSize],
+            iconAnchor: [adjustedSize / 2, adjustedSize / 2],
         });
     }
 
@@ -135,8 +156,8 @@ const createSelectedIcon = (type: MapItem['type'], color: string, size: number =
     return L.divIcon({
         className: 'custom-div-icon',
         html: customIconHtml,
-        iconSize: [size * 0.625, size],
-        iconAnchor: [size * 0.3125, size],
+        iconSize: [adjustedSize * 0.625, adjustedSize],
+        iconAnchor: [adjustedSize * 0.3125, adjustedSize],
     });
 }
 
@@ -145,26 +166,27 @@ const typeToColor: Partial<Record<MapItem['type'], string>> = {
     food: 'green',
 };
 
-const getIcon = (type: MapItem['type'], itemSelected: boolean = false, itemInStory: boolean = false) => {
+const getIcon = (type: MapItem['type'], itemSelected: boolean = false, itemInStory: boolean = false, zoom: number = 18) => {
     var color = typeToColor[type] || 'blue';
-    var size = typeToSize[type] || 32;
+    var baseSize = typeToBaseSize[type] || 32;
     if (itemInStory) {
         color = 'yellow';
     }
     if (itemSelected) {
-        size = 48;
-        return createSelectedIcon(type, color, size);
+        baseSize = 48;
+        return createSelectedIcon(type, color, baseSize, zoom);
     }
     else {
-        return createIcon(type, color, size);
+        return createIcon(type, color, baseSize, zoom);
     }
 };
 
 interface MapControllerProps {
     onMapClick: (e: L.LeafletMouseEvent) => void;
+    onZoomChange: (zoom: number) => void;
 }
 
-const MapController: React.FC<MapControllerProps> = ({ onMapClick }) => {
+const MapController: React.FC<MapControllerProps> = ({ onMapClick, onZoomChange }) => {
     const map = useMap();
     useEffect(() => {
         // Example: Add scale control
@@ -175,10 +197,17 @@ const MapController: React.FC<MapControllerProps> = ({ onMapClick }) => {
         // Add click handler to the map
         map.on('click', onMapClick);
 
+        // Add zoom handler
+        const handleZoom = () => {
+            onZoomChange(map.getZoom());
+        };
+        map.on('zoomend', handleZoom);
+
         return () => {
             map.off('click', onMapClick);
+            map.off('zoomend', handleZoom);
         };
-    }, [map, onMapClick]);
+    }, [map, onMapClick, onZoomChange]);
 
     const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxNativeZoom: 19,
@@ -198,6 +227,7 @@ export const MarketMap: React.FC = () => {
     const [storyItems, setStoryItems] = useState<MapItem[]>([]);
     const [rowItems, setRowItems] = useState<MapItem[]>([]);
     const [isDrawerOpen, setDrawerOpen] = useState(false);
+    const [currentZoom, setCurrentZoom] = useState(18); // Default zoom level
 
     const markerDataRefs = useRef<MarkerData[]>([]);
 
@@ -209,7 +239,7 @@ export const MarketMap: React.FC = () => {
             markerDataRefs.current = data.items.map(item => ({
                 item,
                 markerRef: React.createRef<L.Marker | null>(),
-                icon: getIcon(item.type),
+                icon: getIcon(item.type, false, false, currentZoom),
             }));
         });
 
@@ -236,8 +266,8 @@ export const MarketMap: React.FC = () => {
         if (markerData && markerData.markerRef.current) {
             markerData.itemSelected = itemSelected ?? markerData.itemSelected;
             markerData.itemInStory = itemInStory ?? markerData.itemInStory;
-            markerData.markerRef.current.setIcon(getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory));
-            markerData.icon = getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory);
+            markerData.markerRef.current.setIcon(getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory, currentZoom));
+            markerData.icon = getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory, currentZoom);
         }
     };
 
@@ -245,8 +275,8 @@ export const MarketMap: React.FC = () => {
         if (markerData.markerRef.current) {
             markerData.itemSelected = itemSelected ?? markerData.itemSelected;
             markerData.itemInStory = itemInStory ?? markerData.itemInStory;
-            markerData.markerRef.current.setIcon(getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory));
-            markerData.icon = getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory);
+            markerData.markerRef.current.setIcon(getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory, currentZoom));
+            markerData.icon = getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory, currentZoom);
         }
     };
 
@@ -353,6 +383,23 @@ export const MarketMap: React.FC = () => {
         setDrawerOpen(false);
     };
 
+    const handleZoomChange = (zoom: number) => {
+        setCurrentZoom(zoom);
+        // Update all markers with new zoom level
+        markerDataRefs.current.forEach(markerData => {
+            if (markerData.markerRef.current) {
+                markerData.markerRef.current.setIcon(
+                    getIcon(
+                        markerData.item.type,
+                        markerData.itemSelected || false,
+                        markerData.itemInStory || false,
+                        zoom
+                    )
+                );
+            }
+        });
+    };
+
     const mapRef = useRef(null);
 
     return (
@@ -381,7 +428,10 @@ export const MarketMap: React.FC = () => {
                 style={{ height: '100%', width: '100%' }}
                 ref={mapRef}
             >
-                <MapController onMapClick={handleMapClick} />
+                <MapController
+                    onMapClick={handleMapClick}
+                    onZoomChange={handleZoomChange}
+                />
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
