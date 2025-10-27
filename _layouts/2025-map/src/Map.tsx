@@ -186,9 +186,12 @@ interface MapControllerProps {
     onZoomChange: (zoom: number) => void;
 }
 
-const MapController: React.FC<MapControllerProps> = ({ onMapClick, onZoomChange }) => {
+const MapController: React.FC<MapControllerProps & { mapRef: React.MutableRefObject<L.Map | null> }> = ({ onMapClick, onZoomChange, mapRef }) => {
     const map = useMap();
     useEffect(() => {
+        // Store map reference
+        mapRef.current = map;
+
         // Example: Add scale control
         // L.control.scale().addTo(map);
         // Disable map double click zoom to allow for map click to deselect
@@ -204,6 +207,7 @@ const MapController: React.FC<MapControllerProps> = ({ onMapClick, onZoomChange 
         map.on('zoomend', handleZoom);
 
         return () => {
+            mapRef.current = null;
             map.off('click', onMapClick);
             map.off('zoomend', handleZoom);
         };
@@ -252,6 +256,14 @@ export const MarketMap: React.FC = () => {
             if (item) {
                 setSelectedItem(item);
                 updateMarkerIcon(item.id, true, undefined);
+
+                // Position map to place selected item at desired screen position
+                const map = mapRef.current;
+                if (map) {
+                    const targetLatLng = L.latLng(item.lat, item.lng);
+                    const newCenter = calculateOffsetCenter(map, targetLatLng);
+                    map.panTo(newCenter, { animate: true });
+                }
             }
         };
 
@@ -326,11 +338,37 @@ export const MarketMap: React.FC = () => {
     }
 
 
+    // Helper function to calculate the map center point that will position the target at desired screen position
+    const calculateOffsetCenter = (map: L.Map, targetLatLng: L.LatLng) => {
+        // Calculate vertical offset needed to place selected item at 1/4 of screen height
+        // When selected item is at 1/4 (dot1), the map center should be at 1/2 (dot2)
+        // This means we need to shift the map center down by 1/4 of the screen height
+        const verticalOffset = map.getSize().y / 4;  // Distance between dots is 1/4 of height
+
+        // Create a new LatLng point with:
+        // - Same latitude (x) as the selected item
+        // - Longitude (y) adjusted south by the calculated offset
+        const southwardPoint = map.containerPointToLatLng([
+            map.latLngToContainerPoint(targetLatLng).x,
+            map.latLngToContainerPoint(targetLatLng).y + verticalOffset
+        ]);
+
+        return southwardPoint;
+    };
+
     const handleMarkerClick = (item: MapItem) => {
         clearSelections();
         setSelectedItem(item);
         updateMarkerIcon(item.id, true, undefined);
         setDrawerOpen(true);
+
+        // Position map to place selected item at desired screen position
+        const map = mapRef.current;
+        if (map) {
+            const targetLatLng = L.latLng(item.lat, item.lng);
+            const newCenter = calculateOffsetCenter(map, targetLatLng);
+            map.panTo(newCenter, { animate: true });
+        }
     };
 
     const handleRowClick = (row: Row) => {
@@ -400,7 +438,7 @@ export const MarketMap: React.FC = () => {
         });
     };
 
-    const mapRef = useRef(null);
+    const mapRef = useRef<L.Map | null>(null);
 
     return (
         <Box sx={{ width: '100%', height: '100vh', position: 'relative' }}>
@@ -431,6 +469,7 @@ export const MarketMap: React.FC = () => {
                 <MapController
                     onMapClick={handleMapClick}
                     onZoomChange={handleZoomChange}
+                    mapRef={mapRef}
                 />
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
