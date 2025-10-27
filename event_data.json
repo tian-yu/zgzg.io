@@ -1,0 +1,601 @@
+{
+  "items": [
+    {
+      "id": "A1",
+      "type": "booth",
+      "name": "A1_name",
+      "description": "A1_description",
+      "lat": 37.266224,
+      "lng": -122.012446
+    },
+    {
+      "id": "A2",
+      "type": "booth",
+      "name": "A2_name",
+      "description": "A2_description",
+      "lat": 37.266285,
+      "lng": -122.012449
+    },
+    {
+      "id": "A3",
+      "type": "booth",
+      "name": "A3_name",
+      "description": "A3_description",
+      "lat": 37.266346,
+      "lng": -122.012451
+    },
+    {
+      "id": "A4",
+      "type": "booth",
+      "name": "A4_name",
+      "description": "A4_description",
+      "lat": 37.266407,
+      "lng": -122.012454
+    },
+    {
+      "id": "A5",
+      "type": "booth",
+      "name": "A5_name",
+      "description": "A5_description",
+      "lat": 37.266469,
+      "lng": -122.012456
+    },
+    {
+      "id": "A6",
+      "type": "booth",
+      "name": "A6_name",
+      "description": "A6_description",
+      "lat": 37.26653,
+      "lng": -122.012459
+    },
+    {
+      "id": "A7",
+      "type": "booth",
+      "name": "A7_name",
+      "description": "A7_description",
+      "lat": 37.266591,
+      "lng": -122.012461
+    },
+    {
+      "id": "A8",
+      "type": "booth",
+      "name": "A8_name",
+      "description": "A8_description",
+      "lat": 37.266652,
+      "lng": -122.012464
+    },
+    {
+      "id": "B1",
+      "type": "booth",
+      "name": "B1_name",
+      "description": "B1_description",
+      "lat": 37.266224,
+      "lng": -122.01228
+    },
+    {
+      "id": "B2",
+      "type": "booth",
+      "name": "B2_name",
+      "description": "B2_description",
+      "lat": 37.266285,
+      "lng": -122.01228
+    },
+    {
+      "id": "B3",
+      "type": "booth",
+      "name": "B3_name",
+      "description": "B3_description",
+      "lat": 37.266346,
+      "lng": -122.01228
+    },
+    {
+      "id": "B4",
+      "type": "booth",
+      "name": "B4_name",
+      "description": "B4_description",
+      "lat": 37.266407,
+      "lng": -122.01228
+    },
+    {
+      "id": "B5",
+      "type": "booth",
+      "name": "B5_name",
+      "description": "B5_description",
+      "lat": 37.266469,
+      "lng": -122.01228
+    },
+    {
+      "id": "B6",
+      "type": "booth",
+      "name": "B6_name",
+      "description": "B6_description",
+      "lat": 37.26653,
+      "lng": -122.01228
+    },
+    {
+      "id": "B7",
+      "type": "booth",
+      "name": "B7_name",
+      "description": "B7_description",
+      "lat": 37.266591,
+      "lng": -122.01228
+    },
+    {
+      "id": "B8",
+      "type": "booth",
+      "name": "B8_name",
+      "description": "B8_description",
+      "lat": 37.266652,
+      "lng": -122.01228
+    },
+    {
+      "id": "C1",
+      "type": "food",
+      "name": "C1_name",
+      "description": "C1_description",
+      "lat": 37.266224,
+      "lng": -122.012186
+    },
+    {
+      "id": "C2",
+      "type": "food",
+      "name": "C2_name",
+      "description": "C2_description",
+      "lat": 37.266285,
+      "lng": -122.012186
+    },
+    {
+      "id": "C3",
+      "type": "food",
+      "name": "C3_name",
+      "description": "C3_description",
+      "lat": 37.266346,
+      "lng": -122.012186
+    },
+    {
+      "id": "C4",
+      "type": "food",
+      "name": "C4_name",
+      "description": "C4_description",
+      "lat": 37.266407,
+      "lng": -122.012186
+    },
+    {
+      "id": "C5",
+      "type": "booth",
+      "name": "C5_name",
+      "description": "C5_description",
+      "lat": 37.266469,
+      "lng": -122.012186
+    },
+    {
+      "id": "C6",
+      "type": "booth",
+      "name": "C6_name",
+      "description": "C6_description",
+      "lat": 37.26653,
+      "lng": -122.012186
+    },
+    {
+      "id": "C7",
+      "type": "booth",
+      "name": "C7_name",
+      "description": "C7_description",
+      "lat": 37.266591,
+      "lng": -122.012186
+    },
+    {
+      "id": "C8",
+      "type": "booth",
+      "name": "C8_name",
+      "description": "C8_description",
+      "lat": 37.266652,
+      "lng": -122.012186
+    },
+    {
+      "id": "C9",
+      "type": "booth",
+      "name": "C9_name",
+      "description": "C9_description",
+      "lat": 37.266713,
+      "lng": -122.012186
+    },
+    {
+      "id": "C10",
+      "type": "booth",
+      "name": "C10_name",
+      "description": "C10_description",
+      "lat": 37.266774,
+      "lng": -122.012186
+    },
+    {
+      "id": "C11",
+      "type": "booth",
+      "name": "C11_name",
+      "description": "C11_description",
+      "lat": 37.266835,
+      "lng": -122.012186
+    },
+    {
+      "id": "C12",
+      "type": "booth",
+      "name": "C12_name",
+      "description": "C12_description",
+      "lat": 37.266897,
+      "lng": -122.012186
+    },
+    {
+      "id": "D1",
+      "type": "food",
+      "name": "D1_name",
+      "description": "D1_description",
+      "lat": 37.266224,
+      "lng": -122.012067
+    },
+    {
+      "id": "D2",
+      "type": "food",
+      "name": "D2_name",
+      "description": "D2_description",
+      "lat": 37.266285,
+      "lng": -122.012067
+    },
+    {
+      "id": "D3",
+      "type": "food",
+      "name": "D3_name",
+      "description": "D3_description",
+      "lat": 37.266346,
+      "lng": -122.012067
+    },
+    {
+      "id": "D4",
+      "type": "food",
+      "name": "D4_name",
+      "description": "D4_description",
+      "lat": 37.266407,
+      "lng": -122.012067
+    },
+    {
+      "id": "D5",
+      "type": "booth",
+      "name": "D5_name",
+      "description": "D5_description",
+      "lat": 37.266469,
+      "lng": -122.012067
+    },
+    {
+      "id": "D6",
+      "type": "booth",
+      "name": "D6_name",
+      "description": "D6_description",
+      "lat": 37.26653,
+      "lng": -122.012067
+    },
+    {
+      "id": "D7",
+      "type": "booth",
+      "name": "D7_name",
+      "description": "D7_description",
+      "lat": 37.266591,
+      "lng": -122.012067
+    },
+    {
+      "id": "D8",
+      "type": "booth",
+      "name": "D8_name",
+      "description": "D8_description",
+      "lat": 37.266652,
+      "lng": -122.012067
+    },
+    {
+      "id": "D9",
+      "type": "booth",
+      "name": "D9_name",
+      "description": "D9_description",
+      "lat": 37.266713,
+      "lng": -122.012067
+    },
+    {
+      "id": "D10",
+      "type": "booth",
+      "name": "D10_name",
+      "description": "D10_description",
+      "lat": 37.266774,
+      "lng": -122.012067
+    },
+    {
+      "id": "D11",
+      "type": "booth",
+      "name": "D11_name",
+      "description": "D11_description",
+      "lat": 37.266835,
+      "lng": -122.012067
+    },
+    {
+      "id": "D12",
+      "type": "booth",
+      "name": "D12_name",
+      "description": "D12_description",
+      "lat": 37.266897,
+      "lng": -122.012067
+    },
+    {
+      "id": "E1",
+      "type": "food",
+      "name": "E1_name",
+      "description": "E1_description",
+      "lat": 37.266224,
+      "lng": -122.011922
+    },
+    {
+      "id": "E2",
+      "type": "food",
+      "name": "E2_name",
+      "description": "E2_description",
+      "lat": 37.266285,
+      "lng": -122.011922
+    },
+    {
+      "id": "E3",
+      "type": "food",
+      "name": "E3_name",
+      "description": "E3_description",
+      "lat": 37.266346,
+      "lng": -122.011922
+    },
+    {
+      "id": "E4",
+      "type": "food",
+      "name": "E4_name",
+      "description": "E4_description",
+      "lat": 37.266407,
+      "lng": -122.011922
+    },
+    {
+      "id": "E5",
+      "type": "booth",
+      "name": "E5_name",
+      "description": "E5_description",
+      "lat": 37.266469,
+      "lng": -122.011922
+    },
+    {
+      "id": "E6",
+      "type": "booth",
+      "name": "E6_name",
+      "description": "E6_description",
+      "lat": 37.26653,
+      "lng": -122.011922
+    },
+    {
+      "id": "E7",
+      "type": "booth",
+      "name": "E7_name",
+      "description": "E7_description",
+      "lat": 37.266591,
+      "lng": -122.011922
+    },
+    {
+      "id": "E8",
+      "type": "booth",
+      "name": "E8_name",
+      "description": "E8_description",
+      "lat": 37.266652,
+      "lng": -122.011922
+    },
+    {
+      "id": "E9",
+      "type": "booth",
+      "name": "E9_name",
+      "description": "E9_description",
+      "lat": 37.266713,
+      "lng": -122.011922
+    },
+    {
+      "id": "E10",
+      "type": "booth",
+      "name": "E10_name",
+      "description": "E10_description",
+      "lat": 37.266774,
+      "lng": -122.011922
+    },
+    {
+      "id": "E11",
+      "type": "booth",
+      "name": "E11_name",
+      "description": "E11_description",
+      "lat": 37.266835,
+      "lng": -122.011922
+    },
+    {
+      "id": "E12",
+      "type": "booth",
+      "name": "E12_name",
+      "description": "E12_description",
+      "lat": 37.266897,
+      "lng": -122.011922
+    },
+    {
+      "id": "F1",
+      "type": "food",
+      "name": "F1_name",
+      "description": "F1_description",
+      "lat": 37.266224,
+      "lng": -122.011768
+    },
+    {
+      "id": "F2",
+      "type": "food",
+      "name": "F2_name",
+      "description": "F2_description",
+      "lat": 37.266285,
+      "lng": -122.011768
+    },
+    {
+      "id": "F3",
+      "type": "food",
+      "name": "F3_name",
+      "description": "F3_description",
+      "lat": 37.266346,
+      "lng": -122.011768
+    },
+    {
+      "id": "F4",
+      "type": "food",
+      "name": "F4_name",
+      "description": "F4_description",
+      "lat": 37.266407,
+      "lng": -122.011768
+    },
+    {
+      "id": "F5",
+      "type": "booth",
+      "name": "F5_name",
+      "description": "F5_description",
+      "lat": 37.266469,
+      "lng": -122.011768
+    },
+    {
+      "id": "F6",
+      "type": "booth",
+      "name": "F6_name",
+      "description": "F6_description",
+      "lat": 37.26653,
+      "lng": -122.011768
+    },
+    {
+      "id": "F7",
+      "type": "booth",
+      "name": "F7_name",
+      "description": "F7_description",
+      "lat": 37.266591,
+      "lng": -122.011768
+    },
+    {
+      "id": "F8",
+      "type": "booth",
+      "name": "F8_name",
+      "description": "F8_description",
+      "lat": 37.266652,
+      "lng": -122.011768
+    },
+    {
+      "id": "F9",
+      "type": "booth",
+      "name": "F9_name",
+      "description": "F9_description",
+      "lat": 37.266713,
+      "lng": -122.011768
+    },
+    {
+      "id": "F10",
+      "type": "booth",
+      "name": "F10_name",
+      "description": "F10_description",
+      "lat": 37.266774,
+      "lng": -122.011768
+    },
+    {
+      "id": "F11",
+      "type": "booth",
+      "name": "F11_name",
+      "description": "F11_description",
+      "lat": 37.266835,
+      "lng": -122.011768
+    },
+    {
+      "id": "F12",
+      "type": "booth",
+      "name": "F12_name",
+      "description": "F12_description",
+      "lat": 37.266897,
+      "lng": -122.011768
+    },
+    {
+      "id": "restroom1",
+      "type": "restroom",
+      "name": "Main Restrooms",
+      "lat": 37.266527,
+      "lng": -122.012896
+    },
+    {
+      "id": "service",
+      "type": "service",
+      "name": "Volunteer Center",
+      "lat": 37.266196,
+      "lng": -122.012811
+    },
+    {
+      "id": "checkin",
+      "type": "checkin",
+      "name": "Check-In Booth",
+      "lat": 37.266126,
+      "lng": -122.012635
+    },
+    {
+      "id": "medical",
+      "type": "medical",
+      "name": "First Aid Station",
+      "lat": 37.266217,
+      "lng": -122.013056
+    },
+    {
+      "id": "foodtruck",
+      "type": "foodtruck",
+      "name": "Food Truck Area",
+      "lat": 37.266133,
+      "lng": -122.011843
+    },
+    {
+      "id": "stage",
+      "type": "stage",
+      "name": "Main Stage",
+      "description": "Main performance stage",
+      "lat": 37.266892,
+      "lng": -122.012361
+    }
+  ],
+  "rows": [
+    {
+      "rowId": 1,
+      "name": "North Row",
+      "description": "Northern section of booths and facilities",
+      "lat": 37.266129,
+      "lng": -122.012282,
+      "itemIds": [
+        "booth1",
+        "booth2"
+      ]
+    },
+    {
+      "rowId": 2,
+      "name": "South Row",
+      "description": "Southern section of booths and facilities",
+      "lat": 37.266156,
+      "lng": -122.011998,
+      "itemIds": [
+        "booth3"
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "id": "cat_story",
+      "name": "🐱Cat",
+      "itemIds": [
+        "F1",
+        "F2",
+        "F3"
+      ]
+    },
+    {
+      "id": "anime_story",
+      "name": "🌸Anime",
+      "itemIds": [
+        "B1",
+        "B2"
+      ]
+    }
+  ]
+}
