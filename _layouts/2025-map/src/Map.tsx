@@ -114,7 +114,9 @@ const createIcon = (type: MapItem['type'], color: string, size: number = 32, cur
 };
 
 const createSelectedIcon = (type: MapItem['type'], color: string, size: number = 48, currentZoom: number = 18) => {
-    const adjustedSize = calculateSize(size, type, currentZoom);
+    // For non-booth/food types, use the base size from typeToBaseSize
+    const baseSize = typeToBaseSize[type] || size;
+    const adjustedSize = calculateSize(baseSize, type, currentZoom);
 
     // For booth and food types, use bouncing marker icon
     if (type === 'booth' || type === 'food') {
@@ -299,7 +301,8 @@ export const MarketMap: React.FC = () => {
                     getIcon(
                         markerData.item.type,
                         markerData.itemSelected || false,
-                        markerData.itemInStory || false
+                        markerData.itemInStory || false,
+                        currentZoom
                     )
                 );
             }
