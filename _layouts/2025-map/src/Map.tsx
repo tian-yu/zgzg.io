@@ -18,6 +18,12 @@ import Box from '@mui/material/Box';
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+import restroomImage from './images/restroom.png';
+import checkinImage from './images/checkin.png';
+import serviceImage from './images/service.png';
+import stageImage from './images/stage.png';
+import medicalImage from './images/medical.png';
+import foodtruckImage from './images/foodtruck.png';
 
 L.Icon.Default.mergeOptions({
     iconRetinaUrl,
@@ -33,53 +39,124 @@ interface MarkerData {
     itemInStory?: boolean;
 }
 
-const createIcon = (color: string, size: number = 32) => {
+// PNG image path mapping for different types
+const typeToImagePath: Partial<Record<MapItem['type'], string>> = {
+    stage: stageImage,
+    restroom: restroomImage,
+    service: serviceImage,
+    checkin: checkinImage,
+    medical: medicalImage,
+    foodtruck: foodtruckImage,
+};
+
+const typeToSize: Partial<Record<MapItem['type'], number>> = {
+    stage: 64,
+    restroom: 32,
+    service: 32,
+    checkin: 32,
+    medical: 40,
+    foodtruck: 40
+};
+
+const createIcon = (type: MapItem['type'], color: string, size: number = 32) => {
+    // For booth and food types, use marker icon
+    if (type === 'booth' || type === 'food') {
+        return new L.Icon({
+            className: 'div-icon',
+            iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`,
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [size * 0.625, size],
+            iconAnchor: [size * 0.3125, size],
+            popupAnchor: [1, -size],
+            shadowSize: [size * 1.025, size],
+        });
+    }
+
+    // For other types, use PNG images
+    const imagePath = typeToImagePath[type];
+    if (imagePath) {
+        return new L.Icon({
+            iconUrl: imagePath,
+            iconSize: [size, size],
+            iconAnchor: [size / 2, size / 2],
+            popupAnchor: [0, -size / 2],
+        });
+    }
+
+    // Fallback to default marker if type is not recognized
     return new L.Icon({
         iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`,
-        // iconUrl: markerIcon,
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-        iconSize: [size * 0.625, size], // Adjusted for color markers
+        iconSize: [size * 0.625, size],
         iconAnchor: [size * 0.3125, size],
         popupAnchor: [1, -size],
         shadowSize: [size * 1.025, size],
     });
 };
 
-const createSelectedIcon = (color: string, size: number = 48) => {
-    // Render the animated icon component to an HTML string
+const createSelectedIcon = (type: MapItem['type'], color: string, size: number = 48) => {
+    // For booth and food types, use bouncing marker icon
+    if (type === 'booth' || type === 'food') {
+        const customIconHtml = ReactDOMServer.renderToString(
+            <div className="bouncing-marker">
+                <img src={`https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`} alt="Marker Icon" />
+            </div>
+        );
+        return L.divIcon({
+            className: 'custom-div-icon',
+            html: customIconHtml,
+            iconSize: [size * 0.625, size],
+            iconAnchor: [size * 0.3125, size],
+        });
+    }
+
+    // For other types, use bouncing PNG images
+    const imagePath = typeToImagePath[type];
+    if (imagePath) {
+        const customIconHtml = ReactDOMServer.renderToString(
+            <div className="bouncing-marker">
+                <img src={imagePath} alt="Custom Icon" style={{ width: `${size}px`, height: `${size}px` }} />
+            </div>
+        );
+        return L.divIcon({
+            className: 'custom-div-icon',
+            html: customIconHtml,
+            iconSize: [size, size],
+            iconAnchor: [size / 2, size / 2],
+        });
+    }
+
+    // Fallback to default bouncing marker
     const customIconHtml = ReactDOMServer.renderToString(
         <div className="bouncing-marker">
             <img src={`https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`} alt="Marker Icon" />
         </div>
     );
     return L.divIcon({
-        className: 'custom-div-icon', // Use a unique class for styling
+        className: 'custom-div-icon',
         html: customIconHtml,
-        iconSize: [size * 0.625, size], // Adjusted for color markers
+        iconSize: [size * 0.625, size],
         iconAnchor: [size * 0.3125, size],
     });
 }
 
-const typeToColor: Record<MapItem['type'], string> = {
+const typeToColor: Partial<Record<MapItem['type'], string>> = {
     booth: 'violet',
-    restroom: 'blue',
     food: 'green',
-    parking: 'yellow',
-    checkin: 'blue'
 };
 
 const getIcon = (type: MapItem['type'], itemSelected: boolean = false, itemInStory: boolean = false) => {
-    var color = typeToColor[type];
-    var size = 32;
+    var color = typeToColor[type] || 'blue';
+    var size = typeToSize[type] || 32;
     if (itemInStory) {
         color = 'yellow';
     }
     if (itemSelected) {
         size = 48;
-        return createSelectedIcon(color, size);
+        return createSelectedIcon(type, color, size);
     }
     else {
-        return createIcon(color, size);
+        return createIcon(type, color, size);
     }
 };
 
@@ -299,7 +376,7 @@ export const MarketMap: React.FC = () => {
             <MapContainer
                 center={[37.266240, -122.012685]}
                 zoom={18}
-                minZoom={16}
+                minZoom={18}
                 maxZoom={20}
                 style={{ height: '100%', width: '100%' }}
                 ref={mapRef}

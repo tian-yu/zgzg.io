@@ -516,15 +516,44 @@
       "id": "restroom1",
       "type": "restroom",
       "name": "Main Restrooms",
-      "lat": 37.265460,
-      "lng": -122.012719
+      "lat": 37.266527,
+      "lng": -122.012896
     },
     {
-      "id": "parking1",
-      "type": "parking",
-      "name": "North Parking Lot",
-      "lat": 37.265734,
-      "lng": -122.013419
+      "id": "service",
+      "type": "service",
+      "name": "Volunteer Center",
+      "lat": 37.266196,
+      "lng": -122.012811
+    },
+    {
+      "id": "checkin",
+      "type": "checkin",
+      "name": "Check-In Booth",
+      "lat": 37.266126,
+      "lng": -122.012635
+    },
+    {
+      "id": "medical",
+      "type": "medical",
+      "name": "First Aid Station",
+      "lat": 37.266217,
+      "lng": -122.013056
+    },
+    {
+      "id": "foodtruck",
+      "type": "foodtruck",
+      "name": "Food Truck Area",
+      "lat": 37.266133,
+      "lng": -122.011843
+    },
+    {
+      "id": "stage",
+      "type": "stage",
+      "name": "Main Stage",
+      "description": "Main performance stage",
+      "lat": 37.266845,
+      "lng": -122.012337
     }
   ],
   "rows": [
