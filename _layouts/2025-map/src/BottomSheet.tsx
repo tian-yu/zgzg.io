@@ -9,6 +9,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { styled } from '@mui/material/styles';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { MapItem, Row } from './data';
 
@@ -36,6 +37,26 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
     const [selectedItem, setSelectedItem] = React.useState<MapItem | null>(initialSelectedItem);
     const [isFullyOpen, setIsFullyOpen] = React.useState(isOpen);
     const [isMinimized, setIsMinimized] = React.useState(false);
+    const [htmlContent, setHtmlContent] = React.useState<string | null>(null);
+    const [isLoading, setIsLoading] = React.useState(false);
+
+    // Fetch HTML content when needed
+    const fetchHtmlContent = async (filename: string) => {
+        setIsLoading(true);
+        try {
+            const response = await fetch(`${process.env.PUBLIC_URL}/${filename}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch HTML content');
+            }
+            const html = await response.text();
+            setHtmlContent(html);
+        } catch (error) {
+            console.error('Error fetching HTML content:', error);
+            setHtmlContent(null);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     // Update local state when prop changes
     React.useEffect(() => {
@@ -43,6 +64,14 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
         if (isOpen) {
             setIsFullyOpen(true);
             setIsMinimized(false);
+
+            // Reset HTML content
+            setHtmlContent(null);
+
+            // If the selected item has a description_file, fetch its content
+            if (initialSelectedItem?.description_file) {
+                fetchHtmlContent(initialSelectedItem.description_file);
+            }
         }
     }, [initialSelectedItem, isOpen]);
 
@@ -188,7 +217,23 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
                         )}
                         <Box sx={{ pl: storyItems.some(item => item.id === selectedItem.id) ? 4 : 0 }}>
                             <Typography variant="h6">{selectedItem.name}</Typography>
-                            <Typography variant="body1">{selectedItem.description}</Typography>
+                            {selectedItem.description_file ? (
+                                isLoading ? (
+                                    <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>
+                                        <CircularProgress />
+                                    </Box>
+                                ) : (
+                                    <Box
+                                        dangerouslySetInnerHTML={{ __html: htmlContent || '' }}
+                                        sx={{
+                                            '& img': { maxWidth: '100%', height: 'auto' },
+                                            '& a': { color: 'primary.main' }
+                                        }}
+                                    />
+                                )
+                            ) : (
+                                <Typography variant="body1">{selectedItem.description}</Typography>
+                            )}
                         </Box>
                     </Box>
                 )}

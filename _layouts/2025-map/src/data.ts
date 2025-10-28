@@ -3,6 +3,7 @@ export interface MapItem {
   type: 'booth' | 'food' | 'stage' | 'restroom' | 'service' | 'checkin' | 'medical' | 'foodtruck';
   name: string;
   description?: string;
+  description_file?: string;
   lat: number;
   lng: number;
 }
