@@ -29,7 +29,8 @@ interface EventData {
 }
 
 export const fetchEventData = async (): Promise<EventData> => {
-  const response = await fetch('/event_data.json');
+  const jsonPath = `${process.env.PUBLIC_URL}/event_data.json`;
+  const response = await fetch(jsonPath);
   if (!response.ok) {
     throw new Error('Failed to fetch event data');
   }
