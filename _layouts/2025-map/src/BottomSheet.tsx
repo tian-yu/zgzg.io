@@ -5,7 +5,6 @@ import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { styled } from '@mui/material/styles';
@@ -13,15 +12,29 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import { MapItem, Row } from './data';
 
-// Styled Puller component for the drawer handle
+// Styled Puller component for the drawer handle - now in a fixed container
+const PullerContainer = styled(Box)(({ theme }) => ({
+    position: 'sticky',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 20,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: theme.palette.background.paper,
+    zIndex: 1200,
+    cursor: 'grab',
+    '&:active': {
+        cursor: 'grabbing',
+    }
+}));
+
 const Puller = styled(Box)(({ theme }) => ({
     width: 30,
     height: 6,
     backgroundColor: theme.palette.mode === 'light' ? '#CBD5E1' : '#475569',
     borderRadius: 3,
-    position: 'absolute',
-    top: 8,
-    left: 'calc(50% - 15px)',
 }));
 
 interface BottomSheetProps {
@@ -39,6 +52,16 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
     const [isMinimized, setIsMinimized] = React.useState(false);
     const [htmlContent, setHtmlContent] = React.useState<string | null>(null);
     const [isLoading, setIsLoading] = React.useState(false);
+
+    // Ref to track the scrollable content element (the container with overflowY)
+    const scrollContainerRef = React.useRef<HTMLDivElement | null>(null);
+    // Ref to track the puller element
+    const pullerRef = React.useRef<HTMLDivElement | null>(null);
+
+    // For touch gesture detection inside the scroll area
+    const touchStartYRef = React.useRef<number | null>(null);
+    const touchStartXRef = React.useRef<number | null>(null);
+    const touchMovedRef = React.useRef<boolean>(false);
 
     // Fetch HTML content when needed
     const fetchHtmlContent = async (filename: string) => {
@@ -125,6 +148,85 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
         setSelectedItem(null);
     };
 
+    // Handle touch on the Puller only (unchanged logic, no preventDefault)
+    const handlePullerTouchStart = (e: React.TouchEvent) => {
+        // Only handle touches that start on the puller itself
+        if (!pullerRef.current?.contains(e.target as Node)) {
+            return;
+        }
+        const startY = e.touches[0].clientY;
+
+        const handleTouchMove = (moveEvent: TouchEvent) => {
+            const currentY = moveEvent.touches[0].clientY;
+            const deltaY = currentY - startY; // Positive deltaY is a downward movement
+
+            // Swipe down when fully open -> minimize
+            if (isFullyOpen && deltaY > 10) {
+                setIsFullyOpen(false);
+                setIsMinimized(true);
+                cleanup();
+            }
+            // Swipe up when minimized -> fully open
+            else if (isMinimized && deltaY < -10) {
+                setIsFullyOpen(true);
+                setIsMinimized(false);
+                cleanup();
+            }
+        };
+
+        const handleTouchEnd = () => {
+            cleanup();
+        };
+
+        const cleanup = () => {
+            document.removeEventListener('touchmove', handleTouchMove);
+            document.removeEventListener('touchend', handleTouchEnd);
+        };
+
+        document.addEventListener('touchmove', handleTouchMove, { passive: true });
+        document.addEventListener('touchend', handleTouchEnd, { once: true });
+    };
+
+    // --- New: touch handlers on the scroll container to ensure vertical scroll is handled by content ---
+    const handleScrollTouchStart = (e: React.TouchEvent) => {
+        const t = e.touches[0];
+        touchStartYRef.current = t.clientY;
+        touchStartXRef.current = t.clientX;
+        touchMovedRef.current = false;
+        // Let event continue to allow native scroll, but we may stop propagation on move
+    };
+
+    const handleScrollTouchMove = (e: React.TouchEvent) => {
+        const startY = touchStartYRef.current;
+        const startX = touchStartXRef.current;
+        if (startY == null || startX == null) {
+            return;
+        }
+
+        const t = e.touches[0];
+        const dy = t.clientY - startY;
+        const dx = t.clientX - startX;
+
+        // If vertical dominant gesture, stopPropagation so SwipeableDrawer does NOT intercept it.
+        // We don't preventDefault — native scrolling is preserved.
+        if (Math.abs(dy) > Math.abs(dx)) {
+            touchMovedRef.current = true;
+
+            // Optionally, we can check whether the scroll container can actually scroll further.
+            // But to keep the content scrollable reliably, we simply stop propagation for vertical gestures.
+            e.stopPropagation();
+            // do NOT call e.preventDefault() — that prevents native scrolling
+        }
+        // otherwise, allow horizontal gestures to bubble up (if you want drawer to respond)
+    };
+
+    // Also stop wheel propagation for mouse wheel scrolls inside the drawer
+    const handleWheel = (e: React.WheelEvent) => {
+        // Stop propagation so parent/SwipeableDrawer doesn't handle it
+        // (does not call preventDefault — we want native scroll)
+        e.stopPropagation();
+    };
+
     return (
         <SwipeableDrawer
             anchor="bottom"
@@ -132,16 +234,9 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
             onClose={handleClose}
             onOpen={handleOpen}
             hideBackdrop={true}
-            disableSwipeToOpen={!isMinimized}
-            swipeAreaWidth={isFullyOpen ? 0 : 56}
+            disableSwipeToOpen={true}
+            disableDiscovery={true}
             onTransitionEnd={handleTransitionEnd}
-            hysteresis={0.3} // Increase resistance to unintended swipes
-            minFlingVelocity={450} // Increase minimum velocity needed for a swipe
-            SwipeAreaProps={{
-                sx: {
-                    height: '20%', // Make swipe area match minimized height
-                }
-            }}
             ModalProps={{
                 keepMounted: true,
                 disableScrollLock: true,
@@ -165,96 +260,95 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
                     borderTopRightRadius: 8,
                     transition: 'height 0.3s ease-out',
                     visibility: (isFullyOpen || isMinimized) ? 'visible' : 'hidden',
-                    transform: 'none !important', // Prevent intermediate heights
-                },
-                onTouchStart: (e: React.TouchEvent) => {
-                    const touch = e.touches[0];
-                    const startY = touch.clientY;
-                    const handleTouchMove = (e: TouchEvent) => {
-                        const currentY = e.touches[0].clientY;
-                        const deltaY = currentY - startY;
-
-                        if (Math.abs(deltaY) > 50) { // threshold for swipe
-                            if (deltaY < 0 && !isFullyOpen) {
-                                setIsFullyOpen(true);
-                                setIsMinimized(false);
-                            } else if (deltaY > 0 && isFullyOpen) {
-                                setIsFullyOpen(false);
-                                setIsMinimized(true);
-                            }
-                            document.removeEventListener('touchmove', handleTouchMove);
-                        }
-                    };
-                    document.addEventListener('touchmove', handleTouchMove);
-                    document.addEventListener('touchend', () => {
-                        document.removeEventListener('touchmove', handleTouchMove);
-                    }, { once: true });
-                },
+                    transform: 'none !important',
+                    overflow: 'hidden',
+                }
             }}
         >
             <Box sx={{
                 width: 'auto',
                 height: '100%',
-                position: 'relative',
-                padding: 2,
-                paddingTop: 3
-            }}
-                role="presentation"
-                onClick={e => e.stopPropagation()} // Prevent clicks from closing the drawer
-            >
-                <Puller />
+                display: 'flex',
+                flexDirection: 'column',
+                overflow: 'hidden',
+            }}>
+                {/* Fixed Puller at the top */}
+                <PullerContainer
+                    ref={pullerRef}
+                    onTouchStart={handlePullerTouchStart}
+                >
+                    <Puller />
+                </PullerContainer>
 
-                {selectedItem && (
-                    <Box sx={{ position: 'relative', mt: 2 }}>
-                        {storyItems.length > 0 && storyItems.some(item => item.id === selectedItem.id) && (
-                            <IconButton
-                                onClick={handleBackClick}
-                                sx={{ position: 'absolute', left: -8, top: -8 }}
-                                data-testid="back-button"
-                            >
-                                <ArrowBackIcon />
-                            </IconButton>
-                        )}
-                        <Box sx={{ pl: storyItems.some(item => item.id === selectedItem.id) ? 4 : 0 }}>
-                            <Typography variant="h6">{selectedItem.name}</Typography>
-                            {selectedItem.description_file ? (
-                                isLoading ? (
-                                    <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>
-                                        <CircularProgress />
-                                    </Box>
-                                ) : (
-                                    <Box
-                                        dangerouslySetInnerHTML={{ __html: htmlContent || '' }}
-                                        sx={{
-                                            '& img': { maxWidth: '100%', height: 'auto' },
-                                            '& a': { color: 'primary.main' }
-                                        }}
-                                    />
-                                )
-                            ) : (
-                                <Typography variant="body1">{selectedItem.description}</Typography>
-                            )}
-                        </Box>
-                    </Box>
-                )}
-
-                {!selectedItem && storyItems.length > 0 && (
-                    <Box sx={{ mt: 2 }}>
-                        <Typography variant="h6">
-                            Story Booths
-                        </Typography>
-                        <List>
-                            {storyItems.map(item => (
-                                <ListItemButton
-                                    key={item.id}
-                                    onClick={() => handleItemClick(item)}
+                {/* Scrollable content area */}
+                <Box
+                    ref={scrollContainerRef}
+                    sx={{
+                        flex: 1,
+                        overflowY: 'auto',
+                        overflowX: 'hidden',
+                        padding: 2,
+                        WebkitOverflowScrolling: 'touch',
+                        touchAction: 'pan-y', // prefer vertical scrolling
+                    }}
+                    onClick={e => e.stopPropagation()}
+                    onTouchStart={handleScrollTouchStart}
+                    onTouchMove={handleScrollTouchMove}
+                    onWheel={handleWheel}
+                >
+                    {selectedItem && (
+                        <Box sx={{ position: 'relative' }}>
+                            {storyItems.length > 0 && storyItems.some(item => item.id === selectedItem.id) && (
+                                <IconButton
+                                    onClick={handleBackClick}
+                                    sx={{ position: 'absolute', left: -8, top: -8 }}
+                                    data-testid="back-button"
                                 >
-                                    <ListItemText primary={item.name} secondary={item.description} />
-                                </ListItemButton>
-                            ))}
-                        </List>
-                    </Box>
-                )}
+                                    <ArrowBackIcon />
+                                </IconButton>
+                            )}
+                            <Box sx={{ pl: storyItems.some(item => item.id === selectedItem.id) ? 4 : 0 }}>
+                                <Typography variant="h6">{selectedItem.name}</Typography>
+                                {selectedItem.description_file ? (
+                                    isLoading ? (
+                                        <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>
+                                            <CircularProgress />
+                                        </Box>
+                                    ) : (
+                                        <Box
+                                            data-html-content="true"
+                                            dangerouslySetInnerHTML={{ __html: htmlContent || '' }}
+                                            sx={{
+                                                '& img': { maxWidth: '100%', height: 'auto' },
+                                                '& a': { color: 'primary.main' }
+                                            }}
+                                        />
+                                    )
+                                ) : (
+                                    <Typography variant="body1">{selectedItem.description}</Typography>
+                                )}
+                            </Box>
+                        </Box>
+                    )}
+
+                    {!selectedItem && storyItems.length > 0 && (
+                        <Box>
+                            <Typography variant="h6">
+                                Story Booths
+                            </Typography>
+                            <List>
+                                {storyItems.map(item => (
+                                    <ListItemButton
+                                        key={item.id}
+                                        onClick={() => handleItemClick(item)}
+                                    >
+                                        <ListItemText primary={item.name} secondary={item.description} />
+                                    </ListItemButton>
+                                ))}
+                            </List>
+                        </Box>
+                    )}
+                </Box>
             </Box>
         </SwipeableDrawer>
     );
