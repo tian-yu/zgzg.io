@@ -339,7 +339,7 @@
     {
       "id": "E3",
       "type": "food",
-      "name": "Tanghulu,",
+      "name": "Tanghulu",
       "description": "E3_description",
       "lat": 37.266346,
       "lng": -122.011922
@@ -356,7 +356,7 @@
       "id": "E5",
       "type": "booth",
       "name": "老鼠偷奶酪",
-      "description": "E5_description",
+      "description": "游戏规则：游戏开始时，“守护者”开始慢慢抡动绳子，让大球绕圈旋转。\n\n可以逐渐加快速度，让“老鼠”更难靠近。\n\n所有其他玩家扮演“老鼠”，需要在不被球打到的情况下，冲进圈内捡小球。\n\n每次“老鼠”只能捡 一个小球，然后迅速跑回圈外放在自己身后。\n\n被旋转大球打到的老鼠要退出一轮或将捡到的小球放回去。\n\n当所有小球被捡完时，游戏结束。",
       "lat": 37.266469,
       "lng": -122.011922
     },
@@ -364,7 +364,7 @@
       "id": "E6",
       "type": "booth",
       "name": "猫追老鼠 Cat & Mouse",
-      "description": "E6_description",
+      "description": "每组由 2人或4人 组成，使用 一只猫气球、一只老鼠气球 和 两把扇子 进行游戏。\n\n场地设有一个起点和一个**“老鼠洞”终点**。\n\n猫和老鼠从起点同时出发，参与者用扇子为气球扇风，让它们沿着赛道前进，看看谁能先到达“老鼠洞”！",
       "lat": 37.26653,
       "lng": -122.011922
     },
@@ -372,7 +372,7 @@
       "id": "E7",
       "type": "booth",
       "name": "打地鼠 Whac-A-Mole",
-      "description": "E7_description",
+      "description": "在圆形游戏布的中心有一个大圆孔，中间站着 1–2 位“地鼠猎人”，手拿充气锤子。\n\n布的周围有 5 个小圆孔，由五位小朋友扮演“地鼠”，他们要在猎人的攻击中灵巧地探头、躲闪、偷看，避免被“锤”到！",
       "lat": 37.266591,
       "lng": -122.011922
     },
@@ -380,15 +380,16 @@
       "id": "E8",
       "type": "booth",
       "name": "动画DIY Phenakistoscope Animation",
-      "description": "E8_description",
+      "description": "只需打开袋子，按照说明书一步步操作，你就能做出一台可以“转动的动画机”看着你的手绘图案在光影中动起来！",
       "lat": 37.266652,
-      "lng": -122.011922
+      "lng": -122.011922,
+      "token": 3
     },
     {
       "id": "E9",
       "type": "booth",
       "name": "故事换葫芦 A gourd for your story",
-      "description": "E9_description",
+      "description": "\"游客到摊位出示自己在小红书的故事帖截图。\n\n工作人员核对后，赠送游客一只“幸运葫芦”。\n\n游客可在领取后，在葫芦卡片上写下祝福语或心愿，悬挂在会场“心愿树”架上，形成互动景观。\"",
       "lat": 37.266713,
       "lng": -122.011922
     },
@@ -436,23 +437,25 @@
       "id": "F3",
       "type": "food",
       "name": "动漫面具DIY Mask Painting",
-      "description": "F3_description",
+      "description": "我们准备了空白面具、颜料、画笔和装饰材料。\n\n游客可以自由设计、上色、绘制图案，并现场佩戴自己的原创面具",
       "lat": 37.266346,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "token": 3
     },
     {
       "id": "F4",
       "type": "food",
       "name": "时空隧道DIY Teleport",
-      "description": "F4_description",
+      "description": "通过简单有趣的电子元件连接（如LED灯、导线、电池和镜面纸），参与者将完成一个可以发光的“时空隧道”模型。\n\n灯光在镜面中形成无限延伸的视觉",
       "lat": 37.266407,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "token": 3
     },
     {
       "id": "F5",
       "type": "booth",
       "name": "指纹采集 Detect Finger Prints",
-      "description": "F5_description",
+      "description": "我们准备了专业的指纹采集工具：毛刷、指纹粉末、胶带、指纹印泥和记录卡片。\n\n游客可以用这些材料，采集自己的指纹或朋友的指纹，观察纹路的差异，完成一张独一无二的“指纹卡”。",
       "lat": 37.266469,
       "lng": -122.011768
     },
@@ -460,25 +463,28 @@
       "id": "F6",
       "type": "booth",
       "name": "证物拼图室 Mystery Solved",
-      "description": "F6_description",
+      "description": "1️⃣ 选择案件 — 从四个案件中任选一个\n\n2️⃣ 分组协作 — 六位侦探一起进入游戏桌，领取案件档案与物证包。\n\n3️⃣ 拼图找线索 — 通过观察、对比、推理，将物证拼合出真相。\n\n4️⃣ 锁定嫌疑人 — 在限定时间内完成推理，写下最终结论。",
       "lat": 37.26653,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "token": 5
     },
     {
       "id": "F7",
       "type": "booth",
       "name": "植物拓染DIY Plants Prints",
-      "description": "F7_description",
+      "description": "我们准备了：白色方手帕、小锤子、植物花瓣、草叶、胶带。\n\n参与者可挑选喜爱的植物材料，用敲打的方式将花草中的天然色素拓印在布料上，留下独一无二的自然印记。",
       "lat": 37.266591,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "token": 3
     },
     {
       "id": "F8",
       "type": "booth",
       "name": "车载香水DIY Car Essential Oil DIY",
-      "description": "F8_description",
+      "description": "1️⃣ 选择小玻璃瓶\n\n2️⃣ 加入彩色细沙与装饰\n\n3️⃣ 调配香气\n\n4️⃣ 封盖完成",
       "lat": 37.266652,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "token": 5
     },
     {
       "id": "F9",
