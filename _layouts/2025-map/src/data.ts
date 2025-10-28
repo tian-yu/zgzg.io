@@ -4,6 +4,7 @@ export interface MapItem {
   name: string;
   description?: string;
   description_file?: string;
+  token?: number;
   lat: number;
   lng: number;
 }
