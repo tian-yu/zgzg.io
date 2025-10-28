@@ -3,50 +3,50 @@
     {
       "id": "A1",
       "type": "booth",
-      "name": "A1_name",
+      "name": "悟空中文",
       "description": "A1_description",
       "lat": 37.266224,
-      "lng": -122.012446
+      "lng": -122.012464
     },
     {
       "id": "A2",
       "type": "booth",
-      "name": "A2_name",
+      "name": "纽约人寿 Sandy",
       "description": "A2_description",
       "lat": 37.266285,
-      "lng": -122.012449
+      "lng": -122.012464
     },
     {
       "id": "A3",
       "type": "booth",
-      "name": "A3_name",
+      "name": "XART—扭扭棒和套圈",
       "description": "A3_description",
       "lat": 37.266346,
-      "lng": -122.012451
+      "lng": -122.012464
     },
     {
       "id": "A4",
       "type": "booth",
-      "name": "A4_name",
+      "name": "MusicNBrian",
       "description": "A4_description",
       "lat": 37.266407,
-      "lng": -122.012454
+      "lng": -122.012464
     },
     {
       "id": "A5",
       "type": "booth",
-      "name": "A5_name",
+      "name": "Stratford Schools",
       "description": "A5_description",
       "lat": 37.266469,
-      "lng": -122.012456
+      "lng": -122.012464
     },
     {
       "id": "A6",
       "type": "booth",
-      "name": "A6_name",
+      "name": "SJ Library",
       "description": "A6_description",
       "lat": 37.26653,
-      "lng": -122.012459
+      "lng": -122.012464
     },
     {
       "id": "A7",
@@ -54,7 +54,7 @@
       "name": "A7_name",
       "description": "A7_description",
       "lat": 37.266591,
-      "lng": -122.012461
+      "lng": -122.012464
     },
     {
       "id": "A8",
@@ -67,7 +67,7 @@
     {
       "id": "B1",
       "type": "booth",
-      "name": "B1_name",
+      "name": "X-Camp",
       "description": "B1_description",
       "lat": 37.266224,
       "lng": -122.01228
@@ -75,7 +75,7 @@
     {
       "id": "B2",
       "type": "booth",
-      "name": "B2_name",
+      "name": "DVA",
       "description": "B2_description",
       "lat": 37.266285,
       "lng": -122.01228
@@ -83,7 +83,7 @@
     {
       "id": "B3",
       "type": "booth",
-      "name": "B3_name",
+      "name": "戏谷剧社",
       "description": "B3_description",
       "lat": 37.266346,
       "lng": -122.01228
@@ -91,7 +91,7 @@
     {
       "id": "B4",
       "type": "booth",
-      "name": "B4_name",
+      "name": "Intravast—夜视仪",
       "description": "B4_description",
       "lat": 37.266407,
       "lng": -122.01228
@@ -99,7 +99,7 @@
     {
       "id": "B5",
       "type": "booth",
-      "name": "B5_name",
+      "name": "sewing 社团",
       "description": "B5_description",
       "lat": 37.266469,
       "lng": -122.01228
@@ -107,7 +107,7 @@
     {
       "id": "B6",
       "type": "booth",
-      "name": "B6_name",
+      "name": "王志明律所",
       "description": "B6_description",
       "lat": 37.26653,
       "lng": -122.01228
@@ -131,7 +131,7 @@
     {
       "id": "C1",
       "type": "food",
-      "name": "C1_name",
+      "name": "Rivian",
       "description": "C1_description",
       "lat": 37.266224,
       "lng": -122.012186
@@ -139,7 +139,7 @@
     {
       "id": "C2",
       "type": "food",
-      "name": "C2_name",
+      "name": "古琴+剪纸",
       "description": "C2_description",
       "lat": 37.266285,
       "lng": -122.012186
@@ -147,7 +147,7 @@
     {
       "id": "C3",
       "type": "food",
-      "name": "C3_name",
+      "name": "糖画",
       "description": "C3_description",
       "lat": 37.266346,
       "lng": -122.012186
@@ -155,7 +155,7 @@
     {
       "id": "C4",
       "type": "food",
-      "name": "C4_name",
+      "name": "糖画",
       "description": "C4_description",
       "lat": 37.266407,
       "lng": -122.012186
@@ -163,7 +163,7 @@
     {
       "id": "C5",
       "type": "booth",
-      "name": "C5_name",
+      "name": "冰箱贴",
       "description": "C5_description",
       "lat": 37.266469,
       "lng": -122.012186
@@ -171,7 +171,7 @@
     {
       "id": "C6",
       "type": "booth",
-      "name": "C6_name",
+      "name": "冰箱贴",
       "description": "C6_description",
       "lat": 37.26653,
       "lng": -122.012186
@@ -179,7 +179,7 @@
     {
       "id": "C7",
       "type": "booth",
-      "name": "C7_name",
+      "name": "书画",
       "description": "C7_description",
       "lat": 37.266591,
       "lng": -122.012186
@@ -187,7 +187,7 @@
     {
       "id": "C8",
       "type": "booth",
-      "name": "C8_name",
+      "name": "汉服拍照",
       "description": "C8_description",
       "lat": 37.266652,
       "lng": -122.012186
@@ -195,7 +195,7 @@
     {
       "id": "C9",
       "type": "booth",
-      "name": "C9_name",
+      "name": "汉服拍照",
       "description": "C9_description",
       "lat": 37.266713,
       "lng": -122.012186
@@ -203,7 +203,7 @@
     {
       "id": "C10",
       "type": "booth",
-      "name": "C10_name",
+      "name": "天工坊",
       "description": "C10_description",
       "lat": 37.266774,
       "lng": -122.012186
@@ -211,7 +211,7 @@
     {
       "id": "C11",
       "type": "booth",
-      "name": "C11_name",
+      "name": "天工坊",
       "description": "C11_description",
       "lat": 37.266835,
       "lng": -122.012186
@@ -227,7 +227,7 @@
     {
       "id": "D1",
       "type": "food",
-      "name": "D1_name",
+      "name": "宝藏",
       "description": "D1_description",
       "lat": 37.266224,
       "lng": -122.012067
@@ -235,7 +235,7 @@
     {
       "id": "D2",
       "type": "food",
-      "name": "D2_name",
+      "name": "漆扇",
       "description": "D2_description",
       "lat": 37.266285,
       "lng": -122.012067
@@ -243,7 +243,7 @@
     {
       "id": "D3",
       "type": "food",
-      "name": "D3_name",
+      "name": "漆扇",
       "description": "D3_description",
       "lat": 37.266346,
       "lng": -122.012067
@@ -251,7 +251,7 @@
     {
       "id": "D4",
       "type": "food",
-      "name": "D4_name",
+      "name": "漆扇",
       "description": "D4_description",
       "lat": 37.266407,
       "lng": -122.012067
@@ -259,7 +259,7 @@
     {
       "id": "D5",
       "type": "booth",
-      "name": "D5_name",
+      "name": "赏竹老师书画",
       "description": "D5_description",
       "lat": 37.266469,
       "lng": -122.012067
@@ -267,7 +267,7 @@
     {
       "id": "D6",
       "type": "booth",
-      "name": "D6_name",
+      "name": "剪纸",
       "description": "D6_description",
       "lat": 37.26653,
       "lng": -122.012067
@@ -275,7 +275,7 @@
     {
       "id": "D7",
       "type": "booth",
-      "name": "D7_name",
+      "name": "剪纸",
       "description": "D7_description",
       "lat": 37.266591,
       "lng": -122.012067
@@ -283,7 +283,7 @@
     {
       "id": "D8",
       "type": "booth",
-      "name": "D8_name",
+      "name": "书法",
       "description": "D8_description",
       "lat": 37.266652,
       "lng": -122.012067
@@ -291,7 +291,7 @@
     {
       "id": "D9",
       "type": "booth",
-      "name": "D9_name",
+      "name": "灯谜",
       "description": "D9_description",
       "lat": 37.266713,
       "lng": -122.012067
@@ -299,7 +299,7 @@
     {
       "id": "D10",
       "type": "booth",
-      "name": "D10_name",
+      "name": "灯谜",
       "description": "D10_description",
       "lat": 37.266774,
       "lng": -122.012067
@@ -323,7 +323,7 @@
     {
       "id": "E1",
       "type": "food",
-      "name": "E1_name",
+      "name": "宝藏",
       "description": "E1_description",
       "lat": 37.266224,
       "lng": -122.011922
@@ -331,7 +331,7 @@
     {
       "id": "E2",
       "type": "food",
-      "name": "E2_name",
+      "name": "Little Tummy/Baozhi",
       "description": "E2_description",
       "lat": 37.266285,
       "lng": -122.011922
@@ -339,7 +339,7 @@
     {
       "id": "E3",
       "type": "food",
-      "name": "E3_name",
+      "name": "Tanghulu",
       "description": "E3_description",
       "lat": 37.266346,
       "lng": -122.011922
@@ -347,7 +347,7 @@
     {
       "id": "E4",
       "type": "food",
-      "name": "E4_name",
+      "name": "Rich Lemon Tea",
       "description": "E4_description",
       "lat": 37.266407,
       "lng": -122.011922
@@ -355,47 +355,48 @@
     {
       "id": "E5",
       "type": "booth",
-      "name": "E5_name",
-      "description": "E5_description",
+      "name": "老鼠偷奶酪",
+      "description": "游戏规则：游戏开始时，“守护者”开始慢慢抡动绳子，让大球绕圈旋转。\n\n可以逐渐加快速度，让“老鼠”更难靠近。\n\n所有其他玩家扮演“老鼠”，需要在不被球打到的情况下，冲进圈内捡小球。\n\n每次“老鼠”只能捡 一个小球，然后迅速跑回圈外放在自己身后。\n\n被旋转大球打到的老鼠要退出一轮或将捡到的小球放回去。\n\n当所有小球被捡完时，游戏结束。",
       "lat": 37.266469,
       "lng": -122.011922
     },
     {
       "id": "E6",
       "type": "booth",
-      "name": "E6_name",
-      "description": "E6_description",
+      "name": "猫追老鼠 Cat & Mouse",
+      "description": "每组由 2人或4人 组成，使用 一只猫气球、一只老鼠气球 和 两把扇子 进行游戏。\n\n场地设有一个起点和一个**“老鼠洞”终点**。\n\n猫和老鼠从起点同时出发，参与者用扇子为气球扇风，让它们沿着赛道前进，看看谁能先到达“老鼠洞”！",
       "lat": 37.26653,
       "lng": -122.011922
     },
     {
       "id": "E7",
       "type": "booth",
-      "name": "E7_name",
-      "description": "E7_description",
+      "name": "打地鼠 Whac-A-Mole",
+      "description": "在圆形游戏布的中心有一个大圆孔，中间站着 1–2 位“地鼠猎人”，手拿充气锤子。\n\n布的周围有 5 个小圆孔，由五位小朋友扮演“地鼠”，他们要在猎人的攻击中灵巧地探头、躲闪、偷看，避免被“锤”到！",
       "lat": 37.266591,
       "lng": -122.011922
     },
     {
       "id": "E8",
       "type": "booth",
-      "name": "E8_name",
-      "description": "E8_description",
+      "name": "动画DIY Phenakistoscope Animation",
+      "description": "只需打开袋子，按照说明书一步步操作，你就能做出一台可以“转动的动画机”看着你的手绘图案在光影中动起来！",
       "lat": 37.266652,
-      "lng": -122.011922
+      "lng": -122.011922,
+      "token": 3
     },
     {
       "id": "E9",
       "type": "booth",
-      "name": "E9_name",
-      "description": "E9_description",
+      "name": "故事换葫芦 A gourd for your story",
+      "description": "\"游客到摊位出示自己在小红书的故事帖截图。\n\n工作人员核对后，赠送游客一只“幸运葫芦”。\n\n游客可在领取后，在葫芦卡片上写下祝福语或心愿，悬挂在会场“心愿树”架上，形成互动景观。\"",
       "lat": 37.266713,
       "lng": -122.011922
     },
     {
       "id": "E10",
       "type": "booth",
-      "name": "E10_name",
+      "name": "画脸 Face Painting",
       "description": "E10_description",
       "lat": 37.266774,
       "lng": -122.011922
@@ -403,7 +404,7 @@
     {
       "id": "E11",
       "type": "booth",
-      "name": "E11_name",
+      "name": "鼓圈 Drum Circle",
       "description": "E11_description",
       "lat": 37.266835,
       "lng": -122.011922
@@ -419,7 +420,7 @@
     {
       "id": "F1",
       "type": "food",
-      "name": "F1_name",
+      "name": "MC Sushi (Food Truck)",
       "description": "F1_description",
       "lat": 37.266224,
       "lng": -122.011768
@@ -427,7 +428,7 @@
     {
       "id": "F2",
       "type": "food",
-      "name": "F2_name",
+      "name": "Spartan Taco (Food Truck)",
       "description": "F2_description",
       "lat": 37.266285,
       "lng": -122.011768
@@ -435,55 +436,60 @@
     {
       "id": "F3",
       "type": "food",
-      "name": "F3_name",
-      "description": "F3_description",
+      "name": "动漫面具DIY Mask Painting",
+      "description": "我们准备了空白面具、颜料、画笔和装饰材料。\n\n游客可以自由设计、上色、绘制图案，并现场佩戴自己的原创面具",
       "lat": 37.266346,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "token": 3
     },
     {
       "id": "F4",
       "type": "food",
-      "name": "F4_name",
-      "description": "F4_description",
+      "name": "时空隧道DIY Teleport",
+      "description": "通过简单有趣的电子元件连接（如LED灯、导线、电池和镜面纸），参与者将完成一个可以发光的“时空隧道”模型。\n\n灯光在镜面中形成无限延伸的视觉",
       "lat": 37.266407,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "token": 3
     },
     {
       "id": "F5",
       "type": "booth",
-      "name": "F5_name",
-      "description": "F5_description",
+      "name": "指纹采集 Detect Finger Prints",
+      "description": "我们准备了专业的指纹采集工具：毛刷、指纹粉末、胶带、指纹印泥和记录卡片。\n\n游客可以用这些材料，采集自己的指纹或朋友的指纹，观察纹路的差异，完成一张独一无二的“指纹卡”。",
       "lat": 37.266469,
       "lng": -122.011768
     },
     {
       "id": "F6",
       "type": "booth",
-      "name": "F6_name",
-      "description": "F6_description",
+      "name": "证物拼图室 Mystery Solved",
+      "description": "1️⃣ 选择案件 — 从四个案件中任选一个\n\n2️⃣ 分组协作 — 六位侦探一起进入游戏桌，领取案件档案与物证包。\n\n3️⃣ 拼图找线索 — 通过观察、对比、推理，将物证拼合出真相。\n\n4️⃣ 锁定嫌疑人 — 在限定时间内完成推理，写下最终结论。",
       "lat": 37.26653,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "token": 5
     },
     {
       "id": "F7",
       "type": "booth",
-      "name": "F7_name",
-      "description": "F7_description",
+      "name": "植物拓染DIY Plants Prints",
+      "description": "我们准备了：白色方手帕、小锤子、植物花瓣、草叶、胶带。\n\n参与者可挑选喜爱的植物材料，用敲打的方式将花草中的天然色素拓印在布料上，留下独一无二的自然印记。",
       "lat": 37.266591,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "token": 3
     },
     {
       "id": "F8",
       "type": "booth",
-      "name": "F8_name",
-      "description": "F8_description",
+      "name": "车载香水DIY Car Essential Oil DIY",
+      "description": "1️⃣ 选择小玻璃瓶\n\n2️⃣ 加入彩色细沙与装饰\n\n3️⃣ 调配香气\n\n4️⃣ 封盖完成",
       "lat": 37.266652,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "token": 5
     },
     {
       "id": "F9",
       "type": "booth",
-      "name": "F9_name",
+      "name": "兑奖",
       "description": "F9_description",
       "lat": 37.266713,
       "lng": -122.011768
@@ -491,7 +497,7 @@
     {
       "id": "F10",
       "type": "booth",
-      "name": "F10_name",
+      "name": "书影婆娑-旧书交换",
       "description": "F10_description",
       "lat": 37.266774,
       "lng": -122.011768
@@ -499,7 +505,7 @@
     {
       "id": "F11",
       "type": "booth",
-      "name": "F11_name",
+      "name": "载歌在谷照片墙展示",
       "description": "F11_description",
       "lat": 37.266835,
       "lng": -122.011768
