@@ -551,7 +551,7 @@
       "id": "stage",
       "type": "stage",
       "name": "Main Stage",
-      "description": "Main performance stage",
+      "description_file": "stage_data.html",
       "lat": 37.266892,
       "lng": -122.012361
     }
