@@ -31,6 +31,9 @@ L.Icon.Default.mergeOptions({
     shadowUrl,
 });
 
+// Global flag to switch between numbered square icons and default markers
+const useNumberedIcon = true;
+
 interface MarkerData {
     item: MapItem;
     markerRef: React.MutableRefObject<L.Marker | null>;
@@ -74,9 +77,42 @@ const calculateSize = (baseSize: number, type: MapItem['type'], zoomLevel: numbe
     return baseSize * Math.pow(1.2, zoomDiff); // Increase/decrease by 20% per zoom level
 };
 
-const createIcon = (type: MapItem['type'], color: string, size: number = 32, currentZoom: number = 18) => {
+const createSquareIcon = (type: MapItem['type'], color: string, itemId: string, size: number = 32, currentZoom: number = 18) => {
     const baseSize = typeToBaseSize[type] || size;
     const adjustedSize = calculateSize(baseSize, type, currentZoom);
+
+    const customIconHtml = ReactDOMServer.renderToString(
+        <div style={{
+            width: `${adjustedSize}px`,
+            height: `${adjustedSize}px`,
+            backgroundColor: color,
+            color: 'white',
+            textAlign: 'center',
+            lineHeight: `${adjustedSize}px`,
+            borderRadius: '4px',
+            fontSize: `${adjustedSize * 0.5}px`,
+            fontWeight: 'bold'
+        }}>
+            {itemId}
+        </div>
+    );
+
+    return L.divIcon({
+        className: 'custom-square-icon',
+        html: customIconHtml,
+        iconSize: [adjustedSize, adjustedSize],
+        iconAnchor: [adjustedSize / 2, adjustedSize / 2],
+    });
+};
+
+const createIcon = (type: MapItem['type'], color: string, size: number = 32, currentZoom: number = 18, itemId?: string) => {
+    const baseSize = typeToBaseSize[type] || size;
+    const adjustedSize = calculateSize(baseSize, type, currentZoom);
+
+    // For booth and food types, check if we should use numbered square icon
+    if ((type === 'booth' || type === 'food') && useNumberedIcon && itemId) {
+        return createSquareIcon(type, color, itemId, size, currentZoom);
+    }
 
     // For booth and food types, use marker icon
     if (type === 'booth' || type === 'food') {
@@ -113,12 +149,39 @@ const createIcon = (type: MapItem['type'], color: string, size: number = 32, cur
     });
 };
 
-const createSelectedIcon = (type: MapItem['type'], color: string, size: number = 48, currentZoom: number = 18) => {
+const createSelectedIcon = (type: MapItem['type'], color: string, size: number = 48, currentZoom: number = 18, itemId?: string) => {
     // For non-booth/food types, use the base size from typeToBaseSize
     const baseSize = typeToBaseSize[type] || size;
     const adjustedSize = calculateSize(baseSize, type, currentZoom);
 
-    // For booth and food types, use bouncing marker icon
+    // For booth and food types, create bouncing square icon when useNumberedIcon is true
+    if ((type === 'booth' || type === 'food') && useNumberedIcon && itemId) {
+        const customIconHtml = ReactDOMServer.renderToString(
+            <div className="bouncing-marker">
+                <div style={{
+                    width: `${adjustedSize}px`,
+                    height: `${adjustedSize}px`,
+                    backgroundColor: color,
+                    color: 'white',
+                    textAlign: 'center',
+                    lineHeight: `${adjustedSize}px`,
+                    borderRadius: '4px',
+                    fontSize: `${adjustedSize * 0.5}px`,
+                    fontWeight: 'bold'
+                }}>
+                    {itemId}
+                </div>
+            </div>
+        );
+        return L.divIcon({
+            className: 'custom-div-icon',
+            html: customIconHtml,
+            iconSize: [adjustedSize, adjustedSize],
+            iconAnchor: [adjustedSize / 2, adjustedSize / 2],
+        });
+    }
+
+    // For booth and food types with useNumberedIcon false, use bouncing marker icon
     if (type === 'booth' || type === 'food') {
         const customIconHtml = ReactDOMServer.renderToString(
             <div className="bouncing-marker">
@@ -164,22 +227,22 @@ const createSelectedIcon = (type: MapItem['type'], color: string, size: number =
 }
 
 const typeToColor: Partial<Record<MapItem['type'], string>> = {
-    booth: 'violet',
+    booth: useNumberedIcon ? 'purple' : 'violet',
     food: 'green',
 };
 
-const getIcon = (type: MapItem['type'], itemSelected: boolean = false, itemInStory: boolean = false, zoom: number = 18) => {
+const getIcon = (type: MapItem['type'], itemSelected: boolean = false, itemInStory: boolean = false, zoom: number = 18, itemId?: string) => {
     var color = typeToColor[type] || 'blue';
     var baseSize = typeToBaseSize[type] || 32;
     if (itemInStory) {
-        color = 'yellow';
+        color = useNumberedIcon ? 'orange' : 'yellow';
     }
     if (itemSelected) {
         baseSize = 48;
-        return createSelectedIcon(type, color, baseSize, zoom);
+        return createSelectedIcon(type, color, baseSize, zoom, itemId);
     }
     else {
-        return createIcon(type, color, baseSize, zoom);
+        return createIcon(type, color, baseSize, zoom, itemId);
     }
 };
 
@@ -245,7 +308,7 @@ export const MarketMap: React.FC = () => {
             markerDataRefs.current = data.items.map(item => ({
                 item,
                 markerRef: React.createRef<L.Marker | null>(),
-                icon: getIcon(item.type, false, false, currentZoom),
+                icon: getIcon(item.type, false, false, currentZoom, item.id),
             }));
         });
 
@@ -280,8 +343,8 @@ export const MarketMap: React.FC = () => {
         if (markerData && markerData.markerRef.current) {
             markerData.itemSelected = itemSelected ?? markerData.itemSelected;
             markerData.itemInStory = itemInStory ?? markerData.itemInStory;
-            markerData.markerRef.current.setIcon(getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory, currentZoom));
-            markerData.icon = getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory, currentZoom);
+            markerData.markerRef.current.setIcon(getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory, currentZoom, markerData.item.id));
+            markerData.icon = getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory, currentZoom, markerData.item.id);
         }
     };
 
@@ -289,8 +352,8 @@ export const MarketMap: React.FC = () => {
         if (markerData.markerRef.current) {
             markerData.itemSelected = itemSelected ?? markerData.itemSelected;
             markerData.itemInStory = itemInStory ?? markerData.itemInStory;
-            markerData.markerRef.current.setIcon(getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory, currentZoom));
-            markerData.icon = getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory, currentZoom);
+            markerData.markerRef.current.setIcon(getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory, currentZoom, markerData.item.id));
+            markerData.icon = getIcon(markerData.item.type, markerData.itemSelected, markerData.itemInStory, currentZoom, markerData.item.id);
         }
     };
 
@@ -302,7 +365,8 @@ export const MarketMap: React.FC = () => {
                         markerData.item.type,
                         markerData.itemSelected || false,
                         markerData.itemInStory || false,
-                        currentZoom
+                        currentZoom,
+                        markerData.item.id
                     )
                 );
             }
@@ -434,7 +498,8 @@ export const MarketMap: React.FC = () => {
                         markerData.item.type,
                         markerData.itemSelected || false,
                         markerData.itemInStory || false,
-                        zoom
+                        zoom,
+                        markerData.item.id
                     )
                 );
             }
