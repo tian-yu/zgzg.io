@@ -3,6 +3,9 @@ import ReactDOMServer from 'react-dom/server';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import HomeIcon from '@mui/icons-material/Home';
+import { InfoPage } from './InfoPage';
+import IconButton from '@mui/material/IconButton';
 
 import { fetchEventData, MapItem, Story, Row } from './data';
 import { BottomSheet } from './BottomSheet';
@@ -297,6 +300,7 @@ export const MarketMap: React.FC = () => {
     const [rowItems, setRowItems] = useState<MapItem[]>([]);
     const [isDrawerOpen, setDrawerOpen] = useState(false);
     const [currentZoom, setCurrentZoom] = useState(18); // Default zoom level
+    const [isInfoPageOpen, setInfoPageOpen] = useState(false);
 
     const markerDataRefs = useRef<MarkerData[]>([]);
 
@@ -510,21 +514,29 @@ export const MarketMap: React.FC = () => {
 
     return (
         <Box sx={{ width: '100%', height: '100vh', position: 'relative' }}>
-            <FormControl sx={{ m: 1, minWidth: 120, position: 'absolute', top: 10, right: 10, zIndex: 1000, backgroundColor: 'white' }}>
-                <InputLabel id="story-select-label">Select Story</InputLabel>
-                <Select
-                    labelId="story-select-label"
-                    id="story-select"
-                    value={selectedStoryId}
-                    label="Select Story"
-                    onChange={handleStoryChange}
-                >
-                    <MenuItem value=""><em>None</em></MenuItem>
-                    {stories.map(story => (
-                        <MenuItem key={story.id} value={story.id}>{story.name}</MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
+            <IconButton
+                onClick={() => setInfoPageOpen(true)}
+                sx={{
+                    position: 'absolute',
+                    top: 10,
+                    right: 10,
+                    zIndex: 1000,
+                    backgroundColor: 'white',
+                    '&:hover': {
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    },
+                }}
+            >
+                <HomeIcon />
+            </IconButton>
+
+            <InfoPage
+                open={isInfoPageOpen}
+                onClose={() => setInfoPageOpen(false)}
+                stories={stories}
+                selectedStoryId={selectedStoryId}
+                onStoryChange={handleStoryChange}
+            />
 
             <MapContainer
                 center={[37.266240, -122.012685]}
