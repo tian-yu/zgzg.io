@@ -118,7 +118,9 @@ export const InfoPage: React.FC<InfoPageProps> = ({
                                 </Select>
                             </FormControl>
                         </Box> */}
-                        <Typography>指南照片</Typography>
+                        <Typography>🟪=常规摊位 Regular Booth</Typography>
+                        <Typography>🟩=食品摊位 Food Booth</Typography>
+                        <Typography>(指南照片)</Typography>
                     </CustomTabPanel>
                     <CustomTabPanel value={tabValue} index={1}>
                         <Typography variant="h6" sx={{

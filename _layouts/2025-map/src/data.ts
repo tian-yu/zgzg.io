@@ -2,6 +2,7 @@ export interface MapItem {
   id: string;
   type: 'booth' | 'food' | 'stage' | 'restroom' | 'service' | 'checkin' | 'medical' | 'foodtruck';
   name: string;
+  subtitle?: string;
   description?: string;
   description_file?: string;
   token?: number;

@@ -309,6 +309,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
                             )}
                             <Box sx={{ pl: storyItems.some(item => item.id === selectedItem.id) ? 4 : 0 }}>
                                 <Typography variant="h5">{selectedItem.name}</Typography>
+                                <Typography variant="subtitle1">{selectedItem.subtitle}</Typography>
                                 <br></br>
                                 {selectedItem.description_file ? (
                                     isLoading ? (
