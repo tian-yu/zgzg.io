@@ -1,6 +1,6 @@
 export interface MapItem {
   id: string;
-  type: 'booth' | 'food' | 'stage' | 'restroom' | 'service' | 'checkin' | 'medical' | 'foodtruck';
+  type: 'booth' | 'food' | 'stage' | 'restroom' | 'service' | 'checkin' | 'medical' | 'foodtruck' | 'demo_drive' | 'parking' | 'surprise' | 'prize';
   name: string;
   subtitle?: string;
   description?: string;

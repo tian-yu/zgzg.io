@@ -27,6 +27,10 @@ import serviceImage from './images/service.png';
 import stageImage from './images/stage.png';
 import medicalImage from './images/medical.png';
 import foodtruckImage from './images/foodtruck.png';
+import demoDriveImage from './images/demo_drive.png';
+import parkingImage from './images/parking.png';
+import surpriseImage from './images/surprise.png';
+import prizeImage from './images/prize.png';
 
 L.Icon.Default.mergeOptions({
     iconRetinaUrl,
@@ -53,6 +57,10 @@ const typeToImagePath: Partial<Record<MapItem['type'], string>> = {
     checkin: checkinImage,
     medical: medicalImage,
     foodtruck: foodtruckImage,
+    demo_drive: demoDriveImage,
+    parking: parkingImage,
+    surprise: surpriseImage,
+    prize: prizeImage
 };
 
 // Base sizes for different types of icons at zoom level 18
@@ -64,7 +72,9 @@ const typeToBaseSize: Partial<Record<MapItem['type'], number>> = {
     medical: 40,
     foodtruck: 40,
     booth: 32,
-    food: 32
+    food: 32,
+    demo_drive: 33,
+    prize: 28
 };
 
 // Calculate size based on zoom level

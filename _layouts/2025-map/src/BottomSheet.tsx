@@ -310,7 +310,6 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
                             <Box sx={{ pl: storyItems.some(item => item.id === selectedItem.id) ? 4 : 0 }}>
                                 <Typography variant="h5">{selectedItem.name}</Typography>
                                 <Typography variant="subtitle1">{selectedItem.subtitle}</Typography>
-                                <br></br>
                                 {selectedItem.description_file ? (
                                     isLoading ? (
                                         <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>
@@ -328,21 +327,25 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
                                     )
                                 ) : (
                                     <>
-                                        {selectedItem.token && selectedItem.token > 0 && (
-                                            <Typography
-                                                variant="body1"
-                                                sx={{
-                                                    fontWeight: 'bold',
-                                                    color: 'red',
-                                                    mb: 1 // margin bottom for spacing
-                                                }}
-                                            >
-                                                需要金币 Need coin：{selectedItem.token}
-                                            </Typography>
-                                        )}
-                                        <Typography variant="body1" sx={{
-                                            whiteSpace: 'pre-wrap', // Respects newlines and wraps long lines
-                                        }}>{selectedItem.description}</Typography>
+                                        <Box>
+                                            <br></br>
+                                            {selectedItem.token && selectedItem.token > 0 && (
+                                                <Typography
+                                                    variant="body1"
+                                                    sx={{
+                                                        fontWeight: 'bold',
+                                                        color: 'red',
+                                                        mb: 1 // margin bottom for spacing
+                                                    }}
+                                                >
+                                                    需要游戏币 Need Coins：{selectedItem.token}
+                                                </Typography>
+
+                                            )}
+                                            <Typography variant="body1" sx={{
+                                                whiteSpace: 'pre-wrap', // Respects newlines and wraps long lines
+                                            }}>{selectedItem.description}</Typography>
+                                        </Box>
                                     </>
                                 )}
                             </Box>

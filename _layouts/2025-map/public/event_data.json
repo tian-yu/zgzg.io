@@ -130,7 +130,8 @@
       "subtitle": "Sugar Painting",
       "description": "C3_description",
       "lat": 37.266346,
-      "lng": -122.012186
+      "lng": -122.012186,
+      "token": 2
     },
     {
       "id": "C4",
@@ -139,7 +140,8 @@
       "subtitle": "Sugar Painting",
       "description": "C4_description",
       "lat": 37.266407,
-      "lng": -122.012186
+      "lng": -122.012186,
+      "token": 2
     },
     {
       "id": "C5",
@@ -148,7 +150,8 @@
       "subtitle": "Fridge Magnet Workshop",
       "description": "C5_description",
       "lat": 37.266469,
-      "lng": -122.012186
+      "lng": -122.012186,
+      "token": 2
     },
     {
       "id": "C6",
@@ -157,7 +160,8 @@
       "subtitle": "Fridge Magnet Workshop",
       "description": "C6_description",
       "lat": 37.26653,
-      "lng": -122.012186
+      "lng": -122.012186,
+      "token": 2
     },
     {
       "id": "C7",
@@ -166,7 +170,8 @@
       "subtitle": "Calligraphy & Painting",
       "description": "C7_description",
       "lat": 37.266591,
-      "lng": -122.012186
+      "lng": -122.012186,
+      "token": 1
     },
     {
       "id": "C8",
@@ -202,7 +207,8 @@
       "subtitle": "Marbling Fan",
       "description": "D2_description",
       "lat": 37.266285,
-      "lng": -122.012067
+      "lng": -122.012067,
+      "token": 2
     },
     {
       "id": "D3",
@@ -238,7 +244,8 @@
       "subtitle": "Calligraphy",
       "description": "D6_description",
       "lat": 37.26653,
-      "lng": -122.012067
+      "lng": -122.012067,
+      "token": 1
     },
     {
       "id": "D7",
@@ -247,7 +254,8 @@
       "subtitle": "Handmade Antique Workshop",
       "description": "D7_description",
       "lat": 37.266591,
-      "lng": -122.012067
+      "lng": -122.012067,
+      "token": 2
     },
     {
       "id": "D8",
@@ -256,12 +264,13 @@
       "subtitle": "Handmade Antique Workshop",
       "description": "D8_description",
       "lat": 37.266652,
-      "lng": -122.012067
+      "lng": -122.012067,
+      "token": 2
     },
     {
       "id": "D9",
       "type": "booth",
-      "name": "灯谜",
+      "name": "灯谜🏮",
       "subtitle": "Lantern Riddles",
       "description": "D9_description",
       "lat": 37.266713,
@@ -337,7 +346,7 @@
       "description": "只需打开袋子，按照说明书一步步操作，你就能做出一台可以“转动的动画机”看着你的手绘图案在光影中动起来！",
       "lat": 37.266652,
       "lng": -122.011922,
-      "token": 3
+      "token": 1
     },
     {
       "id": "E9",
@@ -355,7 +364,8 @@
       "subtitle": "Face Painting",
       "description": "E10_description",
       "lat": 37.266774,
-      "lng": -122.011922
+      "lng": -122.011922,
+      "token": 2
     },
     {
       "id": "E11",
@@ -392,7 +402,7 @@
       "description": "我们准备了空白面具、颜料、画笔和装饰材料。\n\n游客可以自由设计、上色、绘制图案，并现场佩戴自己的原创面具",
       "lat": 37.266346,
       "lng": -122.011768,
-      "token": 3
+      "token": 1
     },
     {
       "id": "F4",
@@ -402,7 +412,7 @@
       "description": "通过简单有趣的电子元件连接（如LED灯、导线、电池和镜面纸），参与者将完成一个可以发光的“时空隧道”模型。\n\n灯光在镜面中形成无限延伸的视觉",
       "lat": 37.266407,
       "lng": -122.011768,
-      "token": 3
+      "token": 1
     },
     {
       "id": "F5",
@@ -421,7 +431,7 @@
       "description": "1️⃣ 选择案件 — 从四个案件中任选一个\n\n2️⃣ 分组协作 — 六位侦探一起进入游戏桌，领取案件档案与物证包。\n\n3️⃣ 拼图找线索 — 通过观察、对比、推理，将物证拼合出真相。\n\n4️⃣ 锁定嫌疑人 — 在限定时间内完成推理，写下最终结论。",
       "lat": 37.26653,
       "lng": -122.011768,
-      "token": 5
+      "token": 2
     },
     {
       "id": "F7",
@@ -431,7 +441,7 @@
       "description": "我们准备了：白色方手帕、小锤子、植物花瓣、草叶、胶带。\n\n参与者可挑选喜爱的植物材料，用敲打的方式将花草中的天然色素拓印在布料上，留下独一无二的自然印记。",
       "lat": 37.266591,
       "lng": -122.011768,
-      "token": 3
+      "token": 1
     },
     {
       "id": "F8",
@@ -441,11 +451,11 @@
       "description": "1️⃣ 选择小玻璃瓶\n\n2️⃣ 加入彩色细沙与装饰\n\n3️⃣ 调配香气\n\n4️⃣ 封盖完成",
       "lat": 37.266652,
       "lng": -122.011768,
-      "token": 5
+      "token": 2
     },
     {
       "id": "F9",
-      "type": "booth",
+      "type": "prize",
       "name": "兑奖处🎁",
       "subtitle": "Prize Redemption",
       "description": "F9_description",
@@ -473,53 +483,88 @@
     {
       "id": "restroom1",
       "type": "restroom",
-      "name": "Restrooms 1",
+      "name": "洗手间 1🚻",
+      "subtitle": "Restrooms 1",
       "lat": 37.266933,
       "lng": -122.011802
     },
     {
       "id": "restroom2",
       "type": "restroom",
-      "name": "Restrooms 2",
+      "name": "洗手间 2🚻",
+      "subtitle": "Restrooms 2",
       "description": "Inside the building",
       "lat": 37.26454390141667,
       "lng": -122.0115421509249
     },
     {
-      "id": "service",
-      "type": "service",
-      "name": "Volunteer Center",
-      "lat": 37.266196,
-      "lng": -122.012811
-    },
-    {
       "id": "checkin",
       "type": "checkin",
-      "name": "Check-In Booth",
+      "name": "签到处✅",
+      "subtitle": "Check-In Booth",
       "lat": 37.266126,
       "lng": -122.012635
     },
     {
       "id": "medical",
       "type": "medical",
-      "name": "First Aid Station",
+      "name": "急救车🏥",
+      "subtitle": "First Aid Station",
       "lat": 37.266658,
       "lng": -122.012586
     },
     {
       "id": "foodtruck",
       "type": "foodtruck",
-      "name": "Food Truck Area",
+      "name": "就餐区🍜",
+      "subtitle": "Picnic Area",
       "lat": 37.266133,
       "lng": -122.011843
     },
     {
       "id": "stage",
       "type": "stage",
-      "name": "Main Stage",
+      "name": "节目单",
+      "subtitle": "Show List",
       "description_file": "stage_data.html",
       "lat": 37.266892,
       "lng": -122.012361
+    },
+    {
+      "id": "demo_drive",
+      "type": "demo_drive",
+      "name": "Rivian试驾🚗",
+      "subtitle": "Rivian Demo Drive",
+      "description": "Demo Drive",
+      "lat": 37.266066,
+      "lng": -122.012920
+    },
+    {
+      "id": "parking_a",
+      "type": "parking",
+      "name": "停车区A",
+      "subtitle": "Parking Lot A",
+      "description": "签到处领取停车票\nPlease get parking ticket at Check-In Booth",
+      "lat": 37.266657,
+      "lng": -122.010792
+    },
+    {
+      "id": "parking_b",
+      "type": "parking",
+      "name": "停车区B",
+      "subtitle": "Parking Lot B",
+      "description": "签到处领取停车票\nPlease get parking ticket at Check-In Booth",
+      "lat": 37.264884,
+      "lng": -122.012975
+    },
+    {
+      "id": "surprise",
+      "type": "surprise",
+      "name": "神秘体验区",
+      "subtitle": "Mystery",
+      "description": "等你来探索！",
+      "lat": 37.266236,
+      "lng": -122.012834
     }
   ],
   "rows": [
