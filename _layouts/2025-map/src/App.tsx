@@ -6,8 +6,9 @@ import { CssBaseline } from '@mui/material';
 function App() {
   return (
     <div className="App">
-      <CssBaseline />
-      <MarketMap />
+      <img src={`${process.env.PUBLIC_URL}/coming_soon.png`}></img>
+      {/* <CssBaseline />
+      <MarketMap /> */}
     </div>
   );
 }
