@@ -483,17 +483,22 @@
     {
       "id": "restroom1",
       "type": "restroom",
-      "name": "洗手间 1🚻",
-      "subtitle": "Restrooms 1",
+      "name": "洗手间🚻",
+      "subtitle": "Restrooms",
+      "description": "更多洗手间位置 More restroom locations：",
+      "link_to_id": "restroom2",
+      "link_display": "点击这里 Click Here",
       "lat": 37.266933,
       "lng": -122.011802
     },
     {
       "id": "restroom2",
       "type": "restroom",
-      "name": "洗手间 2🚻",
-      "subtitle": "Restrooms 2",
-      "description": "Inside the building",
+      "name": "West Valley College洗手间🚻",
+      "subtitle": "West Valley College Restrooms",
+      "description": "位置：West Valley College楼内\nLocation: Inside the building West Valley College buildings\n\n更多洗手间位置 More restroom locations：",
+      "link_to_id": "restroom1",
+      "link_display": "点击这里 Click Here",
       "lat": 37.26454390141667,
       "lng": -122.0115421509249
     },

@@ -598,6 +598,8 @@ export const MarketMap: React.FC = () => {
                 storyItems={storyItems}
                 rowItems={rowItems}
                 selectedRow={selectedRow}
+                items={items}
+                onSelectItem={(item) => handleMarkerClick(item)}
             />
         </Box>
     );

@@ -2,12 +2,14 @@ export interface MapItem {
   id: string;
   type: 'booth' | 'food' | 'stage' | 'restroom' | 'service' | 'checkin' | 'medical' | 'foodtruck' | 'demo_drive' | 'parking' | 'surprise' | 'prize';
   name: string;
+  lat: number;
+  lng: number;
   subtitle?: string;
   description?: string;
   description_file?: string;
   token?: number;
-  lat: number;
-  lng: number;
+  link_to_id?: string;
+  link_display?: string;
 }
 
 export interface Row {

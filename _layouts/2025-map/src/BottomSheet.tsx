@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { styled } from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
 
 import { MapItem, Row } from './data';
 
@@ -44,9 +45,11 @@ interface BottomSheetProps {
     storyItems: MapItem[];
     rowItems: MapItem[];
     selectedRow: Row | null;
+    items: MapItem[];
+    onSelectItem: (item: MapItem) => void;
 }
 
-export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selectedItem: initialSelectedItem, storyItems }) => {
+export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selectedItem: initialSelectedItem, storyItems, items, onSelectItem }) => {
     const [selectedItem, setSelectedItem] = React.useState<MapItem | null>(initialSelectedItem);
     const [isFullyOpen, setIsFullyOpen] = React.useState(isOpen);
     const [isMinimized, setIsMinimized] = React.useState(false);
@@ -347,6 +350,21 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
                                             }}>{selectedItem.description}</Typography>
                                         </Box>
                                     </>
+                                )}
+                                {selectedItem.link_to_id && selectedItem.link_display && (
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={() => {
+                                            const linkedItem = items.find(item => item.id === selectedItem.link_to_id);
+                                            if (linkedItem) {
+                                                onSelectItem(linkedItem);
+                                            }
+                                        }}
+                                        sx={{ mb: 2 }}
+                                    >
+                                        {selectedItem.link_display}
+                                    </Button>
                                 )}
                             </Box>
                         </Box>
