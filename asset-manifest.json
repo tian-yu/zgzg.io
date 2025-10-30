@@ -1,22 +1,26 @@
 {
   "files": {
     "main.css": "/zgzg.io/static/css/main.c995a216.css",
-    "main.js": "/zgzg.io/static/js/main.e2a73896.js",
+    "main.js": "/zgzg.io/static/js/main.8de3685f.js",
     "static/js/453.87d15d3f.chunk.js": "/zgzg.io/static/js/453.87d15d3f.chunk.js",
     "static/media/all_logos.svg": "/zgzg.io/static/media/all_logos.138ad5cfb48e4d37c03e6aa128b1e9cd.svg",
     "static/media/service.png": "/zgzg.io/static/media/service.66dc6164084ff05988b9.png",
+    "static/media/demo_drive.png": "/zgzg.io/static/media/demo_drive.1f2c891be730c180b6d7.png",
+    "static/media/prize.png": "/zgzg.io/static/media/prize.a742d657fafaf839196a.png",
     "static/media/stage.png": "/zgzg.io/static/media/stage.44b61c64dbadbba20319.png",
     "static/media/checkin.png": "/zgzg.io/static/media/checkin.dcdc5d0eb2d6955c26bf.png",
     "static/media/foodtruck.png": "/zgzg.io/static/media/foodtruck.e725847afb112d18a8a2.png",
+    "static/media/surprise.png": "/zgzg.io/static/media/surprise.c8323ba71ddd89521e51.png",
     "static/media/restroom.png": "/zgzg.io/static/media/restroom.79618280569fa63372e5.png",
+    "static/media/parking.png": "/zgzg.io/static/media/parking.276707936800078d47f9.png",
     "static/media/medical.png": "/zgzg.io/static/media/medical.154409b6f02972a98ec4.png",
     "index.html": "/zgzg.io/index.html",
     "main.c995a216.css.map": "/zgzg.io/static/css/main.c995a216.css.map",
-    "main.e2a73896.js.map": "/zgzg.io/static/js/main.e2a73896.js.map",
+    "main.8de3685f.js.map": "/zgzg.io/static/js/main.8de3685f.js.map",
     "453.87d15d3f.chunk.js.map": "/zgzg.io/static/js/453.87d15d3f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c995a216.css",
-    "static/js/main.e2a73896.js"
+    "static/js/main.8de3685f.js"
   ]
 }
