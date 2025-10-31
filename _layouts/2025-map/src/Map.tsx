@@ -22,6 +22,7 @@ import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 import restroomImage from './images/restroom.png';
+import shadowRestroomImage from './images/shadow_restroom.png';
 import checkinImage from './images/checkin.png';
 import serviceImage from './images/service.png';
 import stageImage from './images/stage.png';
@@ -53,6 +54,7 @@ interface MarkerData {
 const typeToImagePath: Partial<Record<MapItem['type'], string>> = {
     stage: stageImage,
     restroom: restroomImage,
+    shadow_restroom: shadowRestroomImage,
     service: serviceImage,
     checkin: checkinImage,
     medical: medicalImage,

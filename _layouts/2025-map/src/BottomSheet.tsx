@@ -49,6 +49,7 @@ interface BottomSheetProps {
     onSelectItem: (item: MapItem) => void;
 }
 
+
 export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selectedItem: initialSelectedItem, storyItems, items, onSelectItem }) => {
     const [selectedItem, setSelectedItem] = React.useState<MapItem | null>(initialSelectedItem);
     const [isFullyOpen, setIsFullyOpen] = React.useState(isOpen);
@@ -312,7 +313,35 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
                             )}
                             <Box sx={{ pl: storyItems.some(item => item.id === selectedItem.id) ? 4 : 0 }}>
                                 <Typography variant="h5">{selectedItem.name}</Typography>
-                                <Typography variant="subtitle1">{selectedItem.subtitle}</Typography>
+                                <Typography variant="subtitle1" sx={{ marginBottom: "5px" }}>{selectedItem.subtitle}</Typography>
+                                {selectedItem.token && selectedItem.token > 0 && (
+                                    <Typography
+                                        variant="body1"
+                                        sx={{
+                                            fontWeight: 'bold',
+                                            color: 'red',
+                                            mb: 1 // margin bottom for spacing
+                                        }}
+                                    >
+                                        需要游戏币 Need Coins：{selectedItem.token}
+                                    </Typography>
+                                )}
+                                {selectedItem.stamp && (
+                                    <Typography
+                                        variant="body1"
+                                        sx={{
+                                            fontWeight: 'bold',
+                                            color: '#8B008B',
+                                            mb: 1
+                                        }}
+                                    >
+                                        打卡类别 Stamp Type: {
+                                            selectedItem.stamp === 's' ? '赞助 Sponsor' :
+                                                selectedItem.stamp === 't' ? '传统 Traditional' :
+                                                    selectedItem.stamp === 'n' ? '非传统 Non-traditional' : ''
+                                        }
+                                    </Typography>
+                                )}
                                 {selectedItem.description_file ? (
                                     isLoading ? (
                                         <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>
@@ -329,27 +358,11 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
                                         />
                                     )
                                 ) : (
-                                    <>
-                                        <Box>
-                                            <br></br>
-                                            {selectedItem.token && selectedItem.token > 0 && (
-                                                <Typography
-                                                    variant="body1"
-                                                    sx={{
-                                                        fontWeight: 'bold',
-                                                        color: 'red',
-                                                        mb: 1 // margin bottom for spacing
-                                                    }}
-                                                >
-                                                    需要游戏币 Need Coins：{selectedItem.token}
-                                                </Typography>
-
-                                            )}
-                                            <Typography variant="body1" sx={{
-                                                whiteSpace: 'pre-wrap', // Respects newlines and wraps long lines
-                                            }}>{selectedItem.description}</Typography>
-                                        </Box>
-                                    </>
+                                    <Box>
+                                        <Typography variant="body1" sx={{
+                                            whiteSpace: 'pre-wrap', // Respects newlines and wraps long lines
+                                        }}>{selectedItem.description}</Typography>
+                                    </Box>
                                 )}
                                 {selectedItem.link_to_id && selectedItem.link_display && (
                                     <Button
@@ -389,6 +402,6 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
                     )}
                 </Box>
             </Box>
-        </SwipeableDrawer>
+        </SwipeableDrawer >
     );
 };

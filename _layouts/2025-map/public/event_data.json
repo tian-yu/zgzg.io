@@ -7,6 +7,7 @@
       "subtitle": "Wukong Education",
       "lat": 37.266224,
       "lng": -122.012464,
+      "stamp": "s",
       "description_file": "booths/A1.html"
     },
     {
@@ -16,6 +17,7 @@
       "subtitle": "New York Life",
       "lat": 37.266285,
       "lng": -122.012464,
+      "stamp": "s",
       "description_file": "booths/A2.html"
     },
     {
@@ -41,6 +43,7 @@
       "name": "Stratford Schools",
       "lat": 37.266469,
       "lng": -122.012464,
+      "stamp": "s",
       "description_file": "booths/A5.html"
     },
     {
@@ -59,6 +62,7 @@
       "subtitle": "X-Camp Academy",
       "lat": 37.266224,
       "lng": -122.01228,
+      "stamp": "s",
       "description_file": "booths/B1.html"
     },
     {
@@ -104,6 +108,7 @@
       "subtitle": "Pacific Coast Trial Law Firm",
       "lat": 37.26653,
       "lng": -122.01228,
+      "stamp": "s",
       "description_file": "booths/B6.html"
     },
     {
@@ -112,6 +117,7 @@
       "name": "Rivian",
       "lat": 37.266224,
       "lng": -122.012186,
+      "stamp": "s",
       "description_file": "booths/C1.html"
     },
     {
@@ -121,6 +127,7 @@
       "subtitle": "Chinese Zither",
       "lat": 37.266285,
       "lng": -122.012186,
+      "stamp": "t",
       "description_file": "booths/C2.html"
     },
     {
@@ -131,6 +138,7 @@
       "lat": 37.266346,
       "lng": -122.012186,
       "token": 2,
+      "stamp": "t",
       "description_file": "booths/C3.html"
     },
     {
@@ -141,6 +149,7 @@
       "lat": 37.266407,
       "lng": -122.012186,
       "token": 2,
+      "stamp": "t",
       "description_file": "booths/C4.html"
     },
     {
@@ -151,6 +160,7 @@
       "lat": 37.266469,
       "lng": -122.012186,
       "token": 2,
+      "stamp": "t",
       "description_file": "booths/C5.html"
     },
     {
@@ -161,6 +171,7 @@
       "lat": 37.26653,
       "lng": -122.012186,
       "token": 2,
+      "stamp": "t",
       "description_file": "booths/C6.html"
     },
     {
@@ -171,6 +182,7 @@
       "lat": 37.266591,
       "lng": -122.012186,
       "token": 1,
+      "stamp": "t",
       "description_file": "booths/C7.html"
     },
     {
@@ -180,6 +192,7 @@
       "subtitle": "Hanfu Styling",
       "lat": 37.266652,
       "lng": -122.012186,
+      "stamp": "t",
       "description_file": "booths/C8.html"
     },
     {
@@ -189,6 +202,7 @@
       "subtitle": "Hanfu Styling",
       "lat": 37.266713,
       "lng": -122.012186,
+      "stamp": "t",
       "description_file": "booths/C9.html"
     },
     {
@@ -218,6 +232,7 @@
       "lat": 37.266285,
       "lng": -122.012067,
       "token": 2,
+      "stamp": "t",
       "description_file": "booths/D2.html"
     },
     {
@@ -227,6 +242,7 @@
       "subtitle": "Chinese Paper Cutting",
       "lat": 37.266346,
       "lng": -122.012067,
+      "stamp": "t",
       "description_file": "booths/D3.html"
     },
     {
@@ -236,6 +252,7 @@
       "subtitle": "Chinese Paper Cutting",
       "lat": 37.266407,
       "lng": -122.012067,
+      "stamp": "t",
       "description_file": "booths/D4.html"
     },
     {
@@ -245,6 +262,7 @@
       "subtitle": "Art Exhibition by Shangzhu",
       "lat": 37.266469,
       "lng": -122.012067,
+      "stamp": "t",
       "description_file": "booths/D5.html"
     },
     {
@@ -255,6 +273,7 @@
       "lat": 37.26653,
       "lng": -122.012067,
       "token": 2,
+      "stamp": "t",
       "description_file": "booths/D6.html"
     },
     {
@@ -265,6 +284,7 @@
       "lat": 37.266591,
       "lng": -122.012067,
       "token": 2,
+      "stamp": "t",
       "description_file": "booths/D7.html"
     },
     {
@@ -274,6 +294,7 @@
       "subtitle": "Lantern Riddles",
       "lat": 37.266652,
       "lng": -122.012067,
+      "stamp": "t",
       "description_file": "booths/D8.html"
     },
     {
@@ -336,6 +357,7 @@
       "subtitle": "Eat the Cheese",
       "lat": 37.266469,
       "lng": -122.011922,
+      "stamp": "n",
       "description_file": "booths/E5.html"
     },
     {
@@ -345,6 +367,7 @@
       "subtitle": "Cat & Mouse",
       "lat": 37.26653,
       "lng": -122.011922,
+      "stamp": "n",
       "description_file": "booths/E6.html"
     },
     {
@@ -354,6 +377,7 @@
       "subtitle": "Whac-A-Mole",
       "lat": 37.266591,
       "lng": -122.011922,
+      "stamp": "n",
       "description_file": "booths/E7.html"
     },
     {
@@ -364,6 +388,7 @@
       "lat": 37.266652,
       "lng": -122.011922,
       "token": 1,
+      "stamp": "n",
       "description_file": "booths/E8.html"
     },
     {
@@ -373,6 +398,7 @@
       "subtitle": "A gourd for your story",
       "lat": 37.266713,
       "lng": -122.011922,
+      "stamp": "n",
       "description_file": "booths/E9.html"
     },
     {
@@ -383,6 +409,7 @@
       "lat": 37.266774,
       "lng": -122.011922,
       "token": 2,
+      "stamp": "n",
       "description_file": "booths/E10.html"
     },
     {
@@ -411,6 +438,7 @@
       "lat": 37.266346,
       "lng": -122.011768,
       "token": 1,
+      "stamp": "n",
       "description_file": "booths/F3.html"
     },
     {
@@ -421,6 +449,7 @@
       "lat": 37.266407,
       "lng": -122.011768,
       "token": 1,
+      "stamp": "n",
       "description_file": "booths/F4.html"
     },
     {
@@ -430,6 +459,7 @@
       "subtitle": "Detect Finger Prints",
       "lat": 37.266469,
       "lng": -122.011768,
+      "stamp": "n",
       "description_file": "booths/F5.html"
     },
     {
@@ -440,6 +470,7 @@
       "lat": 37.26653,
       "lng": -122.011768,
       "token": 2,
+      "stamp": "n",
       "description_file": "booths/F6.html"
     },
     {
@@ -450,6 +481,7 @@
       "lat": 37.266591,
       "lng": -122.011768,
       "token": 1,
+      "stamp": "n",
       "description_file": "booths/F7.html"
     },
     {
@@ -460,6 +492,7 @@
       "lat": 37.266652,
       "lng": -122.011768,
       "token": 2,
+      "stamp": "n",
       "description_file": "booths/F8.html"
     },
     {
@@ -501,6 +534,15 @@
       "link_display": "点击这里 Click Here",
       "lat": 37.26454390141667,
       "lng": -122.0115421509249
+    },
+    {
+      "id": "shadow_restroom",
+      "type": "shadow_restroom",
+      "name": "VA公共洗手间（非活动场地）🚻",
+      "subtitle": "VA Public Restrooms (not part of event)",
+      "description": "非活动方提供\nNot maintained by event organizers",
+      "lat": 37.2665223,
+      "lng": -122.012891
     },
     {
       "id": "checkin",

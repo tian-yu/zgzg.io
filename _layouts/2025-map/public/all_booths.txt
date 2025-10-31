@@ -689,7 +689,7 @@ If you feel unwell, have a minor injury, or need immediate assistance,
 <start>
 id: "B2"
 name: "DVA | DaVinci Academy of Silicon Valley"
-description: ：DVA-DaVinci Academy of Silicon Valley
+description: DVA-DaVinci Academy of Silicon Valley
 提倡“体验式学习”的教育理念，强调将生活作为课堂，通过“掌握学习法”(Mastery-Learning) 和小班授课模式，让学生在实际项目中应用知识，实现有目的的学习。学校课程丰富且富有挑战性，包含大量的实地考察和动手实践机会。（stem课程）
 本次游园会摊位 B2
 了解更多： https://www.davincisv.org/
