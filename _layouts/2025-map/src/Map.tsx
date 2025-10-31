@@ -551,7 +551,7 @@ export const MarketMap: React.FC = () => {
             />
 
             <MapContainer
-                center={[37.266240, -122.012685]}
+                center={[37.266114, -122.012114]}
                 zoom={18}
                 minZoom={18}
                 maxZoom={20}

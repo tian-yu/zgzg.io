@@ -589,19 +589,28 @@
       "lng": -122.01292
     },
     {
-      "id": "parking_a",
+      "id": "parking_2",
       "type": "parking",
-      "name": "停车区Lot 2",
-      "subtitle": "Parking Lot 2",
+      "name": "游客停车区Lot 2",
+      "subtitle": "Attendee Parking Lot 2",
       "description": "签到处领取停车票\nPlease get parking ticket at Check-In Booth",
-      "lat": 37.266657,
-      "lng": -122.010792
+      "lat": 37.266824,
+      "lng": -122.011208
     },
     {
-      "id": "parking_b",
+      "id": "parking_3",
       "type": "parking",
-      "name": "停车区Lot 4",
-      "subtitle": "Parking Lot 4",
+      "name": "志愿者和演员停车区Lot 3",
+      "subtitle": "Volunteer/Performer Parking Lot 3",
+      "description": "签到处领取停车票\nPlease get parking ticket at Check-In Booth",
+      "lat": 37.265693,
+      "lng": -122.012975
+    },
+    {
+      "id": "parking_4",
+      "type": "parking",
+      "name": "游客停车区Lot 4",
+      "subtitle": "Attendee Parking Lot 4",
       "description": "签到处领取停车票\nPlease get parking ticket at Check-In Booth",
       "lat": 37.264884,
       "lng": -122.012975

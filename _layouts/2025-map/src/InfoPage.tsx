@@ -4,6 +4,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import { styled } from '@mui/material/styles';
 import { Story } from './data';
 import allLogoImage from './images/logos/all_logos.svg';
+import VolunteerCard from './components/VolunteerCard';
+import Guide from './components/Guide';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -118,9 +120,7 @@ export const InfoPage: React.FC<InfoPageProps> = ({
                                 </Select>
                             </FormControl>
                         </Box> */}
-                        <Typography>🟪=常规摊位 Regular Booth</Typography>
-                        <Typography>🟩=食品摊位 Food Booth</Typography>
-                        <Typography>(指南照片)</Typography>
+                        <Guide />
                     </CustomTabPanel>
                     <CustomTabPanel value={tabValue} index={1}>
                         <Typography variant="h6" sx={{
@@ -128,16 +128,7 @@ export const InfoPage: React.FC<InfoPageProps> = ({
                         }}>赞助/伙伴社区 Sponsorship/Partner Communities</Typography>
                         <img src={allLogoImage} alt="All Sponsors Logos" style={{ height: 'auto', objectFit: 'contain' }} />
                         <Typography variant="h6">志愿者列表 Volunteers</Typography>
-                        <div style={{
-                            background: '#edf4f7',
-                            borderRadius: '8px',
-                            paddingRight: '0.5rem',
-                            paddingTop: '0.5rem',
-                            paddingBottom: '0.5rem',
-                            marginTop: '0',
-                            listStyleType: 'none',
-                            fontSize: '0.8rem',
-                        }}>
+                        <VolunteerCard>
                             <p><b>出品:</b> 周载南</p>
                             <p><b>顾问:</b> 张越，蒋铮，Yudy，Senkei，艺驰，宋博，拓，Aiden，Zoey</p>
                             <p><b>宣发组:</b> Cherie, Sunny, Monica, Stella, Marcus, Daniel, Lia, 舒欣, Zhirui, 尚轩, 欧阳, Lisa Z</p>
@@ -161,7 +152,7 @@ export const InfoPage: React.FC<InfoPageProps> = ({
                                 <li><b>舞台摄制:</b> Yani, Stella, 晓白, Aiden Fang</li>
                                 <li><b>演员统筹:</b> Zoe, Tony Jia, Qiyue, Stella, Yating, Max, Jiaqi, 竹子</li>
                             </ul>
-                        </div>
+                        </VolunteerCard>
                     </CustomTabPanel>
                 </Box>
             </DialogContent>

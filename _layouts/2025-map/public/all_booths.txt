@@ -624,19 +624,19 @@ description: 园区共34个可盖章摊位，其中12个收费摊位可从地图
 There are 34 exciting booths where you can collect stamps throughout the festival! 
 Among them, 12 are paid activity booths marked on the map, while several sponsor booths offer free stamps—don’t miss your chance to fill your stamp card and win fun prizes! 
 <line></line>
-30 💮 = 特等奖22个：怀旧电子游戏机 
+30 🕹️ = 特等奖22个：怀旧电子游戏机 
 Special Prize (22 winners): Retro Video Game Console
 <line></line>
-26 💮 = 一等奖60个：50盒中文剧本杀游戏，10个小猫风扇
+26 🕹️ = 一等奖60个：50盒中文剧本杀游戏，10个小猫风扇
 First Prize (60 winners): 50 Chinese Murder Mystery Game Sets & 10 Cat-Shaped Fans
 <line></line>
-20 💮 = 二等奖100个：40个搞笑抽纸玩偶， 60个穿越时空帆布袋
+20 🕹️ = 二等奖100个：40个搞笑抽纸玩偶， 60个穿越时空帆布袋
 Second Prize (100 winners): 40 Funny Tissue Box Dolls & 60 Canvas Bags
 <line></line>
-16 💮 = 三等奖160个：80个卡皮巴拉变脸玩具，80个小笔记本 
+16 🕹️ = 三等奖160个：80个卡皮巴拉变脸玩具，80个小笔记本 
 Third Prize (160 winners): 80 Kapibara Face-Changing Toys & 80 Mini Notebooks
 <line></line>
-8 💮 = 群众奖400个：仿真鱼圆珠笔，青蛙吐舌头吹吹乐，盲袋，旋转陀螺，贴纸
+8 🕹️ = 群众奖400个：仿真鱼圆珠笔，青蛙吐舌头吹吹乐，盲袋，旋转陀螺，贴纸
 Participation Prize (400 winners): Realistic Fish Ballpoint Pens, Frog Tongue Blowers, Blind Bags, Spinning Tops & Stickers
 <end>
 <start>
