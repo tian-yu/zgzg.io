@@ -275,7 +275,7 @@ const MapController: React.FC<MapControllerProps & { mapRef: React.MutableRefObj
         // Example: Add scale control
         // L.control.scale().addTo(map);
         // Disable map double click zoom to allow for map click to deselect
-        map.doubleClickZoom.disable();
+        // map.doubleClickZoom.disable();
 
         // Add click handler to the map
         map.on('click', onMapClick);
