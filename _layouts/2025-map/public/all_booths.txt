@@ -606,9 +606,15 @@ Under the guidance of an instructor, participants will explore the elegance of t
 <start>
 id: "checkin"
 name: "🪪 签到处 | Check-in Booth"
-description: 欢迎来到载歌在谷秋季游园会！🍂 请在此出示您的电子门票二维码， 工作人员将为您完成签到并发放： 🎫 入场手环 🧭 家庭通关卡 🚗 停车券（如适用）
+description: 欢迎来到载歌在谷秋季游园会！🍂 请在此出示您的电子门票二维码， 工作人员将为您完成签到并发放：
+- 🎫 入场手环
+- 🧭 家庭通关卡
+- 🚗 停车券（如适用）
 Welcome to the Zaige Zai Gu Autumn Festival !
-🎉 Please show your QR code ticket here. Our staff will assist you with check-in and provide: 🎫 Admission wristband 🧭 Family pass card 🚗 Parking pass (if applicable)
+🎉 Please show your QR code ticket here. Our staff will assist you with check-in and provide:
+- 🎫 Admission wristband
+- 🧭 Family pass card
+- 🚗 Parking pass (if applicable)
 💡 请提前准备好二维码，以便快速入场。 💡 Have your QR code ready for a smooth check-in experience!
 <end>
 <start>

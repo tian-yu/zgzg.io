@@ -126,11 +126,45 @@ export const InfoPage: React.FC<InfoPageProps> = ({
                         <Typography variant="h6" sx={{
                             whiteSpace: 'pre-wrap', // Respects newlines and wraps long lines
                         }}>赞助/伙伴社区 Sponsorship/Partner Communities</Typography>
-                        <img src={allLogoImage} alt="All Sponsors Logos" style={{ height: 'auto', marginTop: '16px', objectFit: 'contain' }} />
+                        <img src={allLogoImage} alt="All Sponsors Logos" style={{ height: 'auto', objectFit: 'contain' }} />
                         <Typography variant="h6">志愿者列表 Volunteers</Typography>
+                        <div style={{
+                            background: '#edf4f7',
+                            borderRadius: '8px',
+                            paddingRight: '0.5rem',
+                            paddingTop: '0.5rem',
+                            paddingBottom: '0.5rem',
+                            marginTop: '0',
+                            listStyleType: 'none',
+                            fontSize: '0.8rem',
+                        }}>
+                            <p><b>出品:</b> 周载南</p>
+                            <p><b>顾问:</b> 张越，蒋铮，Yudy，Senkei，艺驰，宋博，拓，Aiden，Zoey</p>
+                            <p><b>宣发组:</b> Cherie, Sunny, Monica, Stella, Marcus, Daniel, Lia, 舒欣, Zhirui, 尚轩, 欧阳, Lisa Z</p>
+                            <p><b>运营组:</b> Jesse，Zoey，小飞侠，Leiyi，Joyce，Kristen Wang，Ly，Amy Wu，吴晓，Hannah，小熊Patricia，乐天的海豚，于皓，大路，Yk，Chuyue,十万为什么无极小经办，珊阳，耳又又</p>
+                            <p><b>摄影:</b> 晓白 MBreeze、Aidan Fang、Yani Qin、Daniel、硅谷刘律、Daisy、Lia</p>
+                            <p><b>云集:</b> 若飞 ，Dave，菠菜菜</p>
+                            <p><b>电子地图:</b> Orca</p>
+                            <p><b>舞台组</b></p>
+                            <ul>
+                                <li><b>导演:</b> Yayi</li>
+                                <li><b>副导演:</b> Tony Jia</li>
+                                <li><b>主持人导演:</b> 竹子</li>
+                                <li><b>评审委:</b> Cloris, 老莫, Aiden Fang, Zoey Zhang </li>
+                                <li><b>舞台顾问:</b> 曹翔</li>
+                                <li><b>导演组助理:</b> Qiyue</li>
+                                <li><b>音响总监:</b> 单拓, 曹翔</li>
+                                <li><b>节目策划:</b> Stella, Qiyue, Yating</li>
+                                <li><b>狗狗秀策划:</b> Yayi, Tony Jia, 孟汐</li>
+                                <li><b>舞台外联:</b> Zoe, 竹子, Qiyue</li>
+                                <li><b>舞美设计:</b> Monica, Stella</li>
+                                <li><b>舞台摄制:</b> Yani, Stella, 晓白, Aiden Fang</li>
+                                <li><b>演员统筹:</b> Zoe, Tony Jia, Qiyue, Stella, Yating, Max, Jiaqi, 竹子</li>
+                            </ul>
+                        </div>
                     </CustomTabPanel>
                 </Box>
             </DialogContent>
-        </CustomDialog>
+        </CustomDialog >
     );
 };

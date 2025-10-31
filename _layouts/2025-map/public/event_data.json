@@ -549,6 +549,7 @@
       "type": "checkin",
       "name": "签到处✅",
       "subtitle": "Check-In Booth",
+      "description_file": "booths/checkin.html",
       "lat": 37.266126,
       "lng": -122.012635
     },
@@ -590,8 +591,8 @@
     {
       "id": "parking_a",
       "type": "parking",
-      "name": "停车区A",
-      "subtitle": "Parking Lot A",
+      "name": "停车区Lot 2",
+      "subtitle": "Parking Lot 2",
       "description": "签到处领取停车票\nPlease get parking ticket at Check-In Booth",
       "lat": 37.266657,
       "lng": -122.010792
@@ -599,8 +600,8 @@
     {
       "id": "parking_b",
       "type": "parking",
-      "name": "停车区B",
-      "subtitle": "Parking Lot B",
+      "name": "停车区Lot 4",
+      "subtitle": "Parking Lot 4",
       "description": "签到处领取停车票\nPlease get parking ticket at Check-In Booth",
       "lat": 37.264884,
       "lng": -122.012975
