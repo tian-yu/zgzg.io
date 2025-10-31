@@ -685,6 +685,9 @@ If you feel unwell, have a minor injury, or need immediate assistance,
  Our on-site staff and medical volunteers are ready to help. ❤️‍🩹
 📍 请留意现场指示牌或咨询志愿者以找到最近的急救点。
  📍 Look for signs or ask a volunteer to locate the nearest First Aid station.
+
+ 支持机构：  HeCares 由国际知名针灸与康复专家 何东来医师（Frank He） 于2001年创办的健康中心。秉持中西结合的理念，致力于为每一位患者提供个性化的运动康复与疼痛管理方案。本次游园会他们提供了First Aid急救中心。
+了解更多： https://www.hecares.net/
 <end>
 <start>
 id: "B2"
