@@ -5,50 +5,50 @@
       "type": "booth",
       "name": "悟空中文",
       "subtitle": "Wukong Education",
-      "description": "A1_description",
       "lat": 37.266224,
-      "lng": -122.012464
+      "lng": -122.012464,
+      "description_file": "booths/A1.html"
     },
     {
       "id": "A2",
       "type": "booth",
       "name": "纽约人寿",
       "subtitle": "New York Life",
-      "description": "A2_description",
       "lat": 37.266285,
-      "lng": -122.012464
+      "lng": -122.012464,
+      "description_file": "booths/A2.html"
     },
     {
       "id": "A3",
       "type": "booth",
       "name": "XART",
       "subtitle": "扭扭棒和套圈",
-      "description": "A3_description",
       "lat": 37.266346,
-      "lng": -122.012464
+      "lng": -122.012464,
+      "description_file": "booths/A3.html"
     },
     {
       "id": "A4",
       "type": "booth",
       "name": "MusicNBrian",
-      "description": "A4_description",
       "lat": 37.266407,
-      "lng": -122.012464
+      "lng": -122.012464,
+      "description_file": "booths/A4.html"
     },
     {
       "id": "A5",
       "type": "booth",
       "name": "Stratford Schools",
-      "description": "A5_description",
       "lat": 37.266469,
-      "lng": -122.012464
+      "lng": -122.012464,
+      "description_file": "booths/A5.html"
     },
     {
       "id": "A6",
       "type": "booth",
-      "name": "San Jose图书馆",
-      "subtitle": "San Jose Library",
-      "description": "A6_description",
+      "name": "树人戏剧艺术中心",
+      "subtitle": "Arboris Education and Performing Arts Center",
+      "description": "惊喜签名售书活动！",
       "lat": 37.26653,
       "lng": -122.012464
     },
@@ -57,33 +57,33 @@
       "type": "booth",
       "name": "X-Camp",
       "subtitle": "X-Camp Academy",
-      "description": "B1_description",
       "lat": 37.266224,
-      "lng": -122.01228
+      "lng": -122.01228,
+      "description_file": "booths/B1.html"
     },
     {
       "id": "B2",
       "type": "booth",
       "name": "DVA",
       "subtitle": "DaVinci Academy of Silicon Valley",
-      "description": "B2_description",
       "lat": 37.266285,
-      "lng": -122.01228
+      "lng": -122.01228,
+      "description_file": "booths/B2.html"
     },
     {
       "id": "B3",
       "type": "booth",
       "name": "戏谷剧社",
       "subtitle": "Drama Valley",
-      "description": "B3_description",
       "lat": 37.266346,
-      "lng": -122.01228
+      "lng": -122.01228,
+      "description_file": "booths/B3.html"
     },
     {
       "id": "B4",
       "type": "booth",
       "name": "Intravast 夜视仪",
-      "subtitle": "Intravast",
+      "subtitle": "Intravast Night Vision Device",
       "description": "B4_description",
       "lat": 37.266407,
       "lng": -122.01228
@@ -102,383 +102,383 @@
       "type": "booth",
       "name": "王志明律师事务所",
       "subtitle": "Pacific Coast Trial Law Firm",
-      "description": "B6_description",
       "lat": 37.26653,
-      "lng": -122.01228
+      "lng": -122.01228,
+      "description_file": "booths/B6.html"
     },
     {
       "id": "C1",
       "type": "booth",
       "name": "Rivian",
-      "description": "C1_description",
       "lat": 37.266224,
-      "lng": -122.012186
+      "lng": -122.012186,
+      "description_file": "booths/C1.html"
     },
     {
       "id": "C2",
       "type": "booth",
       "name": "古琴",
       "subtitle": "Chinese Zither",
-      "description": "C2_description",
       "lat": 37.266285,
-      "lng": -122.012186
+      "lng": -122.012186,
+      "description_file": "booths/C2.html"
     },
     {
       "id": "C3",
       "type": "booth",
       "name": "糖画🎨",
       "subtitle": "Sugar Painting",
-      "description": "C3_description",
       "lat": 37.266346,
       "lng": -122.012186,
-      "token": 2
+      "token": 2,
+      "description_file": "booths/C3.html"
     },
     {
       "id": "C4",
       "type": "booth",
       "name": "糖画🎨",
       "subtitle": "Sugar Painting",
-      "description": "C4_description",
       "lat": 37.266407,
       "lng": -122.012186,
-      "token": 2
+      "token": 2,
+      "description_file": "booths/C4.html"
     },
     {
       "id": "C5",
       "type": "booth",
       "name": "手作冰箱贴🧵",
       "subtitle": "Fridge Magnet Workshop",
-      "description": "C5_description",
       "lat": 37.266469,
       "lng": -122.012186,
-      "token": 2
+      "token": 2,
+      "description_file": "booths/C5.html"
     },
     {
       "id": "C6",
       "type": "booth",
       "name": "手作冰箱贴🧵",
       "subtitle": "Fridge Magnet Workshop",
-      "description": "C6_description",
       "lat": 37.26653,
       "lng": -122.012186,
-      "token": 2
+      "token": 2,
+      "description_file": "booths/C6.html"
     },
     {
       "id": "C7",
       "type": "booth",
-      "name": "书画",
-      "subtitle": "Calligraphy & Painting",
-      "description": "C7_description",
+      "name": "书法体验🖌️",
+      "subtitle": "Calligraphy",
       "lat": 37.266591,
       "lng": -122.012186,
-      "token": 1
+      "token": 1,
+      "description_file": "booths/C7.html"
     },
     {
       "id": "C8",
       "type": "booth",
       "name": "汉服拍照",
       "subtitle": "Hanfu Styling",
-      "description": "C8_description",
       "lat": 37.266652,
-      "lng": -122.012186
+      "lng": -122.012186,
+      "description_file": "booths/C8.html"
     },
     {
       "id": "C9",
       "type": "booth",
       "name": "汉服拍照",
       "subtitle": "Hanfu Styling",
-      "description": "C9_description",
       "lat": 37.266713,
-      "lng": -122.012186
+      "lng": -122.012186,
+      "description_file": "booths/C9.html"
+    },
+    {
+      "id": "C10",
+      "type": "booth",
+      "name": "载歌在谷照片墙展示📷",
+      "subtitle": "ZGZG Photo Wall Display",
+      "lat": 37.266774,
+      "lng": -122.012186,
+      "token": 2,
+      "description": "载歌在谷社区的回忆"
     },
     {
       "id": "D1",
       "type": "food",
       "name": "宝藏",
       "subtitle": "Imperial Treasure",
-      "description": "D1_description",
       "lat": 37.266224,
-      "lng": -122.012067
+      "lng": -122.012067,
+      "description_file": "booths/D1.html"
     },
     {
       "id": "D2",
       "type": "booth",
       "name": "漆扇🪭",
       "subtitle": "Marbling Fan",
-      "description": "D2_description",
       "lat": 37.266285,
       "lng": -122.012067,
-      "token": 2
+      "token": 2,
+      "description_file": "booths/D2.html"
     },
     {
       "id": "D3",
       "type": "booth",
       "name": "剪纸",
       "subtitle": "Chinese Paper Cutting",
-      "description": "D3_description",
       "lat": 37.266346,
-      "lng": -122.012067
+      "lng": -122.012067,
+      "description_file": "booths/D3.html"
     },
     {
       "id": "D4",
       "type": "booth",
       "name": "剪纸",
       "subtitle": "Chinese Paper Cutting",
-      "description": "D4_description",
       "lat": 37.266407,
-      "lng": -122.012067
+      "lng": -122.012067,
+      "description_file": "booths/D4.html"
     },
     {
       "id": "D5",
       "type": "booth",
       "name": "赏竹老师书画🖼️",
       "subtitle": "Art Exhibition by Shangzhu",
-      "description": "D5_description",
       "lat": 37.266469,
-      "lng": -122.012067
+      "lng": -122.012067,
+      "description_file": "booths/D5.html"
     },
     {
       "id": "D6",
       "type": "booth",
-      "name": "书法体验🖌️",
-      "subtitle": "Calligraphy",
-      "description": "D6_description",
+      "name": "天工坊🌸",
+      "subtitle": "Handmade Antique Workshop",
       "lat": 37.26653,
       "lng": -122.012067,
-      "token": 1
+      "token": 2,
+      "description_file": "booths/D6.html"
     },
     {
       "id": "D7",
       "type": "booth",
       "name": "天工坊🌸",
       "subtitle": "Handmade Antique Workshop",
-      "description": "D7_description",
       "lat": 37.266591,
       "lng": -122.012067,
-      "token": 2
+      "token": 2,
+      "description_file": "booths/D7.html"
     },
     {
       "id": "D8",
       "type": "booth",
-      "name": "天工坊🌸",
-      "subtitle": "Handmade Antique Workshop",
-      "description": "D8_description",
+      "name": "灯谜🏮",
+      "subtitle": "Lantern Riddles",
       "lat": 37.266652,
       "lng": -122.012067,
-      "token": 2
+      "description_file": "booths/D8.html"
     },
     {
       "id": "D9",
       "type": "booth",
-      "name": "灯谜🏮",
-      "subtitle": "Lantern Riddles",
-      "description": "D9_description",
+      "name": "云集",
+      "subtitle": "ZGZG-Club",
       "lat": 37.266713,
-      "lng": -122.012067
+      "lng": -122.012067,
+      "description_file": "booths/D9.html"
+    },
+    {
+      "id": "D10",
+      "type": "booth",
+      "name": "载歌在谷照片墙展示📷",
+      "subtitle": "ZGZG Photo Wall Display",
+      "lat": 37.266774,
+      "lng": -122.012067,
+      "description_file": "booths/D10.html"
     },
     {
       "id": "E1",
       "type": "food",
       "name": "宝藏",
       "subtitle": "Imperial Treasure",
-      "description": "E1_description",
       "lat": 37.266224,
-      "lng": -122.011922
+      "lng": -122.011922,
+      "description_file": "booths/E1.html"
     },
     {
       "id": "E2",
       "type": "food",
       "name": "Little Tummy",
       "subtitle": "Baozi🥟",
-      "description": "E2_description",
       "lat": 37.266285,
-      "lng": -122.011922
+      "lng": -122.011922,
+      "description_file": "booths/E2.html"
     },
     {
       "id": "E3",
       "type": "food",
       "name": "糖葫芦🍭",
       "subtitle": "Candied hawthorn skewers",
-      "description": "E3_description",
       "lat": 37.266346,
-      "lng": -122.011922
+      "lng": -122.011922,
+      "description_file": "booths/E3.html"
     },
     {
       "id": "E4",
       "type": "food",
       "name": "Rich Lemon Tea🍵",
-      "description": "E4_description",
       "lat": 37.266407,
-      "lng": -122.011922
+      "lng": -122.011922,
+      "description_file": "booths/E4.html"
     },
     {
       "id": "E5",
       "type": "booth",
       "name": "老鼠偷奶酪🧀",
       "subtitle": "Eat the Cheese",
-      "description": "游戏规则：游戏开始时，“守护者”开始慢慢抡动绳子，让大球绕圈旋转。\n\n可以逐渐加快速度，让“老鼠”更难靠近。\n\n所有其他玩家扮演“老鼠”，需要在不被球打到的情况下，冲进圈内捡小球。\n\n每次“老鼠”只能捡 一个小球，然后迅速跑回圈外放在自己身后。\n\n被旋转大球打到的老鼠要退出一轮或将捡到的小球放回去。\n\n当所有小球被捡完时，游戏结束。",
       "lat": 37.266469,
-      "lng": -122.011922
+      "lng": -122.011922,
+      "description_file": "booths/E5.html"
     },
     {
       "id": "E6",
       "type": "booth",
       "name": "猫追老鼠🐱",
       "subtitle": "Cat & Mouse",
-      "description": "每组由 2人或4人 组成，使用 一只猫气球、一只老鼠气球 和 两把扇子 进行游戏。\n\n场地设有一个起点和一个**“老鼠洞”终点**。\n\n猫和老鼠从起点同时出发，参与者用扇子为气球扇风，让它们沿着赛道前进，看看谁能先到达“老鼠洞”！",
       "lat": 37.26653,
-      "lng": -122.011922
+      "lng": -122.011922,
+      "description_file": "booths/E6.html"
     },
     {
       "id": "E7",
       "type": "booth",
       "name": "打地鼠🐭",
       "subtitle": "Whac-A-Mole",
-      "description": "在圆形游戏布的中心有一个大圆孔，中间站着 1–2 位“地鼠猎人”，手拿充气锤子。\n\n布的周围有 5 个小圆孔，由五位小朋友扮演“地鼠”，他们要在猎人的攻击中灵巧地探头、躲闪、偷看，避免被“锤”到！",
       "lat": 37.266591,
-      "lng": -122.011922
+      "lng": -122.011922,
+      "description_file": "booths/E7.html"
     },
     {
       "id": "E8",
       "type": "booth",
       "name": "动画DIY🎬",
       "subtitle": "Phenakistoscope Animation",
-      "description": "只需打开袋子，按照说明书一步步操作，你就能做出一台可以“转动的动画机”看着你的手绘图案在光影中动起来！",
       "lat": 37.266652,
       "lng": -122.011922,
-      "token": 1
+      "token": 1,
+      "description_file": "booths/E8.html"
     },
     {
       "id": "E9",
       "type": "booth",
       "name": "故事换葫芦📕",
       "subtitle": "A gourd for your story",
-      "description": "\"游客到摊位出示自己在小红书的故事帖截图。\n\n工作人员核对后，赠送游客一只“幸运葫芦”。\n\n游客可在领取后，在葫芦卡片上写下祝福语或心愿，悬挂在会场“心愿树”架上，形成互动景观。\"",
       "lat": 37.266713,
-      "lng": -122.011922
+      "lng": -122.011922,
+      "description_file": "booths/E9.html"
     },
     {
       "id": "E10",
       "type": "booth",
       "name": "画脸🎭 ",
       "subtitle": "Face Painting",
-      "description": "E10_description",
       "lat": 37.266774,
       "lng": -122.011922,
-      "token": 2
-    },
-    {
-      "id": "E11",
-      "type": "booth",
-      "name": "鼓圈🥁",
-      "subtitle": "Drum Circle",
-      "description": "E11_description",
-      "lat": 37.266835,
-      "lng": -122.011922
+      "token": 2,
+      "description_file": "booths/E10.html"
     },
     {
       "id": "F1",
       "type": "food",
       "name": "MC Sushi🍣",
       "subtitle": "Food Truck",
-      "description": "F1_description",
       "lat": 37.266224,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "description_file": "booths/F1.html"
     },
     {
       "id": "F2",
       "type": "food",
       "name": "Spartan Taco🌮",
       "subtitle": "Food Truck",
-      "description": "F2_description",
       "lat": 37.266285,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "description_file": "booths/F2.html"
     },
     {
       "id": "F3",
       "type": "booth",
       "name": "动漫面具DIY🎭",
       "subtitle": "Mask Painting",
-      "description": "我们准备了空白面具、颜料、画笔和装饰材料。\n\n游客可以自由设计、上色、绘制图案，并现场佩戴自己的原创面具",
       "lat": 37.266346,
       "lng": -122.011768,
-      "token": 1
+      "token": 1,
+      "description_file": "booths/F3.html"
     },
     {
       "id": "F4",
       "type": "booth",
       "name": "时空隧道DIY🌌",
       "subtitle": "Teleport",
-      "description": "通过简单有趣的电子元件连接（如LED灯、导线、电池和镜面纸），参与者将完成一个可以发光的“时空隧道”模型。\n\n灯光在镜面中形成无限延伸的视觉",
       "lat": 37.266407,
       "lng": -122.011768,
-      "token": 1
+      "token": 1,
+      "description_file": "booths/F4.html"
     },
     {
       "id": "F5",
       "type": "booth",
       "name": "指纹采集🫆",
       "subtitle": "Detect Finger Prints",
-      "description": "我们准备了专业的指纹采集工具：毛刷、指纹粉末、胶带、指纹印泥和记录卡片。\n\n游客可以用这些材料，采集自己的指纹或朋友的指纹，观察纹路的差异，完成一张独一无二的“指纹卡”。",
       "lat": 37.266469,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "description_file": "booths/F5.html"
     },
     {
       "id": "F6",
       "type": "booth",
       "name": "证物拼图室🧩",
       "subtitle": "Mystery Solved",
-      "description": "1️⃣ 选择案件 — 从四个案件中任选一个\n\n2️⃣ 分组协作 — 六位侦探一起进入游戏桌，领取案件档案与物证包。\n\n3️⃣ 拼图找线索 — 通过观察、对比、推理，将物证拼合出真相。\n\n4️⃣ 锁定嫌疑人 — 在限定时间内完成推理，写下最终结论。",
       "lat": 37.26653,
       "lng": -122.011768,
-      "token": 2
+      "token": 2,
+      "description_file": "booths/F6.html"
     },
     {
       "id": "F7",
       "type": "booth",
       "name": "植物拓染DIY🍃",
       "subtitle": "Plants Prints",
-      "description": "我们准备了：白色方手帕、小锤子、植物花瓣、草叶、胶带。\n\n参与者可挑选喜爱的植物材料，用敲打的方式将花草中的天然色素拓印在布料上，留下独一无二的自然印记。",
       "lat": 37.266591,
       "lng": -122.011768,
-      "token": 1
+      "token": 1,
+      "description_file": "booths/F7.html"
     },
     {
       "id": "F8",
       "type": "booth",
       "name": "车载香水DIY🌿",
       "subtitle": "Car Essential Oil",
-      "description": "1️⃣ 选择小玻璃瓶\n\n2️⃣ 加入彩色细沙与装饰\n\n3️⃣ 调配香气\n\n4️⃣ 封盖完成",
       "lat": 37.266652,
       "lng": -122.011768,
-      "token": 2
+      "token": 2,
+      "description_file": "booths/F8.html"
     },
     {
       "id": "F9",
       "type": "prize",
       "name": "兑奖处🎁",
       "subtitle": "Prize Redemption",
-      "description": "F9_description",
       "lat": 37.266713,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "description_file": "booths/F9.html"
     },
     {
       "id": "F10",
       "type": "booth",
-      "name": "云集",
-      "subtitle": "ZGZG-Club",
-      "description": "F10_description",
+      "name": "🥁 鼓圈",
+      "subtitle": "Drum Circle",
       "lat": 37.266774,
-      "lng": -122.011768
-    },
-    {
-      "id": "F11",
-      "type": "booth",
-      "name": "载歌在谷照片墙展示📷",
-      "subtitle": "ZGZG Photo Wall Display",
-      "description": "F11_description",
-      "lat": 37.266835,
-      "lng": -122.011768
+      "lng": -122.011768,
+      "description_file": "booths/F10.html"
     },
     {
       "id": "restroom1",
@@ -515,9 +515,9 @@
       "type": "medical",
       "name": "急救车🏥",
       "subtitle": "First Aid Station",
-      "description": "HeCares何医生提供义诊",
       "lat": 37.266658,
-      "lng": -122.012586
+      "lng": -122.012586,
+      "description_file": "booths/medical.html"
     },
     {
       "id": "foodtruck",
@@ -541,9 +541,9 @@
       "type": "demo_drive",
       "name": "Rivian试驾🚗",
       "subtitle": "Rivian Demo Drive",
-      "description": "Demo Drive",
+      "description_file": "booths/C1.html",
       "lat": 37.266066,
-      "lng": -122.012920
+      "lng": -122.01292
     },
     {
       "id": "parking_a",
