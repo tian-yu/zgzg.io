@@ -40,7 +40,7 @@
     {
       "id": "A5",
       "type": "booth",
-      "name": "Stratford Schools",
+      "name": "Stratford School",
       "lat": 37.266469,
       "lng": -122.012464,
       "stamp": "s",
@@ -88,7 +88,7 @@
       "type": "booth",
       "name": "Intravast 夜视仪",
       "subtitle": "Intravast Night Vision Device",
-      "description": "B4_description",
+      "description": "Explore. Protect. Experience. — See what others can’t.",
       "lat": 37.266407,
       "lng": -122.01228
     },
@@ -97,7 +97,7 @@
       "type": "booth",
       "name": "趣味编织",
       "subtitle": "Sewing Fun",
-      "description": "B5_description",
+      "description_file": "booths/B5.html",
       "lat": 37.266469,
       "lng": -122.01228
     },
@@ -212,8 +212,7 @@
       "subtitle": "ZGZG Photo Wall Display",
       "lat": 37.266774,
       "lng": -122.012186,
-      "token": 2,
-      "description": "载歌在谷社区的回忆"
+      "description_file": "booths/C10.html"
     },
     {
       "id": "D1",
@@ -300,7 +299,7 @@
     {
       "id": "D9",
       "type": "booth",
-      "name": "云集",
+      "name": "云集📚",
       "subtitle": "ZGZG-Club",
       "lat": 37.266713,
       "lng": -122.012067,
@@ -309,8 +308,8 @@
     {
       "id": "D10",
       "type": "booth",
-      "name": "载歌在谷照片墙展示📷",
-      "subtitle": "ZGZG Photo Wall Display",
+      "name": "云集-旧书交换📚",
+      "subtitle": "ZGZG-Club Book Exchange by Shuying",
       "lat": 37.266774,
       "lng": -122.012067,
       "description_file": "booths/D10.html"

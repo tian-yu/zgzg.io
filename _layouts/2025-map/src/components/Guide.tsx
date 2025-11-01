@@ -50,6 +50,7 @@ const Guide: React.FC = () => {
                 </div>
                 <Typography>🗓️ 日期 Date: 2025-11-02 (周日Sunday) </Typography>
                 <Typography>🕓 时间 Time: 12:00 PM - 5:00 PM (冬令时Daylight Saving Time)</Typography>
+                <Typography style={{ textAlign: 'center', margin: '2px', fontWeight: 'bold' }}>👉 <a href='https://mp.weixin.qq.com/s/pCyyyncglrfVi0Ucnb2LnA' target="_blank">游园总攻略</a> 👈</Typography>
             </BaseCard>
 
             <GreenCard>

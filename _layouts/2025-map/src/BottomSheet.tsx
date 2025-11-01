@@ -312,7 +312,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
                                 </IconButton>
                             )}
                             <Box sx={{ pl: storyItems.some(item => item.id === selectedItem.id) ? 4 : 0 }}>
-                                <Typography variant="h5">{selectedItem.name}</Typography>
+                                <Typography variant="h5" sx={{ fontWeight: "bold" }}>{selectedItem.name}</Typography>
                                 <Typography variant="subtitle1" sx={{ marginBottom: "5px" }}>{selectedItem.subtitle}</Typography>
                                 {selectedItem.token && selectedItem.token > 0 && (
                                     <Typography
