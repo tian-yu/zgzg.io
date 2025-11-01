@@ -392,6 +392,14 @@ Don’t forget to stop by D9/D10 to swap your books and earn game tokens! 🎟�
 
 💡 小贴士 | Tip: 一本书的故事结束，另一段旅程正悄然开始。📖
 💡 Tip: Every book you share begins a new adventure. 🌸
+
+<b>支持机构：载歌在谷云集</b>
+云集是载歌在谷旗下以线下活动为主的社团club，主要组织线下读书会、电影会、职场讲座、健身运动等室内外活动。旗下栏目丰富多彩： 
+• 职挂云帆——职场访谈类节目。活动内容涵盖，科技，创业，生物医疗，职场软技能等多个方向。
+• 一饱演福——戏剧、表演爱好者相互交流，共同创作、共同成长的平台。我们会定期举行音乐会，以及线上线下话剧或表演相关的活动。
+• 体娱风云——组织各种文体活动，高尔夫，热气球，爬山，唱K，卡丁车等等。
+• 书影婆娑——组织多种书籍电影类文化活动：线下读书分享会、微光电影沙龙、播客栏目，共读季风计划……
+今天书影的小伙伴还组织大家旧书交换，共享阅读生活，给爱书寻找新主人。可以在摊位D9/D10找到他们，别忘了交换旧书，领取游戏币。
 <end>
 <start>
 id: "C8"
@@ -407,6 +415,11 @@ Capture your smile and graceful presence — a timeless moment of oriental beaut
 3️⃣ Pose, smile, and capture the elegance of Hanfu in your own way. 📷
 💡 小贴士 | Tip: 微笑、转身、回眸，让时光为你定格！💖 💡 Tip: Smile, twirl, and glance back — let time capture your beauty!
 🌺
+<b>支持机构： 硅谷汉服社</b>
+硅谷汉服社，正式成立于2018年硅谷的加州公益社区。
+由一群热爱汉服，热爱传统文化的志愿者们组成。
+我们希望通过举办各种各样的活动，如国乐赏析，汉服秀，情景短剧，传统舞蹈，诗词赏析，汉服外拍等，起到传承中华传统文化，凝聚海外华人的作用。本次游园会，为部分舞台主持人提供了华美的汉服，支持了汉服拍照摊位C8/C9以及古琴摊位C2，还为舞台贡献了《大明风华 汉服走秀》节目。
+了解更多： https://www.chinesecultureinhightech.org/
 注意：C8/C9视为同一个打卡
 Note: C8/C9 count as 1 stamp
 <end>
@@ -601,7 +614,13 @@ Under the guidance of an instructor, participants will explore the elegance of t
 💡 小贴士 | Tip: 静心聆听古音，让指尖轻触千年回响。
  💡 Tip: Let each note awaken calmness — where music meets the soul. 🌸
 
-支持机构： 山兰琴社
+<b>支持机构： 山兰琴社</b>
+中国古琴，又称瑶琴、七弦琴，是中国最古老的弹拨乐器之一，至今已有三千余年历史。古琴位列“琴棋书画”四艺之首，自古便是君子必修之艺。“伯牙绝弦，子期知音”，高山流水的佳话流传千古，琴的身影遍布中国历代诗文书画，承载着中国传统文化中修心养性的深厚内涵。
+值此游园盛会，山兰琴社诚邀诸位嘉宾驻足小憩，在悠悠琴音中放松心神，赏乐听曲，共度一个宁静而美好的下午。
+
+The Chinese Guqin, also known as the Yaoqin or the Seven-string Zither, is one of China's most ancient plucked instruments, boasting a history of over three thousand years.
+Holding the foremost position among the Four Arts (Guqin, Go/Weiqi, Calligraphy, and Painting), the Guqin has been a compulsory art of self-cultivation for Chinese gentlemen since antiquity. The classic tale of Bo Ya and Zi Qi, who achieved soulmate status through the melody of High Mountains and Flowing Water, has been passed down through the ages. The zither's image permeates Chinese literature, poetry, calligraphy, and painting, embodying the profound cultural significance of spiritual nourishment and moral refinement.
+We sincerely invite all guests to pause for a moment of rest. Relax your mind to the gentle melodies of the Guqin, enjoy the beautiful afternoon.
 <end>
 <start>
 id: "checkin"
@@ -610,7 +629,7 @@ description: 欢迎来到载歌在谷秋季游园会！🍂 请在此出示您�
 - 🎫 入场手环
 - 🧭 家庭通关卡
 - 🚗 停车券（如适用）
-Welcome to the Zaige Zai Gu Autumn Festival !
+Welcome to the ZGZG Fall Culture Fair!
 🎉 Please show your QR code ticket here. Our staff will assist you with check-in and provide:
 - 🎫 Admission wristband
 - 🧭 Family pass card
@@ -698,15 +717,13 @@ If you feel unwell, have a minor injury, or need immediate assistance,
 <start>
 id: "B2"
 name: "DVA | DaVinci Academy of Silicon Valley"
-description: DVA-DaVinci Academy of Silicon Valley
-提倡“体验式学习”的教育理念，强调将生活作为课堂，通过“掌握学习法”(Mastery-Learning) 和小班授课模式，让学生在实际项目中应用知识，实现有目的的学习。学校课程丰富且富有挑战性，包含大量的实地考察和动手实践机会。（stem课程）
-本次游园会摊位 B2
+description: 提倡“体验式学习”的教育理念，强调将生活作为课堂，通过“掌握学习法”(Mastery-Learning) 和小班授课模式，让学生在实际项目中应用知识，实现有目的的学习。学校课程丰富且富有挑战性，包含大量的实地考察和动手实践机会。
 了解更多： https://www.davincisv.org/
 <end>
 <start>
 id: "A3"
 name: "XARTS | 艺术教育机构"
-description: : X ARTS 是一家位于湾区的艺术教育机构，致力于为学生提供高质量的艺术课程与创意实践机会。XARTS在 San Jose 与 Cupertino 设有校区，注重小班制教学与个性化指导，结合绘画、手工、设计与创意思维，涵盖作品集、竞赛与 AP 艺术课程，突破传统艺术教学框架，培养具创新力与国际视野的年轻艺术家。
+description: X ARTS 是一家位于湾区的艺术教育机构，致力于为学生提供高质量的艺术课程与创意实践机会。XARTS在 San Jose 与 Cupertino 设有校区，注重小班制教学与个性化指导，结合绘画、手工、设计与创意思维，涵盖作品集、竞赛与 AP 艺术课程，突破传统艺术教学框架，培养具创新力与国际视野的年轻艺术家。
 本次摊位在A3，会提供扭扭棒和套圈.
 了解更多： https://www.ca-xarts.com/
 <end>
@@ -719,15 +736,11 @@ description: 戏谷剧团，集结中国传媒大学、上海戏剧学院、北�
 <start>
 id: "A4"
 name: "MusicNBrain"
-description: ： MusicNBrain
+description: MusicNBrain
 MusicNBrain offers a unique experience for performers and artists of all ages to become a Super Star through hard work and real life performance experiences.
 
-MusicNBrain 为各个年龄段的表演者与艺术爱好者，
-提供独特的成长与舞台体验平台。
-通过系统的训练与真实的演出机会，
-每一位学员都能在努力中积累经验、展现才华，
-一步步成为真正的 超级明星（Super Star）。
-本次摊位在A4
+MusicNBrain 为各个年龄段的表演者与艺术爱好者，提供独特的成长与舞台体验平台。 
+通过系统的训练与真实的演出机会，每一位学员都能在努力中积累经验、展现才华，一步步成为真正的 超级明星（Super Star）。
 了解更多： https://www.musicnbrain.com/
 <end>
 <start>
@@ -788,9 +801,19 @@ https://www.wanglawcenter.com/zh/
 id: "C1"
 name: "Rivian"
 description: Rivian 是一家专注于电动冒险车的美国品牌，以创新科技驱动绿色出行。🚗💨
-
+欢迎您前去签到处旁预约Rivian现场试驾!
+Rivian is an American brand that focuses on electric adventure vehicles, driving green mobility with innovative technology. 🚗💨
+You are welcome to reserve a live test drive with Rivian next to the check-in desk!
 了解更多：
 https://rivian.com/
+<end>
+<start>
+id: "demo_drive"
+name: "Rivian"
+description: Rivian 提供现场试驾机会！🛞
+前往C1摊位了解更多！
+Rivian offers on-site test drive opportunities! 🛞 
+Head to booth C1 to learn more!
 <end>
 <start>
 id: "D1"
@@ -901,4 +924,14 @@ Every bite of Spartan Taco bursts with bold, zesty flavor! 🌶️
  Handcrafted and freshly grilled, our tacos combine
  soft tortillas, vibrant fillings, and signature sauces
  to deliver a true taste of Mexican street food — fresh, fun, and full of spirit! 💃🌮
+<end>
+<start>
+id: "B5"
+name: "Sewing Fun"
+description: 欢迎来到Thread of Hope 高中生的爱心缝纫社团🪡！
+在这里，您不仅能欣赏到我们亲手缝制的精美玩偶，我们更诚挚地邀请您一起动手，为动物收容所 (animal shelter) 的小动物们制作一份温暖的手工玩具。
+加入我们，用一针一线为它们送去关爱与希望❤️！
+Welcome to Thread of Hope: The High Schooler's Sewing Club!
+Here, you won’t just find our beautiful, hand-sewn toys, but we also cordially invite you to join us in making a cozy, handmade toy for the animals at a local animal shelter.
+Join us, and let's send them care and hope, one stitch at a time!
 <end>
