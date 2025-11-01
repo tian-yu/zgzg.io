@@ -808,6 +808,14 @@ You are welcome to reserve a live test drive with Rivian next to the check-in de
 https://rivian.com/
 <end>
 <start>
+id: "demo_drive"
+name: "Rivian"
+description: Rivian 提供现场试驾机会！🛞
+前往C1摊位了解更多！
+Rivian offers on-site test drive opportunities! 🛞 
+Head to booth C1 to learn more!
+<end>
+<start>
 id: "D1"
 name: "🥢 宝藏 · Imperial Treasure | Palo Alto 新晋“必打卡”中餐厅 (烧烤)"
 description: 🥢 宝藏 · Imperial Treasure | Palo Alto 新晋“必打卡”中餐厅

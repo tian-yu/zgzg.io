@@ -583,7 +583,7 @@
       "type": "demo_drive",
       "name": "Rivian试驾🚗",
       "subtitle": "Rivian Demo Drive",
-      "description_file": "booths/C1.html",
+      "description_file": "booths/demo_drive.html",
       "lat": 37.266066,
       "lng": -122.01292
     },
