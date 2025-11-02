@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/zgzg.io/static/css/main.dcf34246.css",
-    "main.js": "/zgzg.io/static/js/main.30120b03.js",
+    "main.js": "/zgzg.io/static/js/main.c3d8377b.js",
     "static/js/453.87d15d3f.chunk.js": "/zgzg.io/static/js/453.87d15d3f.chunk.js",
     "static/media/all_logos.svg": "/zgzg.io/static/media/all_logos.24cd600837c22bccdbc85844b649269c.svg",
     "static/media/service.png": "/zgzg.io/static/media/service.66dc6164084ff05988b9.png",
@@ -18,11 +18,11 @@
     "static/media/zgzglogo.webp": "/zgzg.io/static/media/zgzglogo.ff4f5b2f018e5bffe376.webp",
     "index.html": "/zgzg.io/index.html",
     "main.dcf34246.css.map": "/zgzg.io/static/css/main.dcf34246.css.map",
-    "main.30120b03.js.map": "/zgzg.io/static/js/main.30120b03.js.map",
+    "main.c3d8377b.js.map": "/zgzg.io/static/js/main.c3d8377b.js.map",
     "453.87d15d3f.chunk.js.map": "/zgzg.io/static/js/453.87d15d3f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.dcf34246.css",
-    "static/js/main.30120b03.js"
+    "static/js/main.c3d8377b.js"
   ]
 }
