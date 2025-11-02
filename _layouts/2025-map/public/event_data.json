@@ -27,6 +27,7 @@
       "subtitle": "扭扭棒和套圈",
       "lat": 37.266346,
       "lng": -122.012464,
+      "stamp": "n",
       "description_file": "booths/A3.html"
     },
     {
@@ -35,6 +36,7 @@
       "name": "MusicNBrian",
       "lat": 37.266407,
       "lng": -122.012464,
+      "stamp": "n",
       "description_file": "booths/A4.html"
     },
     {
@@ -52,6 +54,7 @@
       "name": "树人戏剧艺术中心",
       "subtitle": "Arboris Education and Performing Arts Center",
       "description": "惊喜签名售书活动！",
+      "stamp": "n",
       "lat": 37.26653,
       "lng": -122.012464
     },
@@ -72,6 +75,7 @@
       "subtitle": "DaVinci Academy of Silicon Valley",
       "lat": 37.266285,
       "lng": -122.01228,
+      "stamp": "n",
       "description_file": "booths/B2.html"
     },
     {
@@ -81,6 +85,7 @@
       "subtitle": "Drama Valley",
       "lat": 37.266346,
       "lng": -122.01228,
+      "stamp": "n",
       "description_file": "booths/B3.html"
     },
     {
@@ -89,6 +94,7 @@
       "name": "Intravast 夜视仪",
       "subtitle": "Intravast Night Vision Device",
       "description": "Explore. Protect. Experience. — See what others can’t.",
+      "stamp": "n",
       "lat": 37.266407,
       "lng": -122.01228
     },
@@ -98,6 +104,7 @@
       "name": "趣味编织",
       "subtitle": "Sewing Fun",
       "description_file": "booths/B5.html",
+      "stamp": "n",
       "lat": 37.266469,
       "lng": -122.01228
     },
@@ -212,6 +219,7 @@
       "subtitle": "ZGZG Photo Wall Display",
       "lat": 37.266774,
       "lng": -122.012186,
+      "stamp": "n",
       "description_file": "booths/C10.html"
     },
     {
@@ -303,6 +311,7 @@
       "subtitle": "ZGZG-Club",
       "lat": 37.266713,
       "lng": -122.012067,
+      "stamp": "n",
       "description_file": "booths/D9.html"
     },
     {
@@ -312,6 +321,7 @@
       "subtitle": "ZGZG-Club Book Exchange by Shuying",
       "lat": 37.266774,
       "lng": -122.012067,
+      "stamp": "n",
       "description_file": "booths/D10.html"
     },
     {
@@ -510,6 +520,7 @@
       "subtitle": "Drum Circle",
       "lat": 37.266774,
       "lng": -122.011768,
+      "stamp": "n",
       "description_file": "booths/F10.html"
     },
     {
