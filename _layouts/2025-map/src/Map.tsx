@@ -33,6 +33,11 @@ import parkingImage from './images/parking.png';
 import surpriseImage from './images/surprise.png';
 import prizeImage from './images/prize.png';
 
+// Fix default marker icon issue with webpack
+/* Lines 21-35 omitted */
+
+import AnimatedHomeButton from './components/AnimatedHomeButton';
+
 L.Icon.Default.mergeOptions({
     iconRetinaUrl,
     iconUrl,
@@ -526,21 +531,10 @@ export const MarketMap: React.FC = () => {
 
     return (
         <Box sx={{ width: '100%', height: '100vh', position: 'relative' }}>
-            <IconButton
-                onClick={() => setInfoPageOpen(true)}
-                sx={{
-                    position: 'absolute',
-                    top: 10,
-                    right: 10,
-                    zIndex: 1000,
-                    backgroundColor: 'white',
-                    '&:hover': {
-                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                    },
-                }}
-            >
-                <HomeIcon />
-            </IconButton>
+            <AnimatedHomeButton
+                onClick={() => setInfoPageOpen(prev => !prev)}
+                isOpen={isInfoPageOpen}
+            />
 
             <InfoPage
                 open={isInfoPageOpen}

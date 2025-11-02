@@ -1,0 +1,66 @@
+/* Base styles for the home button */
+.animated-home-button {
+    width: 56px !important;
+    height: 56px !important;
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    z-index: 1000 !important;
+    border-radius: 50% !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.animated-home-button svg {
+    font-size: 32px !important;
+}
+
+/* Initial state - animating between white and orange */
+.animated-home-button.initial {
+    /* REMOVED: background-color: white !important; - This was overriding the animation */
+    animation: color-transition 3s infinite !important;
+}
+
+.animated-home-button.initial:hover {
+    background-color: rgba(255, 165, 0, 0.6) !important;
+}
+
+/* After first click - InfoPage closed state */
+.animated-home-button.after-click-closed {
+    background-color: rgba(255, 165, 0, 0.5) !important;
+    animation: none !important;
+}
+
+.animated-home-button.after-click-closed:hover {
+    background-color: rgba(255, 165, 0, 0.6) !important;
+}
+
+/* After first click - InfoPage open state */
+.animated-home-button.after-click-open {
+    background-color: rgba(255, 165, 0, 1) !important;
+    animation: none !important;
+}
+
+.animated-home-button.after-click-open:hover {
+    background-color: rgba(255, 165, 0, 0.8) !important;
+}
+
+/* Custom tooltip styles */
+.home-button-tooltip {
+    font-size: 1em !important;
+    /* padding: 16px 24px !important; */
+}
+
+/* Color transition animation */
+@keyframes color-transition {
+    0% {
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    50% {
+        background-color: rgba(255, 165, 0, 1);
+    }
+
+    100% {
+        background-color: rgba(255, 255, 255, 1);
+    }
+}
