@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/zgzg.io/static/css/main.c995a216.css",
-    "main.js": "/zgzg.io/static/js/main.78a41fd3.js",
+    "main.css": "/zgzg.io/static/css/main.dcf34246.css",
+    "main.js": "/zgzg.io/static/js/main.30120b03.js",
     "static/js/453.87d15d3f.chunk.js": "/zgzg.io/static/js/453.87d15d3f.chunk.js",
-    "static/media/all_logos.svg": "/zgzg.io/static/media/all_logos.138ad5cfb48e4d37c03e6aa128b1e9cd.svg",
+    "static/media/all_logos.svg": "/zgzg.io/static/media/all_logos.24cd600837c22bccdbc85844b649269c.svg",
     "static/media/service.png": "/zgzg.io/static/media/service.66dc6164084ff05988b9.png",
     "static/media/demo_drive.png": "/zgzg.io/static/media/demo_drive.1f2c891be730c180b6d7.png",
     "static/media/prize.png": "/zgzg.io/static/media/prize.a742d657fafaf839196a.png",
@@ -17,12 +17,12 @@
     "static/media/medical.png": "/zgzg.io/static/media/medical.154409b6f02972a98ec4.png",
     "static/media/zgzglogo.webp": "/zgzg.io/static/media/zgzglogo.ff4f5b2f018e5bffe376.webp",
     "index.html": "/zgzg.io/index.html",
-    "main.c995a216.css.map": "/zgzg.io/static/css/main.c995a216.css.map",
-    "main.78a41fd3.js.map": "/zgzg.io/static/js/main.78a41fd3.js.map",
+    "main.dcf34246.css.map": "/zgzg.io/static/css/main.dcf34246.css.map",
+    "main.30120b03.js.map": "/zgzg.io/static/js/main.30120b03.js.map",
     "453.87d15d3f.chunk.js.map": "/zgzg.io/static/js/453.87d15d3f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c995a216.css",
-    "static/js/main.78a41fd3.js"
+    "static/css/main.dcf34246.css",
+    "static/js/main.30120b03.js"
   ]
 }
