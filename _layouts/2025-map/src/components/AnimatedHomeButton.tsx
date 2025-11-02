@@ -34,7 +34,7 @@ const AnimatedHomeButton: React.FC<AnimatedHomeButtonProps> = ({ onClick, isOpen
     return (
         <Tooltip
             open={showTooltip && isFirstVisit}
-            title="从这里开始 Start From HERE!"
+            title="从这里开始 Start From HERE ➡️"
             placement="left"
             arrow
             classes={{
