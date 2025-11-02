@@ -47,6 +47,37 @@ L.Icon.Default.mergeOptions({
 // Global flag to switch between numbered square icons and default markers
 const useNumberedIcon = true;
 
+// Icon cache
+interface IconCacheEntry {
+    icon: L.Icon | L.DivIcon;
+    html: string;
+    zoom: number;
+    selected: boolean;
+    inStory: boolean;
+}
+
+interface IconCache {
+    [key: string]: IconCacheEntry;
+}
+
+const createIconHtml = (adjustedSize: number, color: string, itemId: string): string => {
+    return ReactDOMServer.renderToString(
+        <div style={{
+            width: `${adjustedSize}px`,
+            height: `${adjustedSize}px`,
+            backgroundColor: color,
+            color: 'white',
+            textAlign: 'center',
+            lineHeight: `${adjustedSize}px`,
+            borderRadius: '4px',
+            fontSize: `${adjustedSize * 0.5}px`,
+            fontWeight: 'bold'
+        }}>
+            {itemId}
+        </div>
+    );
+};
+
 interface MarkerData {
     item: MapItem;
     markerRef: React.MutableRefObject<L.Marker | null>;
@@ -97,59 +128,54 @@ const calculateSize = (baseSize: number, type: MapItem['type'], zoomLevel: numbe
     return baseSize * Math.pow(1.2, zoomDiff); // Increase/decrease by 20% per zoom level
 };
 
-const createSquareIcon = (type: MapItem['type'], color: string, itemId: string, size: number = 32, currentZoom: number = 18) => {
-    const baseSize = typeToBaseSize[type] || size;
-    const adjustedSize = calculateSize(baseSize, type, currentZoom);
+// Removed old icon creation functions as they are replaced by createCachedIcon
 
-    const customIconHtml = ReactDOMServer.renderToString(
-        <div style={{
-            width: `${adjustedSize}px`,
-            height: `${adjustedSize}px`,
-            backgroundColor: color,
-            color: 'white',
-            textAlign: 'center',
-            lineHeight: `${adjustedSize}px`,
-            borderRadius: '4px',
-            fontSize: `${adjustedSize * 0.5}px`,
-            fontWeight: 'bold'
-        }}>
-            {itemId}
-        </div>
-    );
+// Removed old icon creation functions as they are replaced by createCachedIcon
 
-    return L.divIcon({
-        className: 'custom-square-icon',
-        html: customIconHtml,
-        iconSize: [adjustedSize, adjustedSize],
-        iconAnchor: [adjustedSize / 2, adjustedSize / 2],
-    });
+const typeToColor: Partial<Record<MapItem['type'], string>> = {
+    booth: useNumberedIcon ? 'purple' : 'violet',
+    food: 'green',
 };
 
-const createIcon = (type: MapItem['type'], color: string, size: number = 32, currentZoom: number = 18, itemId?: string) => {
-    const baseSize = typeToBaseSize[type] || size;
-    const adjustedSize = calculateSize(baseSize, type, currentZoom);
+const createCachedIcon = (
+    type: MapItem['type'],
+    color: string,
+    baseSize: number,
+    zoom: number,
+    itemId?: string,
+    isSelected: boolean = false
+): L.Icon | L.DivIcon => {
+    const adjustedSize = calculateSize(baseSize, type, zoom);
 
-    // For booth and food types, check if we should use numbered square icon
     if ((type === 'booth' || type === 'food') && useNumberedIcon && itemId) {
-        return createSquareIcon(type, color, itemId, size, currentZoom);
-    }
-
-    // For booth and food types, use marker icon
-    if (type === 'booth' || type === 'food') {
-        return new L.Icon({
-            className: 'div-icon',
-            iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`,
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-            iconSize: [adjustedSize * 0.625, adjustedSize],
-            iconAnchor: [adjustedSize * 0.3125, adjustedSize],
-            popupAnchor: [1, -adjustedSize],
-            shadowSize: [adjustedSize * 1.025, adjustedSize],
+        const html = createIconHtml(adjustedSize, color, itemId);
+        if (isSelected) {
+            return L.divIcon({
+                className: 'custom-div-icon',
+                html: `<div class="bouncing-marker">${html}</div>`,
+                iconSize: [adjustedSize, adjustedSize],
+                iconAnchor: [adjustedSize / 2, adjustedSize / 2],
+            });
+        }
+        return L.divIcon({
+            className: 'custom-square-icon',
+            html,
+            iconSize: [adjustedSize, adjustedSize],
+            iconAnchor: [adjustedSize / 2, adjustedSize / 2],
         });
     }
 
-    // For other types, use PNG images
+    // For other types, use PNG images or default marker
     const imagePath = typeToImagePath[type];
     if (imagePath) {
+        if (isSelected) {
+            return L.divIcon({
+                className: 'custom-div-icon',
+                html: `<div class="bouncing-marker"><img src="${imagePath}" alt="Custom Icon" style="width:${adjustedSize}px;height:${adjustedSize}px" /></div>`,
+                iconSize: [adjustedSize, adjustedSize],
+                iconAnchor: [adjustedSize / 2, adjustedSize / 2],
+            });
+        }
         return new L.Icon({
             iconUrl: imagePath,
             iconSize: [adjustedSize, adjustedSize],
@@ -158,9 +184,18 @@ const createIcon = (type: MapItem['type'], color: string, size: number = 32, cur
         });
     }
 
-    // Fallback to default marker if type is not recognized
+    // Fallback to default marker
+    const markerUrl = `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`;
+    if (isSelected) {
+        return L.divIcon({
+            className: 'custom-div-icon',
+            html: `<div class="bouncing-marker"><img src="${markerUrl}" alt="Marker Icon" /></div>`,
+            iconSize: [adjustedSize * 0.625, adjustedSize],
+            iconAnchor: [adjustedSize * 0.3125, adjustedSize],
+        });
+    }
     return new L.Icon({
-        iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`,
+        iconUrl: markerUrl,
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
         iconSize: [adjustedSize * 0.625, adjustedSize],
         iconAnchor: [adjustedSize * 0.3125, adjustedSize],
@@ -169,101 +204,52 @@ const createIcon = (type: MapItem['type'], color: string, size: number = 32, cur
     });
 };
 
-const createSelectedIcon = (type: MapItem['type'], color: string, size: number = 48, currentZoom: number = 18, itemId?: string) => {
-    // For non-booth/food types, use the base size from typeToBaseSize
-    const baseSize = typeToBaseSize[type] || size;
-    const adjustedSize = calculateSize(baseSize, type, currentZoom);
+const useIconCache = () => {
+    const iconCache = React.useRef<IconCache>({});
 
-    // For booth and food types, create bouncing square icon when useNumberedIcon is true
-    if ((type === 'booth' || type === 'food') && useNumberedIcon && itemId) {
-        const customIconHtml = ReactDOMServer.renderToString(
-            <div className="bouncing-marker">
-                <div style={{
-                    width: `${adjustedSize}px`,
-                    height: `${adjustedSize}px`,
-                    backgroundColor: color,
-                    color: 'white',
-                    textAlign: 'center',
-                    lineHeight: `${adjustedSize}px`,
-                    borderRadius: '4px',
-                    fontSize: `${adjustedSize * 0.5}px`,
-                    fontWeight: 'bold'
-                }}>
-                    {itemId}
-                </div>
-            </div>
-        );
-        return L.divIcon({
-            className: 'custom-div-icon',
-            html: customIconHtml,
-            iconSize: [adjustedSize, adjustedSize],
-            iconAnchor: [adjustedSize / 2, adjustedSize / 2],
-        });
-    }
+    const getCachedIcon = React.useCallback((
+        type: MapItem['type'],
+        itemSelected: boolean = false,
+        itemInStory: boolean = false,
+        zoom: number = 18,
+        itemId?: string
+    ): L.Icon | L.DivIcon => {
+        const cacheKey = `${type}-${itemId}-${itemSelected}-${itemInStory}-${zoom}`;
 
-    // For booth and food types with useNumberedIcon false, use bouncing marker icon
-    if (type === 'booth' || type === 'food') {
-        const customIconHtml = ReactDOMServer.renderToString(
-            <div className="bouncing-marker">
-                <img src={`https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`} alt="Marker Icon" />
-            </div>
-        );
-        return L.divIcon({
-            className: 'custom-div-icon',
-            html: customIconHtml,
-            iconSize: [adjustedSize * 0.625, adjustedSize],
-            iconAnchor: [adjustedSize * 0.3125, adjustedSize],
-        });
-    }
+        // Check if we have a cached version
+        const cached = iconCache.current[cacheKey];
+        if (cached &&
+            cached.zoom === zoom &&
+            cached.selected === itemSelected &&
+            cached.inStory === itemInStory) {
+            return cached.icon;
+        }
 
-    // For other types, use bouncing PNG images
-    const imagePath = typeToImagePath[type];
-    if (imagePath) {
-        const customIconHtml = ReactDOMServer.renderToString(
-            <div className="bouncing-marker">
-                <img src={imagePath} alt="Custom Icon" style={{ width: `${adjustedSize}px`, height: `${adjustedSize}px` }} />
-            </div>
-        );
-        return L.divIcon({
-            className: 'custom-div-icon',
-            html: customIconHtml,
-            iconSize: [adjustedSize, adjustedSize],
-            iconAnchor: [adjustedSize / 2, adjustedSize / 2],
-        });
-    }
+        // Create new icon if not cached
+        let color = typeToColor[type] || 'blue';
+        let baseSize = typeToBaseSize[type] || 32;
+        if (itemInStory) {
+            color = useNumberedIcon ? 'orange' : 'yellow';
+        }
+        if (itemSelected) {
+            baseSize = 48;
+        }
 
-    // Fallback to default bouncing marker
-    const customIconHtml = ReactDOMServer.renderToString(
-        <div className="bouncing-marker">
-            <img src={`https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`} alt="Marker Icon" />
-        </div>
-    );
-    return L.divIcon({
-        className: 'custom-div-icon',
-        html: customIconHtml,
-        iconSize: [adjustedSize * 0.625, adjustedSize],
-        iconAnchor: [adjustedSize * 0.3125, adjustedSize],
-    });
-}
+        const icon = createCachedIcon(type, color, baseSize, zoom, itemId, itemSelected);
 
-const typeToColor: Partial<Record<MapItem['type'], string>> = {
-    booth: useNumberedIcon ? 'purple' : 'violet',
-    food: 'green',
-};
+        // Cache the new icon
+        iconCache.current[cacheKey] = {
+            icon,
+            html: '',  // We don't need to cache HTML separately anymore
+            zoom,
+            selected: itemSelected,
+            inStory: itemInStory
+        };
 
-const getIcon = (type: MapItem['type'], itemSelected: boolean = false, itemInStory: boolean = false, zoom: number = 18, itemId?: string) => {
-    var color = typeToColor[type] || 'blue';
-    var baseSize = typeToBaseSize[type] || 32;
-    if (itemInStory) {
-        color = useNumberedIcon ? 'orange' : 'yellow';
-    }
-    if (itemSelected) {
-        baseSize = 48;
-        return createSelectedIcon(type, color, baseSize, zoom, itemId);
-    }
-    else {
-        return createIcon(type, color, baseSize, zoom, itemId);
-    }
+        return icon;
+    }, []);
+
+    return getCachedIcon;
 };
 
 interface MapControllerProps {
@@ -318,6 +304,8 @@ export const MarketMap: React.FC = () => {
     const [isDrawerOpen, setDrawerOpen] = useState(false);
     const [currentZoom, setCurrentZoom] = useState(18); // Default zoom level
     const [isInfoPageOpen, setInfoPageOpen] = useState(false);
+
+    const getIcon = useIconCache();
 
     const markerDataRefs = useRef<MarkerData[]>([]);
 
