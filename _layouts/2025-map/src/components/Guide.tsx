@@ -61,7 +61,7 @@ const Guide: React.FC = () => {
 
                     <Typography sx={{ fontWeight: 'bold' }}>1️⃣ 提前准备二维码，凭票入场</Typography>
                     <Typography variant='body2' sx={{ ml: 2, mb: 0.5 }}>
-                        • 入场视为您已阅读并同意本活动的 <a href="https://zgzg.io/audience-waiver">ZGZG Event Waiver & Disclaimer</a> （包括安全提示与肖像权授权）。
+                        • 入场视为您已阅读并同意本活动的 <a href="https://zgzg.io/waiver/audience/">ZGZG Event Waiver & Disclaimer</a> （包括安全提示与肖像权授权）。
                     </Typography>
                     <Typography variant='body2' sx={{ ml: 2, mb: 1 }}>
                         • 📲 每位游客（或家庭代表）请提前在【Eventbrite / Taro报名页面】中获取入场二维码。
