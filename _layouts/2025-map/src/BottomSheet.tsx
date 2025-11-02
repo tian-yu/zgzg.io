@@ -12,6 +12,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button';
 
 import { MapItem, Row } from './data';
+import { useBoothContent } from './contexts/BoothContentContext';
 
 // Styled Puller component for the drawer handle - now in a fixed container
 const PullerContainer = styled(Box)(({ theme }) => ({
@@ -56,6 +57,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
     const [isMinimized, setIsMinimized] = React.useState(false);
     const [htmlContent, setHtmlContent] = React.useState<string | null>(null);
     const [isLoading, setIsLoading] = React.useState(false);
+    const { fetchAndCacheContent, contentCache } = useBoothContent();
 
     // Ref to track the scrollable content element (the container with overflowY)
     const scrollContainerRef = React.useRef<HTMLDivElement | null>(null);
@@ -67,23 +69,25 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
     const touchStartXRef = React.useRef<number | null>(null);
     const touchMovedRef = React.useRef<boolean>(false);
 
-    // Fetch HTML content when needed
-    const fetchHtmlContent = async (filename: string) => {
+    // Optimized content fetching with cache
+    const loadContent = React.useCallback(async (filename: string) => {
+        // First check if we already have this content in local state
+        if (contentCache[filename]) {
+            setHtmlContent(contentCache[filename]);
+            return;
+        }
+
         setIsLoading(true);
         try {
-            const response = await fetch(`${process.env.PUBLIC_URL}/${filename}`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch HTML content');
-            }
-            const html = await response.text();
-            setHtmlContent(html);
+            const content = await fetchAndCacheContent(filename);
+            setHtmlContent(content);
         } catch (error) {
-            console.error('Error fetching HTML content:', error);
+            console.error('Error loading HTML content:', error);
             setHtmlContent(null);
         } finally {
             setIsLoading(false);
         }
-    };
+    }, [contentCache, fetchAndCacheContent]);
 
     // Update local state when prop changes
     React.useEffect(() => {
@@ -92,15 +96,17 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, selec
             setIsFullyOpen(true);
             setIsMinimized(false);
 
-            // Reset HTML content
-            setHtmlContent(null);
+            // Reset HTML content only if there's no cached content
+            if (initialSelectedItem?.description_file && !contentCache[initialSelectedItem.description_file]) {
+                setHtmlContent(null);
+            }
 
-            // If the selected item has a description_file, fetch its content
+            // If the selected item has a description_file, load its content
             if (initialSelectedItem?.description_file) {
-                fetchHtmlContent(initialSelectedItem.description_file);
+                loadContent(initialSelectedItem.description_file);
             }
         }
-    }, [initialSelectedItem, isOpen]);
+    }, [initialSelectedItem, isOpen, contentCache, loadContent]);
 
     // Handle prop changes for minimizing
     React.useEffect(() => {
