@@ -9,26 +9,31 @@ interface AnimatedHomeButtonProps {
 }
 
 const AnimatedHomeButton: React.FC<AnimatedHomeButtonProps> = ({ onClick, isOpen }) => {
-    const [showTooltip, setShowTooltip] = useState(true);
-    const [isFirstClick, setIsFirstClick] = useState(false);
+    const [isFirstVisit, setIsFirstVisit] = useState(() => {
+        return localStorage.getItem('hasVisitedBefore') === null;
+    });
+    const [showTooltip, setShowTooltip] = useState(isFirstVisit);
+    const [isFirstClick, setIsFirstClick] = useState(!isFirstVisit);
 
     const handleClick = () => {
-        if (!isFirstClick) {
-            setIsFirstClick(true);
+        if (isFirstVisit) {
+            localStorage.setItem('hasVisitedBefore', 'true');
+            setIsFirstVisit(false);
             setShowTooltip(false);
+            setIsFirstClick(true);
         }
         onClick();
     };
 
     const getButtonClassName = () => {
         const baseClass = 'animated-home-button';
-        if (!isFirstClick) return `${baseClass} initial`;
+        if (isFirstVisit) return `${baseClass} initial`;
         return `${baseClass} ${isOpen ? 'after-click-open' : 'after-click-closed'}`;
     };
 
     return (
         <Tooltip
-            open={showTooltip && !isFirstClick}
+            open={showTooltip && isFirstVisit}
             title="从这里开始 Start From HERE!"
             placement="left"
             arrow
