@@ -867,19 +867,20 @@ Note: D1/E1 count as 1 stamp
 <end>
 <start>
 id: "E2"
-name: "👶🥣 Little Tummy 宝宝餐 | Little Tummy Baby Meals"
-description: 👶🥣 Little Tummy 宝宝餐 | Little Tummy Baby Meals
-为宝宝准备健康营养的鲜制膳食，
- 不添加防腐剂、盐或糖，
- 让每一口都纯净自然，
- 助力孩子健康快乐成长。🌱💚
-Prepares fresh and healthy meals for babies,
- with no preservatives, salt, or sugar added —
- pure, natural, and nourishing,
- supporting your child’s happy, healthy growth. 🌿✨
+name: "Little Tummy 包子Baobabies🐼"
+description: 🐼 Little Tummy 包子 Baobabies | Adorable Steamed Buns & Sweet Treats
+软糯香甜的包子，也可以萌到心里！💖
+ 在这里，你将遇见各种可爱到舍不得吃的造型包：
+ 🐻 大熊造型牛奶巧克力熔岩包 —— 外萌内流心，一口融化幸福；
+ 🐧 解忧小企鹅鲜乳芋泥包 —— 奶香与芋香交织，柔软治愈每一刻；
+ 🐷 动物农庄鲜乳造型馒头 —— 趣味与美味兼具，大小朋友都爱不释手！🍞
+Soft, sweet, and impossibly cute! 🩵
+ At Little Tummy Baobabies, every bun is a bite of joy —
+ 🐻 Bear Chocolate Lava Bun — melt-in-your-mouth sweetness wrapped in a cuddly bear;
+ 🐧 Penguin Taro Milk Bun — gentle, creamy, and comfortingly soft;
+ 🐷 Animal Farm Steamed Buns — adorable, fluffy, and full of love! 🥰
 了解更多：
-
-https://littletummyqa.com/
+https://www.baobabies.com/
 <end>
 <start>
 id: "E3"
@@ -892,12 +893,19 @@ description: 🍎 甜蜜糖葫芦 | Traditional Candied Hawthorn Skewer
 <end>
 <start>
 id: "E4"
-name: "🍋 清新柠檬茶 | Refreshing Lemon Tea"
-description: 🍋 清新柠檬茶 | Refreshing Lemon Tea
-一杯柠檬茶，酸甜恰好，
- 是阳光午后的清爽微风，也是快乐的味道。
- A cup of lemon tea—perfectly sweet and tangy,
- like a sip of sunshine that refreshes the soul. ☀️
+name: "Rich Lemon Tea🍋"
+description: 🍋 限定特饮惊喜 | Special Tea Creations Just for the Festival!
+全新的 💛 鸭屎香茶冻 💛搭配我们的鸭屎香茶底，香气层层叠叠，特别适配，绝对让你一口上头！😋为这次游园会，特别准备了两款限量茶底，平时喝不到，数量稀少，错过就真的没啦！🫖✨
+🌰 特浓锡兰红茶|茶香浓郁饱满，适合喜欢醇厚口感的朋友。👉 做成柠檬茶：清爽解腻👉 做成柠檬打奶：像一杯浓郁奶茶，却多了一抹柠檬的清香 🍋☕
+🌼 金桂花铁观音打开茶罐就能闻到扑鼻的桂花香，与铁观音完美融合。👉 做成柠檬茶：清新中带花香👉 做成柠檬打奶：柔和香甜，像秋日的温柔一口 🍂💛
+两款茶底均可自由选择 ——💫 柠檬茶 Lemon Tea 或 柠檬打奶 Lemon Milk Tea🍋 New Seasonal Specials!
+
+Introducing our brand new Duck Shit Aroma Tea Jelly —yes, it’s a real tea name and an unforgettable flavor! 🌼Rich, floral, and perfectly balanced with our signature tea base.We’ve also crafted two exclusive tea bases just for this event —limited quantity, not available in-store! 
+🫖🌰 Strong Ceylon Black TeaBold and aromatic, ideal for those who love a deep tea flavor.👉 As Lemon Tea: Refreshing and balanced.👉 As Lemon Milk Tea: Smooth and creamy like milk tea, with a citrus twist. 🍋
+🌼 Golden Osmanthus TieguanyinA fragrant harmony of osmanthus blossoms and oolong tea.👉 As Lemon Tea: Light and floral.👉 As Lemon Milk Tea: Gentle, cozy, and perfectly comforting. 🌸✨ Choose your style — Lemon Tea or Lemon Milk Tea, both full of flavor and charm! 💛
+
+了解更多：
+http://xhslink.com/o/8lyZGMCd9sG 
 <end>
 <start>
 id: "F1"
